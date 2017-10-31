@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
   private subscribeToAngularStartFinish(): void {
     this._appService.OnAngularStarted.subscribe((isResultsArrived: boolean) => {
       if (isResultsArrived) {
-        
+        this._isResultsArrived = isResultsArrived;
       }
     });
   }

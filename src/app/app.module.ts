@@ -56,8 +56,8 @@ import { HeadNavigationBarComponent } from './head-navigation-bar/head-navigatio
 
 
 const appRoutes: Routes = [
-  { path: 'search', component: SearchForServicesComponent },
-  { path: 'wait-for-results', component: WaitForResultsComponent }
+  // { path: 'search', component: SearchForServicesComponent },
+  // { path: 'wait-for-results', component: WaitForResultsComponent }
 ];
 
 
@@ -89,7 +89,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeadNavigationBarComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    // RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     Angular2FontawesomeModule,

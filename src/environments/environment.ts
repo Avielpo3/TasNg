@@ -6,10 +6,10 @@
 export const environment = {
   production: false,
 
-  flightResultJsonUrl: '/assets/flight-result.json',
-  AirlineCodeToCityNameUrl: '/assets/airport-to-city.json',
-  AirlineNameListUrl: '/assets/airline-names.json',
-  CurrencyConvertListUrl: '/assets/currency.json',
+  flightResultJsonUrl: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/flight-result.json',
+  AirlineCodeToCityNameUrl: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/airport-to-city.json',
+  AirlineNameListUrl: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/airline-names.json',
+  CurrencyConvertListUrl: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/currency.json',
 
-  AirlinesLogoPath: '/assets/airlines-logos/'
+  AirlinesLogoPath: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/airlines-logos/'
 };
