@@ -2,3 +2,4 @@ node_modules/
 .vscode/
 e2e/
 dist/
+*.js.map
