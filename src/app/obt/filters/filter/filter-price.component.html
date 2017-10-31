@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-xs-12">
+        <p id="filterName"
+           class="filter-name"
+           translate>{{getFilterName(_filter.name)}} </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 slider-value-wrapper">
+        <div class="slider-value-container">
+            <span id="sliderMinValue"
+                  class="slider-value"
+                  [style.left]="_minMoved">{{rangeValues[0] | userCurrncy }}</span>
+            <span id="sliderMaxValue"
+                  class="slider-value"
+                  [style.left]="_maxMoved">{{rangeValues[1] | userCurrncy}}</span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 ngp-slider-container">
+        <p-slider [(ngModel)]="rangeValues"
+                  [range]="_filter.ngPrimeOptions.range"
+                  [min]="_filter.ngPrimeOptions.min"
+                  [step]="_filter.ngPrimeOptions.step"
+                  [max]="_filter.ngPrimeOptions.max"
+                  [animate]="_filter.ngPrimeOptions.animate"
+                  [styleClass]="_filter.ngPrimeOptions.styleClass"
+                  [style]="_filter.ngPrimeOptions.style"
+                  (onChange)="handleChange($event)"
+                  (onSlideEnd)="handleSlideStop($event)"
+                  #primeSlider>
+        </p-slider>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <span class="filter-min-value">{{_filter.ngPrimeOptions.min | userCurrncy }}</span>
+        <span class="filter-max-value">{{_filter.ngPrimeOptions.max | userCurrncy }}</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <hr>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="div"
+     id="obtContainer"
+     *ngIf="_isResultArrived">
+
+  <div class="row header-select-flight-container">
+    <div class="col-xs-12">
+      <div class="row header-select-flight-h4">
+        <div class="col-xs-12">
+          <h2 translate>Select Your Flight</h2>
+        </div>
+      </div>
+      <div class="row header-select-flight-font">
+        <span class="header-select-flight" translate>Round Trip</span>   
+        <span>{{getCityNameByAirport(_flightGlobalInfo.DepartueAirport)}}</span>
+        <span>({{_flightGlobalInfo.DepartueAirport}})</span>
+        <span class="header-select-flight" >{{_flightGlobalInfo.DepartureDate | date:'dd-MMM' }} </span>
+        <span>{{getCityNameByAirport(_flightGlobalInfo.ArrivelAirport)}}</span>
+        <span> ({{_flightGlobalInfo.ArrivelAirport}})</span>
+        <span>{{_flightGlobalInfo.ArrivelDate | date:'dd-MMM' }} </span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="div"
+       id="obtHeader">
+    <div class="row">
+      <div class="col-xs-6">
+        <h3 class="flight-result-count"> {{_flightGlobalInfo.TotalFlightNumber[_currentScreen]}}
+          <span translate>Results Amont Header</span>
+        </h3>
+      </div>
+      <div class="col-xs-6 sort-by">
+        <span translate
+              class="sort-by-title" translate >Sort Results By</span>
+        <p-dropdown [options]="_sortByDto.filterByArray"
+                    [(ngModel)]="_selectedSortByFilter"
+                    (onChange)="handleSortByChange($event)"
+                    [style]="{width : '253px'}"
+                    #sortByDropDown></p-dropdown>
+        <!-- <button class="btn btn-primary"
+           id="resetSortFilterBtn"
+           pButton
+           label="Clear"
+           (click)="clearSortingFilter(sortByDropDown)"
+           translate>
+     Reset Sorting
+   </button> -->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+
+      <app-filters id="appFilterContainerDiv">
+        //Content of filters
+      </app-filters>
+
+    </div>
+    <div class="col-xs-9"
+         id="appResultContainerDiv">
+      <div class="row no-right-gutter">
+        <div class="col-xs-12 destination-list-wrapper">
+          <div class="row container-fluid">
+            <div class="col-xs-3">
+              <h4 class="destination-list-heading" translate>Airlines</h4>
+            </div>
+            <div class="col-xs-3">
+              <div class="row">
+                <div class="col-xs-6">
+                  <h4 class="destination-list-heading text-left" translate>Departure</h4>
+                </div>
+                <div class="col-xs-6">
+                  <h4 class="destination-list-heading text-right" translate>Arrival</h4>
+                </div>
+              </div>
+
+            </div>
+            <!--<div class="col-xs-2">-->
+            <!--<h4 class="destination-list-heading">Arrival</h4>-->
+            <!--</div>-->
+            <div class="col-xs-2">
+              <div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-10 text-left">
+                  <h4 class="destination-list-heading" translate>Duration</h4>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-xs-1 text-left">
+              <h4 class="destination-list-heading" translate>Stops</h4>
+            </div>
+            <div class="col-xs-3 text-left">
+              <div class="row">
+                <div class="col-xs-6">
+                  <h4 class="destination-list-heading" translate>Policy</h4>
+                </div>
+                <div class="col-xs-6">
+                  <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10">
+                      <h4 class="destination-list-heading">Price</h4>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <app-results-list *ngFor="let destinationList of _destinationsList; let i = index"
+                            [_itinerariesList]="destinationList"
+                            [_index]="i"
+                            [_currentScreen]="_currentScreen">
+          </app-results-list>
+          <app-flight-list-navigator [iCurrentScreen]="_currentScreen"
+                                     [iTotalScreenCount]="_listResultScreenCount"
+                                     [iSelectedFlightArray]="_selectedFlightArray"
+                                     (onNext)="handleOnNextBackClick($event)"
+                                     (onBack)="handleOnNextBackClick($event)"
+                                     (onFinished)="handleOnFinishedClick($event)"></app-flight-list-navigator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

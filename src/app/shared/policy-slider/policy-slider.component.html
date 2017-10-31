@@ -1,0 +1,5 @@
+<div class="policy-slider-wrapper">
+  <div [attr.class]="'policy-slider-bg policy-slider-bg-' + level"></div>
+  <p-slider *ngIf="!disabled" [(ngModel)]="level" [min]="0" [max]="5"  [step]="1" [styleClass]="'policy-slider policy-slider-level'" (onChange)="updateLevel($event)"></p-slider>
+</div>
+

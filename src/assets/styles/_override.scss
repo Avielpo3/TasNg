@@ -1,0 +1,174 @@
+/*****************************************/
+/* Bootstrap Overrides */
+/*****************************************/
+
+/*
+Override bootstrap font settings on form components
+ */
+button, input, optgroup, select, textarea {
+  font-family: 'Lato', sans-serif;
+}
+.btn-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 0;
+  color:$link-color;
+}
+
+.no-right-gutter {
+  margin-right: 0;
+}
+/*****************************************/
+/* PrimeNG Overrides */
+/*****************************************/
+
+/*
+PrimeNG slider override
+ */
+.ui-slider {
+  height: 4px;
+  box-shadow: none;
+  background-color: $ngp-slider-range-empty;
+  .ui-slider-range {
+    background-color: $ngp-slider-range-full;
+    box-shadow: none;
+  }
+  .ui-slider-handle {
+      width:21px !important;
+      height:21px !important;
+      top:-8px !important;
+      background: url('../../assets/images/slider-handle.png') center no-repeat;
+     // transform: translate(9px,0);
+    &:last-child {
+      //transform: translate(-10px,0);
+    }
+  }
+  .slider-value{
+    color: $ngp-slider-float-value;
+    position: absolute;
+    top:-25px;
+  }
+}
+
+/*
+PrimeNG checkbox override
+ */
+p-checkbox{
+  margin-left:0 !important;
+  .ui-chkbox .ui-chkbox-box {
+    width: 1.79em;
+    height: 1.79em;
+    color:$ngp-checkbox-checked;
+    margin-right: 0.64em;
+    .fa-check:before {
+      font-size: 1.49em;
+    }
+  }
+  label {
+    font-weight: normal;
+    margin-bottom:0;
+    font-size: 1.15em;
+  }
+}
+
+.ui-chkbox-box.ui-state-active, .ui-chkbox .ui-chkbox-box {
+  border:1px solid $ngp-checkbox-border !important;
+}
+.ui-chkbox .ui-chkbox-box, .ui-chkbox-box.ui-state-focus.ui-state-active, .ui-chkbox-box:not(.ui-state-disabled):not(.ui-state-active):hover {
+  background:transparent;
+}
+
+
+
+/*
+PrimeNG OverlayPanel override
+ */
+.flight-result-leg-overlay {
+  border-color: $ngp-overlay-border ;
+  width:500px;
+  transform: translate(-170px, -30px);
+  &:before{
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid $ngp-overlay-border;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    left: 50%;
+    top: -25px;
+    transform: translateX(-50%);
+  }
+  &:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 12px solid rgba(0, 0, 0, 0);
+    border-bottom: 12px solid white;
+    border-right: 12px solid rgba(0, 0, 0, 0);
+    border-left: 12px solid rgba(0, 0, 0, 0);
+    left: 50%;
+    top: -23px;
+    transform: translateX(-50%);
+  }
+}
+
+
+/*
+PrimeNG Dropdown
+ */
+
+.ui-dropdown label.ui-dropdown-label {
+  line-height: 30px;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.ui-dropdown {
+  width:253px;
+  font-size: 1.6rem;
+}
+
+.ui-dropdown .ui-dropdown-trigger {
+  border-left: none;
+}
+.ui-dropdown .ui-dropdown-trigger .fa {
+  margin-top: 10px;
+  margin-left: -27px;
+  font-size: 20px;
+  color: #959597;
+}
+.ui-dropdown-panel .ui-dropdown-item {
+  padding: 11px 17px;
+  border-radius: 0;
+}
+$ngp-dropdown-background:#e9f2f9;
+
+.ui-state-highlight {
+  border-color: #156090;
+  background: #e9f2f9;
+  color: #282834;
+}
+
+.destination-list-wrapper {
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .row {
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+  .container-fluid {
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

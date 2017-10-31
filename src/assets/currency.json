@@ -1,0 +1,1010 @@
+[
+    {
+        "ID": 967,
+        "FromCode": "USD",
+        "ToCode": "AED",
+        "Exchange_Rate": 3.67250
+    },
+    {
+        "ID": 968,
+        "FromCode": "USD",
+        "ToCode": "AFN",
+        "Exchange_Rate": 68.08000
+    },
+    {
+        "ID": 969,
+        "FromCode": "USD",
+        "ToCode": "AMD",
+        "Exchange_Rate": 481.23001
+    },
+    {
+        "ID": 970,
+        "FromCode": "USD",
+        "ToCode": "ANG",
+        "Exchange_Rate": 1.78250
+    },
+    {
+        "ID": 971,
+        "FromCode": "USD",
+        "ToCode": "AOA",
+        "Exchange_Rate": 165.09700
+    },
+    {
+        "ID": 972,
+        "FromCode": "USD",
+        "ToCode": "ARS",
+        "Exchange_Rate": 17.35500
+    },
+    {
+        "ID": 973,
+        "FromCode": "USD",
+        "ToCode": "AUD",
+        "Exchange_Rate": 1.27050
+    },
+    {
+        "ID": 974,
+        "FromCode": "USD",
+        "ToCode": "AWG",
+        "Exchange_Rate": 1.78000
+    },
+    {
+        "ID": 975,
+        "FromCode": "USD",
+        "ToCode": "AZN",
+        "Exchange_Rate": 1.69960
+    },
+    {
+        "ID": 976,
+        "FromCode": "USD",
+        "ToCode": "BAM",
+        "Exchange_Rate": 1.65320
+    },
+    {
+        "ID": 977,
+        "FromCode": "USD",
+        "ToCode": "BBD",
+        "Exchange_Rate": 2.00000
+    },
+    {
+        "ID": 978,
+        "FromCode": "USD",
+        "ToCode": "BDT",
+        "Exchange_Rate": 82.21000
+    },
+    {
+        "ID": 979,
+        "FromCode": "USD",
+        "ToCode": "BGN",
+        "Exchange_Rate": 1.66470
+    },
+    {
+        "ID": 980,
+        "FromCode": "USD",
+        "ToCode": "BHD",
+        "Exchange_Rate": 0.37670
+    },
+    {
+        "ID": 981,
+        "FromCode": "USD",
+        "ToCode": "BIF",
+        "Exchange_Rate": 1731.00000
+    },
+    {
+        "ID": 982,
+        "FromCode": "USD",
+        "ToCode": "BMD",
+        "Exchange_Rate": 1.00000
+    },
+    {
+        "ID": 983,
+        "FromCode": "USD",
+        "ToCode": "BND",
+        "Exchange_Rate": 1.35570
+    },
+    {
+        "ID": 984,
+        "FromCode": "USD",
+        "ToCode": "BOB",
+        "Exchange_Rate": 6.85000
+    },
+    {
+        "ID": 985,
+        "FromCode": "USD",
+        "ToCode": "BRL",
+        "Exchange_Rate": 3.17250
+    },
+    {
+        "ID": 986,
+        "FromCode": "USD",
+        "ToCode": "BRX",
+        "Exchange_Rate": 3.16670
+    },
+    {
+        "ID": 987,
+        "FromCode": "USD",
+        "ToCode": "BSD",
+        "Exchange_Rate": 1.00000
+    },
+    {
+        "ID": 988,
+        "FromCode": "USD",
+        "ToCode": "BTN",
+        "Exchange_Rate": 65.12500
+    },
+    {
+        "ID": 989,
+        "FromCode": "USD",
+        "ToCode": "BWP",
+        "Exchange_Rate": 10.32560
+    },
+    {
+        "ID": 990,
+        "FromCode": "USD",
+        "ToCode": "BYN",
+        "Exchange_Rate": 1.96000
+    },
+    {
+        "ID": 991,
+        "FromCode": "USD",
+        "ToCode": "BYR",
+        "Exchange_Rate": 20020.00000
+    },
+    {
+        "ID": 992,
+        "FromCode": "USD",
+        "ToCode": "BZD",
+        "Exchange_Rate": 1.99770
+    },
+    {
+        "ID": 993,
+        "FromCode": "USD",
+        "ToCode": "CAD",
+        "Exchange_Rate": 1.24742
+    },
+    {
+        "ID": 994,
+        "FromCode": "USD",
+        "ToCode": "CDF",
+        "Exchange_Rate": 1565.50000
+    },
+    {
+        "ID": 995,
+        "FromCode": "USD",
+        "ToCode": "CHF",
+        "Exchange_Rate": 0.97418
+    },
+    {
+        "ID": 996,
+        "FromCode": "USD",
+        "ToCode": "CLF",
+        "Exchange_Rate": 0.02323
+    },
+    {
+        "ID": 997,
+        "FromCode": "USD",
+        "ToCode": "CLP",
+        "Exchange_Rate": 625.64002
+    },
+    {
+        "ID": 998,
+        "FromCode": "USD",
+        "ToCode": "CNH",
+        "Exchange_Rate": 6.61680
+    },
+    {
+        "ID": 999,
+        "FromCode": "USD",
+        "ToCode": "CNY",
+        "Exchange_Rate": 6.61400
+    },
+    {
+        "ID": 1000,
+        "FromCode": "USD",
+        "ToCode": "COP",
+        "Exchange_Rate": 2926.39990
+    },
+    {
+        "ID": 1001,
+        "FromCode": "USD",
+        "ToCode": "CRC",
+        "Exchange_Rate": 564.40997
+    },
+    {
+        "ID": 1002,
+        "FromCode": "USD",
+        "ToCode": "CUP",
+        "Exchange_Rate": 1.00000
+    },
+    {
+        "ID": 1003,
+        "FromCode": "USD",
+        "ToCode": "CVE",
+        "Exchange_Rate": 93.10000
+    },
+    {
+        "ID": 1004,
+        "FromCode": "USD",
+        "ToCode": "CZK",
+        "Exchange_Rate": 21.71390
+    },
+    {
+        "ID": 1005,
+        "FromCode": "USD",
+        "ToCode": "DEM",
+        "Exchange_Rate": 1.71745
+    },
+    {
+        "ID": 1006,
+        "FromCode": "USD",
+        "ToCode": "DJF",
+        "Exchange_Rate": 177.80000
+    },
+    {
+        "ID": 1007,
+        "FromCode": "USD",
+        "ToCode": "DKK",
+        "Exchange_Rate": 6.28431
+    },
+    {
+        "ID": 1008,
+        "FromCode": "USD",
+        "ToCode": "DOP",
+        "Exchange_Rate": 47.25000
+    },
+    {
+        "ID": 1009,
+        "FromCode": "USD",
+        "ToCode": "DZD",
+        "Exchange_Rate": 113.76000
+    },
+    {
+        "ID": 1010,
+        "FromCode": "USD",
+        "ToCode": "ECS",
+        "Exchange_Rate": 25000.00000
+    },
+    {
+        "ID": 1011,
+        "FromCode": "USD",
+        "ToCode": "EGP",
+        "Exchange_Rate": 17.61000
+    },
+    {
+        "ID": 1012,
+        "FromCode": "USD",
+        "ToCode": "ERN",
+        "Exchange_Rate": 15.35000
+    },
+    {
+        "ID": 1013,
+        "FromCode": "USD",
+        "ToCode": "ETB",
+        "Exchange_Rate": 26.90000
+    },
+    {
+        "ID": 1014,
+        "FromCode": "USD",
+        "ToCode": "EUR",
+        "Exchange_Rate": 0.84420
+    },
+    {
+        "ID": 1015,
+        "FromCode": "USD",
+        "ToCode": "FJD",
+        "Exchange_Rate": 2.04250
+    },
+    {
+        "ID": 1016,
+        "FromCode": "USD",
+        "ToCode": "FKP",
+        "Exchange_Rate": 0.75830
+    },
+    {
+        "ID": 1017,
+        "FromCode": "USD",
+        "ToCode": "FRF",
+        "Exchange_Rate": 1700.27222
+    },
+    {
+        "ID": 1018,
+        "FromCode": "USD",
+        "ToCode": "GBP",
+        "Exchange_Rate": 0.75836
+    },
+    {
+        "ID": 1019,
+        "FromCode": "USD",
+        "ToCode": "GEL",
+        "Exchange_Rate": 2.47440
+    },
+    {
+        "ID": 1020,
+        "FromCode": "USD",
+        "ToCode": "GHS",
+        "Exchange_Rate": 4.37410
+    },
+    {
+        "ID": 1021,
+        "FromCode": "USD",
+        "ToCode": "GIP",
+        "Exchange_Rate": 0.75860
+    },
+    {
+        "ID": 1022,
+        "FromCode": "USD",
+        "ToCode": "GMD",
+        "Exchange_Rate": 47.15000
+    },
+    {
+        "ID": 1023,
+        "FromCode": "USD",
+        "ToCode": "GNF",
+        "Exchange_Rate": 8968.00000
+    },
+    {
+        "ID": 1024,
+        "FromCode": "USD",
+        "ToCode": "GTQ",
+        "Exchange_Rate": 7.34350
+    },
+    {
+        "ID": 1025,
+        "FromCode": "USD",
+        "ToCode": "GYD",
+        "Exchange_Rate": 206.49001
+    },
+    {
+        "ID": 1026,
+        "FromCode": "USD",
+        "ToCode": "HKD",
+        "Exchange_Rate": 7.80058
+    },
+    {
+        "ID": 1027,
+        "FromCode": "USD",
+        "ToCode": "HNL",
+        "Exchange_Rate": 23.32000
+    },
+    {
+        "ID": 1028,
+        "FromCode": "USD",
+        "ToCode": "HRK",
+        "Exchange_Rate": 6.33390
+    },
+    {
+        "ID": 1029,
+        "FromCode": "USD",
+        "ToCode": "HTG",
+        "Exchange_Rate": 61.39000
+    },
+    {
+        "ID": 1030,
+        "FromCode": "USD",
+        "ToCode": "HUF",
+        "Exchange_Rate": 260.26999
+    },
+    {
+        "ID": 1031,
+        "FromCode": "USD",
+        "ToCode": "HUX",
+        "Exchange_Rate": 261.26999
+    },
+    {
+        "ID": 1032,
+        "FromCode": "USD",
+        "ToCode": "IDR",
+        "Exchange_Rate": 13524.00000
+    },
+    {
+        "ID": 1033,
+        "FromCode": "USD",
+        "ToCode": "IEP",
+        "Exchange_Rate": 0.69915
+    },
+    {
+        "ID": 1034,
+        "FromCode": "USD",
+        "ToCode": "ILS",
+        "Exchange_Rate": 3.48000
+    },
+    {
+        "ID": 1035,
+        "FromCode": "USD",
+        "ToCode": "INR",
+        "Exchange_Rate": 64.99900
+    },
+    {
+        "ID": 1036,
+        "FromCode": "USD",
+        "ToCode": "IQD",
+        "Exchange_Rate": 1180.00000
+    },
+    {
+        "ID": 1037,
+        "FromCode": "USD",
+        "ToCode": "IRR",
+        "Exchange_Rate": 34299.00000
+    },
+    {
+        "ID": 1038,
+        "FromCode": "USD",
+        "ToCode": "ISK",
+        "Exchange_Rate": 104.90000
+    },
+    {
+        "ID": 1039,
+        "FromCode": "USD",
+        "ToCode": "ITL",
+        "Exchange_Rate": 1700.27222
+    },
+    {
+        "ID": 1040,
+        "FromCode": "USD",
+        "ToCode": "JMD",
+        "Exchange_Rate": 126.68000
+    },
+    {
+        "ID": 1041,
+        "FromCode": "USD",
+        "ToCode": "JOD",
+        "Exchange_Rate": 0.70680
+    },
+    {
+        "ID": 1042,
+        "FromCode": "USD",
+        "ToCode": "JPY",
+        "Exchange_Rate": 112.39700
+    },
+    {
+        "ID": 1043,
+        "FromCode": "USD",
+        "ToCode": "KES",
+        "Exchange_Rate": 103.35000
+    },
+    {
+        "ID": 1044,
+        "FromCode": "USD",
+        "ToCode": "KGS",
+        "Exchange_Rate": 68.62000
+    },
+    {
+        "ID": 1045,
+        "FromCode": "USD",
+        "ToCode": "KHR",
+        "Exchange_Rate": 4026.00000
+    },
+    {
+        "ID": 1046,
+        "FromCode": "USD",
+        "ToCode": "KMF",
+        "Exchange_Rate": 417.88001
+    },
+    {
+        "ID": 1047,
+        "FromCode": "USD",
+        "ToCode": "KPW",
+        "Exchange_Rate": 900.00000
+    },
+    {
+        "ID": 1048,
+        "FromCode": "USD",
+        "ToCode": "KRW",
+        "Exchange_Rate": 1129.89002
+    },
+    {
+        "ID": 1049,
+        "FromCode": "USD",
+        "ToCode": "KWD",
+        "Exchange_Rate": 0.30200
+    },
+    {
+        "ID": 1050,
+        "FromCode": "USD",
+        "ToCode": "KYD",
+        "Exchange_Rate": 0.82000
+    },
+    {
+        "ID": 1051,
+        "FromCode": "USD",
+        "ToCode": "KZT",
+        "Exchange_Rate": 334.47000
+    },
+    {
+        "ID": 1052,
+        "FromCode": "USD",
+        "ToCode": "LAK",
+        "Exchange_Rate": 8315.00000
+    },
+    {
+        "ID": 1053,
+        "FromCode": "USD",
+        "ToCode": "LBP",
+        "Exchange_Rate": 1506.50000
+    },
+    {
+        "ID": 1054,
+        "FromCode": "USD",
+        "ToCode": "LKR",
+        "Exchange_Rate": 153.60001
+    },
+    {
+        "ID": 1055,
+        "FromCode": "USD",
+        "ToCode": "LRD",
+        "Exchange_Rate": 118.07000
+    },
+    {
+        "ID": 1056,
+        "FromCode": "USD",
+        "ToCode": "LSL",
+        "Exchange_Rate": 13.56000
+    },
+    {
+        "ID": 1057,
+        "FromCode": "USD",
+        "ToCode": "LTL",
+        "Exchange_Rate": 3.04870
+    },
+    {
+        "ID": 1058,
+        "FromCode": "USD",
+        "ToCode": "LVL",
+        "Exchange_Rate": 0.62055
+    },
+    {
+        "ID": 1059,
+        "FromCode": "USD",
+        "ToCode": "LYD",
+        "Exchange_Rate": 1.36650
+    },
+    {
+        "ID": 1060,
+        "FromCode": "USD",
+        "ToCode": "MAD",
+        "Exchange_Rate": 9.39320
+    },
+    {
+        "ID": 1061,
+        "FromCode": "USD",
+        "ToCode": "MDL",
+        "Exchange_Rate": 17.23700
+    },
+    {
+        "ID": 1062,
+        "FromCode": "USD",
+        "ToCode": "MGA",
+        "Exchange_Rate": 3050.00000
+    },
+    {
+        "ID": 1063,
+        "FromCode": "USD",
+        "ToCode": "MKD",
+        "Exchange_Rate": 51.69000
+    },
+    {
+        "ID": 1064,
+        "FromCode": "USD",
+        "ToCode": "MMK",
+        "Exchange_Rate": 1359.00000
+    },
+    {
+        "ID": 1065,
+        "FromCode": "USD",
+        "ToCode": "MNT",
+        "Exchange_Rate": 2445.00000
+    },
+    {
+        "ID": 1066,
+        "FromCode": "USD",
+        "ToCode": "MOP",
+        "Exchange_Rate": 8.03430
+    },
+    {
+        "ID": 1067,
+        "FromCode": "USD",
+        "ToCode": "MRO",
+        "Exchange_Rate": 352.00000
+    },
+    {
+        "ID": 1068,
+        "FromCode": "USD",
+        "ToCode": "MUR",
+        "Exchange_Rate": 33.85000
+    },
+    {
+        "ID": 1069,
+        "FromCode": "USD",
+        "ToCode": "MVR",
+        "Exchange_Rate": 15.51000
+    },
+    {
+        "ID": 1070,
+        "FromCode": "USD",
+        "ToCode": "MWK",
+        "Exchange_Rate": 717.28003
+    },
+    {
+        "ID": 1071,
+        "FromCode": "USD",
+        "ToCode": "MXN",
+        "Exchange_Rate": 18.81420
+    },
+    {
+        "ID": 1072,
+        "FromCode": "USD",
+        "ToCode": "MXV",
+        "Exchange_Rate": 3.22930
+    },
+    {
+        "ID": 1073,
+        "FromCode": "USD",
+        "ToCode": "MYR",
+        "Exchange_Rate": 4.22200
+    },
+    {
+        "ID": 1074,
+        "FromCode": "USD",
+        "ToCode": "MZN",
+        "Exchange_Rate": 60.45000
+    },
+    {
+        "ID": 1075,
+        "FromCode": "USD",
+        "ToCode": "NAD",
+        "Exchange_Rate": 13.53700
+    },
+    {
+        "ID": 1076,
+        "FromCode": "USD",
+        "ToCode": "NGN",
+        "Exchange_Rate": 352.00000
+    },
+    {
+        "ID": 1077,
+        "FromCode": "USD",
+        "ToCode": "NIO",
+        "Exchange_Rate": 30.49140
+    },
+    {
+        "ID": 1078,
+        "FromCode": "USD",
+        "ToCode": "NOK",
+        "Exchange_Rate": 7.94043
+    },
+    {
+        "ID": 1079,
+        "FromCode": "USD",
+        "ToCode": "NPR",
+        "Exchange_Rate": 103.55000
+    },
+    {
+        "ID": 1080,
+        "FromCode": "USD",
+        "ToCode": "NZD",
+        "Exchange_Rate": 1.42250
+    },
+    {
+        "ID": 1081,
+        "FromCode": "USD",
+        "ToCode": "OMR",
+        "Exchange_Rate": 0.38480
+    },
+    {
+        "ID": 1082,
+        "FromCode": "USD",
+        "ToCode": "PAB",
+        "Exchange_Rate": 1.00000
+    },
+    {
+        "ID": 1083,
+        "FromCode": "USD",
+        "ToCode": "PEN",
+        "Exchange_Rate": 3.23600
+    },
+    {
+        "ID": 1084,
+        "FromCode": "USD",
+        "ToCode": "PGK",
+        "Exchange_Rate": 3.19750
+    },
+    {
+        "ID": 1085,
+        "FromCode": "USD",
+        "ToCode": "PHP",
+        "Exchange_Rate": 51.40000
+    },
+    {
+        "ID": 1086,
+        "FromCode": "USD",
+        "ToCode": "PKR",
+        "Exchange_Rate": 105.14000
+    },
+    {
+        "ID": 1087,
+        "FromCode": "USD",
+        "ToCode": "PLN",
+        "Exchange_Rate": 3.58010
+    },
+    {
+        "ID": 1088,
+        "FromCode": "USD",
+        "ToCode": "PYG",
+        "Exchange_Rate": 5636.00000
+    },
+    {
+        "ID": 1089,
+        "FromCode": "USD",
+        "ToCode": "QAR",
+        "Exchange_Rate": 3.64080
+    },
+    {
+        "ID": 1090,
+        "FromCode": "USD",
+        "ToCode": "RON",
+        "Exchange_Rate": 3.87880
+    },
+    {
+        "ID": 1091,
+        "FromCode": "USD",
+        "ToCode": "RSD",
+        "Exchange_Rate": 100.64170
+    },
+    {
+        "ID": 1092,
+        "FromCode": "USD",
+        "ToCode": "RUB",
+        "Exchange_Rate": 57.53130
+    },
+    {
+        "ID": 1093,
+        "FromCode": "USD",
+        "ToCode": "RWF",
+        "Exchange_Rate": 830.00000
+    },
+    {
+        "ID": 1094,
+        "FromCode": "USD",
+        "ToCode": "SAR",
+        "Exchange_Rate": 3.75000
+    },
+    {
+        "ID": 1095,
+        "FromCode": "USD",
+        "ToCode": "SBD",
+        "Exchange_Rate": 7.74940
+    },
+    {
+        "ID": 1096,
+        "FromCode": "USD",
+        "ToCode": "SCR",
+        "Exchange_Rate": 13.42300
+    },
+    {
+        "ID": 1097,
+        "FromCode": "USD",
+        "ToCode": "SDG",
+        "Exchange_Rate": 6.65000
+    },
+    {
+        "ID": 1098,
+        "FromCode": "USD",
+        "ToCode": "SEK",
+        "Exchange_Rate": 8.14064
+    },
+    {
+        "ID": 1099,
+        "FromCode": "USD",
+        "ToCode": "SGD",
+        "Exchange_Rate": 1.35638
+    },
+    {
+        "ID": 1100,
+        "FromCode": "USD",
+        "ToCode": "SHP",
+        "Exchange_Rate": 0.75860
+    },
+    {
+        "ID": 1101,
+        "FromCode": "USD",
+        "ToCode": "SIT",
+        "Exchange_Rate": 216.48676
+    },
+    {
+        "ID": 1102,
+        "FromCode": "USD",
+        "ToCode": "SLL",
+        "Exchange_Rate": 7620.00000
+    },
+    {
+        "ID": 1103,
+        "FromCode": "USD",
+        "ToCode": "SOS",
+        "Exchange_Rate": 559.00000
+    },
+    {
+        "ID": 1104,
+        "FromCode": "USD",
+        "ToCode": "SRD",
+        "Exchange_Rate": 7.38000
+    },
+    {
+        "ID": 1105,
+        "FromCode": "USD",
+        "ToCode": "STD",
+        "Exchange_Rate": 20687.30078
+    },
+    {
+        "ID": 1106,
+        "FromCode": "USD",
+        "ToCode": "SVC",
+        "Exchange_Rate": 8.75000
+    },
+    {
+        "ID": 1107,
+        "FromCode": "USD",
+        "ToCode": "SYP",
+        "Exchange_Rate": 514.97998
+    },
+    {
+        "ID": 1108,
+        "FromCode": "USD",
+        "ToCode": "SZL",
+        "Exchange_Rate": 13.53400
+    },
+    {
+        "ID": 1109,
+        "FromCode": "USD",
+        "ToCode": "THB",
+        "Exchange_Rate": 33.11000
+    },
+    {
+        "ID": 1110,
+        "FromCode": "USD",
+        "ToCode": "TJS",
+        "Exchange_Rate": 8.80190
+    },
+    {
+        "ID": 1111,
+        "FromCode": "USD",
+        "ToCode": "TMT",
+        "Exchange_Rate": 3.41000
+    },
+    {
+        "ID": 1112,
+        "FromCode": "USD",
+        "ToCode": "TND",
+        "Exchange_Rate": 2.46110
+    },
+    {
+        "ID": 1113,
+        "FromCode": "USD",
+        "ToCode": "TOP",
+        "Exchange_Rate": 2.21480
+    },
+    {
+        "ID": 1114,
+        "FromCode": "USD",
+        "ToCode": "TRY",
+        "Exchange_Rate": 3.66080
+    },
+    {
+        "ID": 1115,
+        "FromCode": "USD",
+        "ToCode": "TTD",
+        "Exchange_Rate": 6.66480
+    },
+    {
+        "ID": 1116,
+        "FromCode": "USD",
+        "ToCode": "TWD",
+        "Exchange_Rate": 30.22800
+    },
+    {
+        "ID": 1117,
+        "FromCode": "USD",
+        "ToCode": "TZS",
+        "Exchange_Rate": 2238.00000
+    },
+    {
+        "ID": 1118,
+        "FromCode": "USD",
+        "ToCode": "UAH",
+        "Exchange_Rate": 26.49000
+    },
+    {
+        "ID": 1119,
+        "FromCode": "USD",
+        "ToCode": "UGX",
+        "Exchange_Rate": 3648.30005
+    },
+    {
+        "ID": 1120,
+        "FromCode": "USD",
+        "ToCode": "UYU",
+        "Exchange_Rate": 29.55000
+    },
+    {
+        "ID": 1121,
+        "FromCode": "USD",
+        "ToCode": "UZS",
+        "Exchange_Rate": 8030.00000
+    },
+    {
+        "ID": 1122,
+        "FromCode": "USD",
+        "ToCode": "VEF",
+        "Exchange_Rate": 9.99000
+    },
+    {
+        "ID": 1123,
+        "FromCode": "USD",
+        "ToCode": "VND",
+        "Exchange_Rate": 22718.00000
+    },
+    {
+        "ID": 1124,
+        "FromCode": "USD",
+        "ToCode": "VUV",
+        "Exchange_Rate": 105.80000
+    },
+    {
+        "ID": 1125,
+        "FromCode": "USD",
+        "ToCode": "WST",
+        "Exchange_Rate": 2.56290
+    },
+    {
+        "ID": 1126,
+        "FromCode": "USD",
+        "ToCode": "XAF",
+        "Exchange_Rate": 553.19000
+    },
+    {
+        "ID": 1127,
+        "FromCode": "USD",
+        "ToCode": "XCD",
+        "Exchange_Rate": 2.70000
+    },
+    {
+        "ID": 1128,
+        "FromCode": "USD",
+        "ToCode": "XDR",
+        "Exchange_Rate": 0.70800
+    },
+    {
+        "ID": 1129,
+        "FromCode": "USD",
+        "ToCode": "XOF",
+        "Exchange_Rate": 555.60999
+    },
+    {
+        "ID": 1130,
+        "FromCode": "USD",
+        "ToCode": "XPF",
+        "Exchange_Rate": 101.05000
+    },
+    {
+        "ID": 1131,
+        "FromCode": "USD",
+        "ToCode": "YER",
+        "Exchange_Rate": 249.64999
+    },
+    {
+        "ID": 1132,
+        "FromCode": "USD",
+        "ToCode": "ZAR",
+        "Exchange_Rate": 13.53620
+    },
+    {
+        "ID": 1133,
+        "FromCode": "USD",
+        "ToCode": "ZMW",
+        "Exchange_Rate": 9.63000
+    },
+    {
+        "ID": 1134,
+        "FromCode": "USD",
+        "ToCode": "ZWL",
+        "Exchange_Rate": 322.35501
+    }
+]

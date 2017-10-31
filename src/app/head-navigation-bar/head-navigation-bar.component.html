@@ -1,0 +1,28 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <!-- <button class="navbar-toggler navbar-toggler-right"
+          type="button"
+          (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+    Click me
+  </button> -->
+  <a class="navbar-brand"
+  routerLink="/" >Tas Online Booking</a>
+  <div class="collapse navbar-collapse"
+       [collapse]="isCollapsed"
+       id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/search"
+         href="#">Search
+        <span class="sr-only">(current)</span>
+      </a>
+      <a class="nav-item nav-link"
+          >Leg 1</a>
+      <a class="nav-item nav-link"
+         href="#">Leg 2</a>
+      <a class="nav-item nav-link"
+         href="#">Hotel</a>
+      <a class="nav-item nav-link"
+         href="#">Conforamtion</a>
+    </div>
+  </div>
+</nav>
