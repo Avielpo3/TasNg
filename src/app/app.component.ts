@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 import { AppService } from './services/app.service';
 import { PrimeNgPopup } from './obt/Dto & Enum/PrimeNgDto/Popup.dto';
 import { ExtendInformationService } from './services/global services/extand-info.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,6 @@ import { ExtendInformationService } from './services/global services/extand-info
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   _tasSupportedLanguages: string[];
   _isResultsArrived: boolean = false;
   requestId: string;
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _apiService: ApiService,
+    private _router: Router,
     private _logger: LoggerService,
     private _translateService: TranslateService,
     private _obtService: ObtService,
@@ -129,7 +130,8 @@ export class AppComponent implements OnInit {
   private subscribeToAngularStartFinish(): void {
     this._appService.OnAngularStarted.subscribe((isResultsArrived: boolean) => {
       if (isResultsArrived) {
-        
+        this._isResultsArrived = isResultsArrived;
+        this._router.navigate(['results-list']);
       }
     });
   }

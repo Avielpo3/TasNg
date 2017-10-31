@@ -57,7 +57,8 @@ import { HeadNavigationBarComponent } from './head-navigation-bar/head-navigatio
 
 const appRoutes: Routes = [
   { path: 'search', component: SearchForServicesComponent },
-  { path: 'wait-for-results', component: WaitForResultsComponent }
+  { path: 'wait-for-results', component: WaitForResultsComponent },
+  { path: 'results-list', component : ObtComponent }
 ];
 
 

@@ -1,20 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div id="appContainer"
      class="container">
-   <app-head-navigation-bar></app-head-navigation-bar>
-
-    <p-dialog [header]="_popup.header"
-              [(visible)]="_popup.visible"
-              [appendTo]="_popup.appendTo"
-              [modal]="_popup.isBackgrondBlocked">
-        {{_popup.content}}
-    </p-dialog>
+     
+  <app-head-navigation-bar></app-head-navigation-bar>
 
     <router-outlet></router-outlet>
 
-    <app-obt *ngIf="_isAngularStarted">
-
-    </app-obt>
+  <router-outlet></router-outlet>
 
     <!-- <select (change)="switchLanguage($event.target.value)">
       <option [value]="lang" *ngFor="let lang of _tasSupportedLanguages">{{lang}}</option>

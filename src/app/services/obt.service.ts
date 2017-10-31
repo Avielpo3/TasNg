@@ -71,7 +71,7 @@ export class ObtService {
         if (!environment.production) {
           this.getMockFlightResults();
         } else {
-          this.getFlightsResultFromApi();
+        this.getFlightsResultFromApi();
         }
       });
   }
