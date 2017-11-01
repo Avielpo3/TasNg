@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 import { ServiceList } from '../obt/Dto & Enum/service-list.dto';
 import { AppService } from './app.service';
 import { environment } from '../../environments/environment';
+import * as $ from 'jquery';
 
 @Injectable()
 export class ObtService {
@@ -93,7 +94,7 @@ export class ObtService {
           const flightResponse: FlightResponseFromServer = jsonAnswer as FlightResponseFromServer;
           try {
             if (flightResponse.ErrorDescriptionIfExist === null || flightResponse.ErrorDescriptionIfExist.length >= 1) {
-              // this._appService.showPopup(flightResponse.ErrorDescriptionIfExist, 'Error', true);
+              this._appService.showPopup(flightResponse.ErrorDescriptionIfExist, 'Error', true);
               this._logger.logObject(flightResponse.ErrorDescriptionIfExist);
               this.isResultsArrived = false;
             }
@@ -114,6 +115,13 @@ export class ObtService {
             const flightResponseFullObject = JSON.parse(flightResponse.AnswerResponseJson);
 
             const flightResultDto: FlightResultDto = this._flightResultList = (flightResponseFullObject as FlightResultDto);
+            if (flightResultDto.Answer.DestinationList[0] != null &&
+              flightResultDto.Answer.DestinationList[0] !== undefined &&
+              flightResultDto.Answer.DestinationList[0].ItinerariesList.length === 0) {
+              this._appService.showPopup('There are no results for this search, Try again.', 'No results found', true);
+              return;
+            }
+
             const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
 
             this.addResponseIdToFlight(responseId);
@@ -123,7 +131,6 @@ export class ObtService {
           } catch (error) {
             this._logger.onException(error);
           }
-
         });
       },
       error => {
@@ -145,6 +152,7 @@ export class ObtService {
               break;
             default:
               this.handlePostSelectedFlightsError(data);
+              $('*[id^="iframe-"]').hide();
           }
         } catch (error) {
           this._logger.onError(error);
@@ -157,6 +165,7 @@ export class ObtService {
 
   private handlePostSelectedFlightsSuccess(): void {
     try {
+      this._appService.showPopup('Saved at server', 'OK', true, false);
       document.getElementById('ctl00_Content_lbtn3').click(); // TODO: delete this line.
     } catch (error) {
       this._logger.onError(error);
@@ -165,7 +174,8 @@ export class ObtService {
     this._appService.OnAngularStarted.next(turnDownAngular);
   }
 
-  private handlePostSelectedFlightsError(errorMsg: string): void {
+  private handlePostSelectedFlightsError(errorMsg: any): void {
+    errorMsg = JSON.parse(errorMsg._body).d;
     this._appService.showPopup(errorMsg, 'Problem occurred', true);
   }
 

@@ -23,6 +23,7 @@
     "@angular/router": "^4.2.4",
     "@ngx-translate/core": "^8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
+    "@types/jquery": "^3.2.16",
     "angular2-fontawesome": "^0.9.3",
     "bootstrap": "^3.3.7",
     "classlist.js": "^1.1.20150312",

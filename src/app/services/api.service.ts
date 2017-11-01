@@ -59,7 +59,7 @@ export class ApiService {
         try {
           const responseFlightResultsJson = flightResponse.json();
           const flightsReults = JSON.parse(responseFlightResultsJson.d);
-          this._logger.logInfo(flightsReults);
+          this._logger.logObject(flightsReults);
 
           return flightsReults;
         } catch (error) {
