@@ -7,7 +7,7 @@ export interface FlightGlobalInfo {
     TotalFlightNumber: number[];
     StopQuantity: number[];
     DepartueAirport: string;
-    ArrivelAirport: string;
+    ArrivalAirport: string;
     DepartureDate: Date;
-    ArrivelDate: Date;
+    ArrivalDate: Date;
 }

@@ -34,8 +34,8 @@ export class ObtService {
     StopQuantity: [],
     DepartureDate: null,
     DepartueAirport: '',
-    ArrivelAirport: '',
-    ArrivelDate: null
+    ArrivalAirport: '',
+    ArrivalDate: null,
   };
 
   private _flightResultList: FlightResultDto;
@@ -71,7 +71,7 @@ export class ObtService {
         if (!environment.production) {
           this.getMockFlightResults();
         } else {
-        this.getFlightsResultFromApi();
+          this.getFlightsResultFromApi();
         }
       });
   }
@@ -115,9 +115,8 @@ export class ObtService {
             const flightResponseFullObject = JSON.parse(flightResponse.AnswerResponseJson);
 
             const flightResultDto: FlightResultDto = this._flightResultList = (flightResponseFullObject as FlightResultDto);
-            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
+            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto, responseId);
 
-            this.addResponseIdToFlight(responseId);
 
             this.onGetFlightResultsJson.next(flightResultDto);
             this.onGetFlightGlobalInfo.next(flightGlobalInfo);
@@ -201,8 +200,7 @@ export class ObtService {
             const flightResponseFullObject = flightResponse.AnswerResponseJson;
 
             const flightResultDto: FlightResultDto = this._flightResultList = (flightResponseFullObject as FlightResultDto);
-            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
-            this.addResponseIdToFlight(responseId);
+            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto, responseId);
 
             this.onGetFlightResultsJson.next(flightResultDto);
             this.onGetFlightGlobalInfo.next(flightGlobalInfo);
@@ -225,12 +223,18 @@ export class ObtService {
    * @returns {FlightGlobalInfo}
    * @memberof ObtService
    */
-  private createflightGlobalInfoObject(flightDto: FlightResultDto): FlightGlobalInfo {
+  private createflightGlobalInfoObject(flightDto: FlightResultDto, responseId: number): FlightGlobalInfo {
     const departureAirport: string = flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary.ItinerarySegment[0].DepartureAirport;
     const arrivalAirport: string = flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary.ItinerarySegment[0].ArrivalAirport;
+
     const departureDate: Date = flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary.ItinerarySegment[0].DepartureDateTime;
     const arrivelDate: Date = flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary.ItinerarySegment[0].ArrivalDateTime;
 
+    let minimumDepartureDate: Date =
+      flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary.ItinerarySegment[0].DepartureDateTime;
+
+    let maximumArrivalDate: Date =
+      flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary.ItinerarySegment[0].ArrivalDateTime;
 
     flightDto.Answer.DestinationList.forEach((destinationList, index) => {
       for (const itinerariesList of destinationList.ItinerariesList) {
@@ -256,6 +260,17 @@ export class ObtService {
             this._flightGlobalInfo.Airlines.push(airlineData);
           }
         }
+
+        // Set MIN (The earliest) Departure flight DateTime.
+        minimumDepartureDate = minimumDepartureDate < itinerariesList.Itinerary.ItinerarySegment[0].DepartureDateTime ?
+          minimumDepartureDate : itinerariesList.Itinerary.ItinerarySegment[0].DepartureDateTime;
+
+        // Set MAX (The latest) Arrival flight DateTime.
+        maximumArrivalDate = maximumArrivalDate >
+          itinerariesList.Itinerary.ItinerarySegment[itinerariesList.Itinerary.ItinerarySegment.length - 1].ArrivalDateTime ?
+          maximumArrivalDate :
+          itinerariesList.Itinerary.ItinerarySegment[itinerariesList.Itinerary.ItinerarySegment.length - 1].ArrivalDateTime;
+
         // Push Quantity of stops.
         if (!this._flightGlobalInfo.StopQuantity.includes(curentStopQuantity)) {
           this._flightGlobalInfo.StopQuantity.push(curentStopQuantity);
@@ -273,17 +288,22 @@ export class ObtService {
     this._flightGlobalInfo.FlightMaxPrice += this._flightGlobalInfo.FlightMaxPrice / 100; // TODO: fix this.
 
     this._flightGlobalInfo.DepartueAirport = departureAirport;
-    this._flightGlobalInfo.ArrivelAirport = arrivalAirport;
+    this._flightGlobalInfo.ArrivalAirport = arrivalAirport;
     this._flightGlobalInfo.DepartureDate = departureDate;
-    this._flightGlobalInfo.ArrivelDate = arrivelDate;
+    this._flightGlobalInfo.ArrivalDate = arrivelDate;
+
+    this.addResponseIdMaxDepartureMinArrivalToFlight(responseId, minimumDepartureDate, maximumArrivalDate);
+
 
     return this._flightGlobalInfo;
   }
 
-  private addResponseIdToFlight(responseId: number): void {
+  private addResponseIdMaxDepartureMinArrivalToFlight(responseId: number, minimumDepartureDate: Date, maximumArrivalDate: Date): void {
     this._flightResultList.Answer.DestinationList.forEach(dest => {
       dest.ItinerariesList.forEach(itinery => {
         itinery.Itinerary.ItineraryInfo.ResponseId = responseId;
+        itinery.Itinerary.ItinerarySegment[0].MinimumDepartureDate = minimumDepartureDate;
+        itinery.Itinerary.ItinerarySegment[0].MaximumArrivalDate = maximumArrivalDate;
       });
     });
 

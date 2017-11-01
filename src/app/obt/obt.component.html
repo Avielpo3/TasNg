@@ -10,13 +10,14 @@
         </div>
       </div>
       <div class="row header-select-flight-font">
-        <span class="header-select-flight" translate>Round Trip</span>   
+        <span class="header-select-flight"
+              translate>Round Trip</span>
         <span>{{getCityNameByAirport(_flightGlobalInfo.DepartueAirport)}}</span>
         <span>({{_flightGlobalInfo.DepartueAirport}})</span>
-        <span class="header-select-flight" >{{_flightGlobalInfo.DepartureDate | date:'dd-MMM' }} </span>
-        <span>{{getCityNameByAirport(_flightGlobalInfo.ArrivelAirport)}}</span>
-        <span> ({{_flightGlobalInfo.ArrivelAirport}})</span>
-        <span>{{_flightGlobalInfo.ArrivelDate | date:'dd-MMM' }} </span>
+        <span class="header-select-flight">{{_flightGlobalInfo.DepartureDate | date:'dd-MMM' }} </span>
+        <span>{{getCityNameByAirport(_flightGlobalInfo.ArrivalAirport)}}</span>
+        <span> ({{_flightGlobalInfo.ArrivalAirport}})</span>
+        <span>{{_flightGlobalInfo.ArrivalDate | date:'dd-MMM' }} </span>
       </div>
     </div>
   </div>
@@ -32,7 +33,8 @@
       </div>
       <div class="col-xs-6 sort-by">
         <span translate
-              class="sort-by-title" translate >Sort Results By</span>
+              class="sort-by-title"
+              translate>Sort Results By</span>
         <p-dropdown [options]="_sortByDto.filterByArray"
                     [(ngModel)]="_selectedSortByFilter"
                     (onChange)="handleSortByChange($event)"
@@ -65,15 +67,18 @@
         <div class="col-xs-12 destination-list-wrapper">
           <div class="row container-fluid">
             <div class="col-xs-3">
-              <h4 class="destination-list-heading" translate>Airlines</h4>
+              <h4 class="destination-list-heading"
+                  translate>Airlines</h4>
             </div>
             <div class="col-xs-3">
               <div class="row">
                 <div class="col-xs-6">
-                  <h4 class="destination-list-heading text-left" translate>Departure</h4>
+                  <h4 class="destination-list-heading text-left"
+                      translate>Departure</h4>
                 </div>
                 <div class="col-xs-6">
-                  <h4 class="destination-list-heading text-right" translate>Arrival</h4>
+                  <h4 class="destination-list-heading text-right"
+                      translate>Arrival</h4>
                 </div>
               </div>
 
@@ -85,18 +90,21 @@
               <div class="row">
                 <div class="col-xs-2"></div>
                 <div class="col-xs-10 text-left">
-                  <h4 class="destination-list-heading" translate>Duration</h4>
+                  <h4 class="destination-list-heading"
+                      translate>Duration</h4>
                 </div>
               </div>
 
             </div>
             <div class="col-xs-1 text-left">
-              <h4 class="destination-list-heading" translate>Stops</h4>
+              <h4 class="destination-list-heading"
+                  translate>Stops</h4>
             </div>
             <div class="col-xs-3 text-left">
               <div class="row">
                 <div class="col-xs-6">
-                  <h4 class="destination-list-heading" translate>Policy</h4>
+                  <h4 class="destination-list-heading"
+                      translate>Policy</h4>
                 </div>
                 <div class="col-xs-6">
                   <div class="row">

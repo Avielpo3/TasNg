@@ -121,6 +121,8 @@ export interface ItinerarySegment {
   TPA_Extensions?: any;
   TfClass?: any;
   isOutwardIndication?: any;
+  MinimumDepartureDate: Date;
+  MaximumArrivalDate: Date;
 }
 
 export interface Currency {

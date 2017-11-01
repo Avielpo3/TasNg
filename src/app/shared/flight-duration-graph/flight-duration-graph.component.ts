@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ItinerarySegment } from '../../obt/Dto & Enum/flight-result-dto';
+import { ObtService } from '../../services/obt.service';
+import { FlightGlobalInfo } from '../../obt/Dto & Enum/flights-global-info';
 
 export interface FlightDurationGraphData {
   span: number;
@@ -13,13 +15,13 @@ export interface FlightDurationGraphData {
 })
 export class FlightDurationGraphComponent implements OnInit {
 
-  @Input() flightSegments;
+  @Input() flightSegments: ItinerarySegment[];
 
   _flightDurationData: FlightDurationGraphData[] = [];
 
   private _spanDivide: number;
 
-  constructor() { }
+  constructor(private _obtService: ObtService) { }
 
   /**
    * Get's the line bar in percentage.
@@ -32,6 +34,12 @@ export class FlightDurationGraphComponent implements OnInit {
   }
 
   ngOnInit() {
+    let spanDivide = new Date(this.flightSegments[0].MaximumArrivalDate).getTime() -
+      new Date(this.flightSegments[0].MinimumDepartureDate).getTime();
+
+    spanDivide /= 3600000;
+
+    this._spanDivide = spanDivide / 24 * 24 + 24;
     this.createFlightDurationGraphData();
   }
 
