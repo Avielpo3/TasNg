@@ -115,8 +115,6 @@ export class ObtService {
             const flightResponseFullObject = JSON.parse(flightResponse.AnswerResponseJson);
 
             const flightResultDto: FlightResultDto = this._flightResultList = (flightResponseFullObject as FlightResultDto);
-<<<<<<< HEAD
-=======
             if (flightResultDto.Answer.DestinationList[0] != null &&
               flightResultDto.Answer.DestinationList[0] !== undefined &&
               flightResultDto.Answer.DestinationList[0].ItinerariesList.length === 0) {
@@ -124,7 +122,6 @@ export class ObtService {
               return;
             }
 
->>>>>>> 1ba7f96fff2c7a074337151a4cfcb4346c8508a9
             const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
 
             this.addResponseIdToFlight(responseId);
@@ -134,10 +131,6 @@ export class ObtService {
           } catch (error) {
             this._logger.onException(error);
           }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1ba7f96fff2c7a074337151a4cfcb4346c8508a9
         });
       },
       error => {
@@ -159,10 +152,6 @@ export class ObtService {
               break;
             default:
               this.handlePostSelectedFlightsError(data);
-<<<<<<< HEAD
-=======
-              $('*[id^="iframe-"]').hide();
->>>>>>> 1ba7f96fff2c7a074337151a4cfcb4346c8508a9
           }
         } catch (error) {
           this._logger.onError(error);
@@ -175,13 +164,8 @@ export class ObtService {
 
   private handlePostSelectedFlightsSuccess(): void {
     try {
-<<<<<<< HEAD
-      document.getElementById('ctl00_Content_lbtn3').click(); // TODO: delete this line.
-
-=======
       this._appService.showPopup('Saved at server', 'OK', true, false);
       document.getElementById('ctl00_Content_lbtn3').click(); // TODO: delete this line.
->>>>>>> 1ba7f96fff2c7a074337151a4cfcb4346c8508a9
     } catch (error) {
       this._logger.onError(error);
     }
@@ -189,12 +173,8 @@ export class ObtService {
     this._appService.OnAngularStarted.next(turnDownAngular);
   }
 
-<<<<<<< HEAD
-  private handlePostSelectedFlightsError(errorMsg: string): void {
-=======
   private handlePostSelectedFlightsError(errorMsg: any): void {
     errorMsg = JSON.parse(errorMsg._body).d;
->>>>>>> 1ba7f96fff2c7a074337151a4cfcb4346c8508a9
     this._appService.showPopup(errorMsg, 'Problem occurred', true);
   }
 
