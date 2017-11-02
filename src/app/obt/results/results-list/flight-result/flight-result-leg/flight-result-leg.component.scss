@@ -1,0 +1,33 @@
+.light-clue-segment-container {
+  background-color: #e7f1fe;
+  padding: 10px 20px;
+  border-top: 1px solid #cad1da;
+}
+.flight-result-let--airline-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+.flight-result-let--divider{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0;
+  border-top: 1px solid #cad1da;
+}
+.segment-layover {
+  background-color: #f8f8f9;
+  padding: 10px 20px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+.bg-departure {
+  display: inline-block;
+  width: 22px; height: 8px;
+  background: url('../../../../../../assets/images/arrival-departure.png') -52px -10px;
+}
+.bg-arrival {
+  display: inline-block;
+  width: 22px; height: 12px;
+  background: url('../../../../../../assets/images/arrival-departure.png') -10px -10px;
+}

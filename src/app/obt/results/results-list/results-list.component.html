@@ -1,0 +1,15 @@
+<div id="resultListContainer"
+     *ngIf="_currentScreen == _index">
+  <app-flight-result *ngFor="let itinerary of ( _itinerariesList.ItinerariesList
+                                                | byPriceFilter:_byPriceFilter
+                                                | byHourFilter:_byFlightDeparturelHour:true
+                                                | byHourFilter:_byFlightArrivelHour:false
+                                                | byStopQuantityFilter:_byStopQuantity
+                                                | byAirlineFilter:_byAirline
+                                                 )
+                                                ; let i = index"
+                     [_currentScreen]="_currentScreen"
+                     [_itinerary]="itinerary"
+                      >
+  </app-flight-result>
+</div>

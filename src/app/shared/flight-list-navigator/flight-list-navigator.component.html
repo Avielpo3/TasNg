@@ -1,0 +1,17 @@
+<div class="flight-list-navigator-container">
+  <button class="btn btn-default flight-list-navigator--btn flight-list-navigator--btn-location"
+          type="button"
+          (click)="triggerScrollTo()"></button>
+
+  <button [ngClass]="{'btn btn-default flight-list-navigator--btn flight-list-navigator--btn--back': true ,
+                      'disabled' : iCurrentScreen === 0 }"
+          type="button"
+          (click)="triggerBack()"
+          translate>Back</button>
+
+  <button [ngClass]="{'btn btn-default flight-list-navigator--btn flight-list-navigator--btn--next' : true, 
+                      disabled : !showOrHideNextButton() }"
+          type="button"
+          (click)="triggerNext()"
+          translate>{{getNextButtonTitle()}} </button>
+</div>

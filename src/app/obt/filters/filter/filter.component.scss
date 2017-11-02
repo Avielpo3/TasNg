@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/variables";
+.filter-name{
+    text-align: left;
+    font-weight: bold;
+    //margin-left: 1.6em;
+    margin-bottom: 1.5em;
+    font-size: 1.6rem;
+}
+
+.slider-value{
+    color: $ngp-slider-float-value;
+    font-weight: bold;
+    position: absolute;
+    top:-25px;
+    width:33px;
+    display: block;
+}
+
+.filter-min-value, .filter-max-value {
+  color:$ngp-slider-range-values;
+}
+
+.filter-min-value {
+    float: left;
+    margin-top: 10px;
+}
+
+.filter-max-value {
+    float: right;
+    margin-top: 10px;
+}
+.ngp-slider-container {
+  padding: 0 25px;
+}
+.slider-value-wrapper {
+  padding:0 24px;
+}
+.slider-value-container {
+  position: relative;
+}

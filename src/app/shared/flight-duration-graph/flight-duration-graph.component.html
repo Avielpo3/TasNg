@@ -1,0 +1,11 @@
+<div class="flight-duration-graph-container">
+  <ng-container *ngFor="let durationData of _flightDurationData">
+    <div *ngIf="durationData.type == 'ground'"
+         class="flight-duration-graph-line flight-duration-graph-empty-line"
+         [style.width]="getLineWidth(durationData.span)"></div>
+         
+    <div *ngIf="durationData.type == 'flight'"
+         class="flight-duration-graph-line flight-duration-graph-full-line"
+         [style.width]="getLineWidth(durationData.span)"></div>
+  </ng-container>
+</div>

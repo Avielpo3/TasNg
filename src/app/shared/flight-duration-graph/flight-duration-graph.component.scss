@@ -1,0 +1,37 @@
+@import '../../../assets/styles/variables';
+
+.flight-duration-graph-container {
+  width:100%;
+  margin: 1rem 0;
+}
+.flight-duration-graph-line {
+  float: left;
+}
+.flight-duration-graph-empty-line {
+  height:3px;
+  width:100%;
+  margin-top: 1px;
+  background-color: $flight-duration-graph-empty;
+}
+
+.flight-duration-graph-line--left-corner {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.flight-duration-graph-line--right-corner {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.flight-duration-graph-full-line {
+  height:5px;
+  width:100%;
+  background-color: $flight-duration-graph-full;
+}
+
+.flight-duration-graph-break-line {
+  height:5px;
+  width:100%;
+  background-color: $flight-duration-graph-break;
+}

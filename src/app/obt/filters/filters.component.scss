@@ -1,0 +1,52 @@
+@import "../../../assets/styles/variables";
+
+#filtersContainer{
+    border: 1px solid $silver;
+    background: $white;
+    border-radius: 5px;
+}
+
+.filter-by-header{
+    font-size: 1.6rem;
+    margin-top: 1em;
+    text-align: left;
+    color: $charade;
+}
+
+.filter-by-reset-btn{
+  margin-top:1.2rem;
+  text-transform: uppercase;
+
+}
+.airlines-reset-btn {
+  text-transform: uppercase;
+}
+p-checkbox {
+    display: block;
+    text-align: left;
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+p-checkbox  div:nth-child(2) {
+    width: 2em;
+    height: 2em;
+}
+
+.hr-separate{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.flight-stops-title, .airlines-title {
+  text-align: left;
+  //margin-bottom: 1.5em;
+  font-size: 1.6rem;
+  margin-bottom: 1em;
+}
+.airlines-title {
+  margin-top: 5px;
+}
+.flight-stops-title {
+  font-weight: bold;
+}

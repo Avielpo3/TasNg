@@ -1,0 +1,65 @@
+
+<div class="div light-clue-segment-container" >
+  <div class="row">
+    <div class="col-xs-8">
+      <span class="flight-result-let--airline-title">{{_departurelAirportCityCountryInfo.CityName }} - {{_arrivelAirportCityCountryInfo.CityName}}</span>
+    </div>
+    <div class="col-xs-4 text-right">
+      {{getFlightSegmentDuration()}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-5">
+      {{_airportName}}
+    </div>
+    <div class="col-xs-2">
+      {{_segment.FlightNumber}}
+    </div>
+    <div class="col-xs-5">
+      {{_segment.Equipment}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <hr class="flight-result-let--divider">
+    </div>
+  </div>
+  <!-- Departue info -->
+  <div class="row">
+    <div class="col-xs-1">
+      <div class="bg-departure"></div>
+    </div>
+    <div class="col-xs-7 text-ellipsis">
+      <span translate>Departure</span>:
+      <span class="flight-result-let--airport">{{_departurelAirportCityCountryInfo.AirportName}} ({{_departurelAirportCityCountryInfo.AirportCode}})</span>
+    </div>
+    <div class="col-xs-4 text-right">
+      {{_segment.DepartureDateTime | date:'dd MMM HH:mm' }}
+    </div>
+  </div>
+  <!-- Arrivel info -->
+  <div class="row">
+    <div class="col-xs-1">
+      <div class="bg-arrival"></div>
+    </div>
+    <div class="col-xs-7">
+      <span translate>Arrival</span> {{_arrivelAirportCityCountryInfo.AirportName}} ({{_arrivelAirportCityCountryInfo.AirportCode}})
+    </div>
+    <div class="col-xs-4 text-right">
+      {{_segment.ArrivalDateTime | date:'dd MMM HH:mm' }}
+    </div>
+  </div>
+</div>
+
+<div class="div segment-layover">
+  <div class="row">
+    <div class="col-xs-4">
+      <span translate>Layover</span>
+    </div>
+    <div class="col-xs-8">
+      {{_arrivelAirportCityCountryInfo.CityName}}
+    </div>
+  </div>
+</div>

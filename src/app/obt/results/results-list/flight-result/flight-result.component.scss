@@ -1,0 +1,75 @@
+@import '../../../../../assets/styles/variables';
+
+.filter-result-container {
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  margin-bottom: .75em;
+  text-align: left;
+  cursor: pointer;
+  background: #ffffff;
+}
+.flight-result-row{
+    padding: 1.5em 0 .75em 0;
+    font-size: 1.6rem;
+}
+.flight-result-col{
+  min-height: 37px;
+}
+.flight-result-col-text {
+  line-height: 37px;
+}
+.flight-class {
+  color: #b3b3b3;
+}
+.flight-price {
+  font-size: 2.2rem;
+  color:#4a4949;
+}
+.img-airline-logo{
+    width: 3em;
+    height: 3em;
+    background-position:center ;
+    background-repeat:no-repeat;
+    background-size:contain;
+    //margin-left: 1em;
+}
+
+.airline-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#filterResultContainer.fligt-hover, #filterResultContainer.fligt-selected {
+  box-shadow: 3px 5px #cccdcd;
+}
+
+#filterResultContainer.fligt-hover{
+  background-color: #fbfbfb;
+}
+
+#filterResultContainer.fligt-selected{
+    border: 3px solid #8bc34a;
+}
+.flight-result-let--heading {
+  font-weight: 900;
+  font-size: 16px;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+.return-options-text {
+  font-size: 1.4rem;
+  color:$return-options-text;
+}
+
+.policy-symbol {
+  height: 8px;
+  width: 83px;
+  display: inline-block;
+}
+
+@for $i from 0 through 5 {
+  .policy-symbol-#{$i} {
+    background: url($image_url + '/policy-small.png') -15px -15px + ($i * -38) no-repeat;
+  }
+}

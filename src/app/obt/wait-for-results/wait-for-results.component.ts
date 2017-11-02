@@ -1,0 +1,32 @@
+import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { ExtendInformationService } from '../../services/global services/extand-info.service';
+@Component({
+  selector: 'app-wait-for-results',
+  templateUrl: './wait-for-results.component.html',
+  styleUrls: ['./wait-for-results.component.css']
+})
+export class WaitForResultsComponent implements OnInit {
+
+  constructor(private _extendinfo: ExtendInformationService) { }
+
+  ngOnInit() {
+    // if (!environment.production) {
+    //   this.startAngular();
+    // }
+  }
+
+  startAngular() {
+    window.dispatchEvent(new CustomEvent('isAngularStarted',
+      {
+        detail:
+        {
+          requestId: 122,
+          detail: true,
+          language: 'tr',
+          currency: 'TRY'
+        }
+      }));
+  }
+
+}
