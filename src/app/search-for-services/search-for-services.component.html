@@ -49,7 +49,11 @@
 
           <div class="row">
             <div class="col-xs-3">
-                <p-dropdown  
+              <input type="text" name="airportFrom" id="airportFrom" #airportFrom >
+              <!-- <p-dropdown [options]="getAirportList()"
+                          [(ngModel)]="_selectedAirportFrom"
+                          (onChange)="handleAirportSelect($event)"
+                          [style]="{width : '253px'}"></p-dropdown> -->
             </div>
             <div class="col-xs-3">
 

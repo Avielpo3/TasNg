@@ -15,6 +15,7 @@ export class ApiService {
   private readonly AirlineCodeToCityNameUrl: string = environment.AirlineCodeToCityNameUrl;
   private readonly AirlineNameListUrl: string = environment.AirlineNameListUrl;
   private readonly CurrencyConvertListUrl: string = environment.CurrencyConvertListUrl;
+  private readonly AirportListOnDemandUrl: string = environment.AirportListOnDemandUrl;
 
   private requestOptions = new RequestOptions();
 
@@ -50,6 +51,28 @@ export class ApiService {
       (err: Response) => Observable.throw('Http Error while try to get Request Id'));
   }
 
+
+  public getAirportListByDemand(airportName): any {
+    const url = '../../tas-angular/Controllers/ApiController.asmx/GetAirportListOnDemand';
+    const data = JSON.stringify({ 'searchForAirport': airportName });
+
+    return this._http.post(url, data, this.requestOptions)
+      .map(
+      (response: Response) => {
+        try {
+          const airportList = response.json();
+          this._logger.logInfo(airportList);
+          // Success
+          return airportList;
+        } catch (error) {
+          // Error while parsing.
+          this._logger.onException((<Error>error));
+        }
+      }).catch(
+      // Http Request error.
+      (err: Response) => this.handleError(err));
+  }
+
   getFlightResults(requestId: number) {
     const url = '../../tas-angular/Controllers/ApiController.asmx/CheckResponse';
     const data = JSON.stringify({ 'requestId': requestId });
@@ -64,7 +87,6 @@ export class ApiService {
           return flightsReults;
         } catch (error) {
           this._logger.onException((<Error>error));
-          throw new Error('Error while parsing the flights results');
         }
       }).catch(
       // Http Request error.
@@ -123,6 +145,7 @@ export class ApiService {
         }
       });
   }
+
 
   /**
    *  Load a json with this parameters:

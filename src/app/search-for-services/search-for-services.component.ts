@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceTypeEnum, DirectionTypeEnum, SearchByEnum } from '../obt/Dto & Enum/services-type.enum';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { ExtendInformationService } from '../services/global services/extand-info.service';
 
 @Component({
   selector: 'app-search-for-services',
@@ -10,9 +12,15 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class SearchForServicesComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  @ViewChild('airportFrom') airportFrom: ElementRef;
 
   searchForServicesForm: FormGroup;
+  _selectedAirportFrom: any;
+
+
+  constructor(private _router: Router, private _extandInfo: ExtendInformationService) { }
+
+
 
   _searchByOptions: string[] = [
     SearchByEnum[SearchByEnum.Schedule],
@@ -43,4 +51,14 @@ export class SearchForServicesComponent implements OnInit {
     this._router.navigate(['wait-for-results']);
   }
 
+  getAirportList() {
+    this._selectedAirportFrom = this.airportFrom.nativeElement.valueChanges
+    .debounceTime(400)
+    .distinctUntilChanged()
+    .switchMap(term => term.length > 2 ? this._extandInfo.getAirportList(term) : Observable.of([]));
+  }
+
+  handleAirportSelect(event) {
+
+  }
 }

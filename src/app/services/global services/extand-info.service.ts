@@ -58,6 +58,10 @@ export class ExtendInformationService {
         return this.AirportToCityAndCountryNameList.find(info => info.AirportCode === airportCode);
     }
 
+    public getAirportList(airportName: string): any {
+        return this._apiService.getAirportListByDemand(airportName);
+    }
+
 
     /**
      * Load all JSON files,

@@ -10,7 +10,8 @@ export const environment = {
   AirlineNameListUrl: 'assets/airline-names.json',
   CurrencyConvertListUrl: 'assets/currency.json',
 
-  AirlinesLogoPath: 'assets/airlines-logos/'
+  AirlinesLogoPath: 'assets/airlines-logos/',
+  AirportListOnDemandUrl: 'TasWebService/GetAirPort_New'
 
   // flightResultJsonUrl: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/flight-result.json',
   // AirlineCodeToCityNameUrl: '/Tas.Web/ETS/SearchForServices/tas-angular/Angular/assets/airport-to-city.json',
