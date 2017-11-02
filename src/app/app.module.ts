@@ -57,9 +57,8 @@ import { ResultsScreenComponent } from './obt/results-screen.component';
 
 
 const appRoutes: Routes = [
-  { path: 'search', component: SearchForServicesComponent },
-  { path: 'wait-for-results', component: WaitForResultsComponent },
-  { path: 'results-list', component : ResultsScreenComponent }
+  // { path: 'search', component: SearchForServicesComponent },
+  // { path: 'wait-for-results', component: WaitForResultsComponent }
 ];
 
 
@@ -91,7 +90,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeadNavigationBarComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    // RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     Angular2FontawesomeModule,

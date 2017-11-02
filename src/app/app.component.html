@@ -1,10 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div id="appContainer"
      class="container">
+  <!-- <app-head-navigation-bar></app-head-navigation-bar> -->
+  <app-wait-for-results *ngIf="!_isResultsArrived">
 
-  <app-head-navigation-bar></app-head-navigation-bar>
+  </app-wait-for-results>
 
-  <router-outlet></router-outlet>
+  <p-dialog [header]="_popup.header"
+            [(visible)]="_popup.visible"
+            [appendTo]="_popup.appendTo"
+            [modal]="_popup.isBackgrondBlocked">
+    {{_popup.content}}
+  </p-dialog>
+
+  <app-obt *ngIf="_isResultsArrived">
+
+  </app-obt>
 
   <!-- <select (change)="switchLanguage($event.target.value)">
       <option [value]="lang" *ngFor="let lang of _tasSupportedLanguages">{{lang}}</option>

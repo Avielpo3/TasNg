@@ -131,7 +131,6 @@ export class AppComponent implements OnInit {
     this._appService.OnAngularStarted.subscribe((isResultsArrived: boolean) => {
       if (isResultsArrived) {
         this._isResultsArrived = isResultsArrived;
-        this._router.navigate(['results-list']);
       }
     });
   }

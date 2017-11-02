@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 import { ServiceList } from '../obt/Dto & Enum/service-list.dto';
 import { AppService } from './app.service';
 import { environment } from '../../environments/environment';
+import * as $ from 'jquery';
 
 @Injectable()
 export class ObtService {
@@ -68,11 +69,11 @@ export class ObtService {
     this.timer
       .takeWhile(() => this.isResultsArrived)
       .subscribe(() => {
-        if (!environment.production) {
-          this.getMockFlightResults();
-        } else {
-          this.getFlightsResultFromApi();
-        }
+        // if (!environment.production) {
+        //   this.getMockFlightResults();
+        // } else {
+        this.getFlightsResultFromApi();
+        // }
       });
   }
 
@@ -89,13 +90,12 @@ export class ObtService {
         if (jsonResponseArray.length === 0) {
           return true;
         }
-
         jsonResponseArray.forEach(jsonAnswer => {
           const flightResponse: FlightResponseFromServer = jsonAnswer as FlightResponseFromServer;
           try {
-            if (flightResponse.ErrorDescriptionIfExist != null) {
+            if (flightResponse.ErrorDescriptionIfExist === null || flightResponse.ErrorDescriptionIfExist.length >= 1) {
               this._appService.showPopup(flightResponse.ErrorDescriptionIfExist, 'Error', true);
-              this._logger.logInfo(flightResponse.ErrorDescriptionIfExist);
+              this._logger.logObject(flightResponse.ErrorDescriptionIfExist);
               this.isResultsArrived = false;
             }
 
@@ -116,14 +116,18 @@ export class ObtService {
 
             const flightResultDto: FlightResultDto = this._flightResultList = (flightResponseFullObject as FlightResultDto);
             const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto, responseId);
-
+            if (flightResultDto.Answer.DestinationList[0] != null &&
+              flightResultDto.Answer.DestinationList[0] !== undefined &&
+              flightResultDto.Answer.DestinationList[0].ItinerariesList.length === 0) {
+              this._appService.showPopup('There are no results for this search, Try again.', 'No results found', true);
+              return;
+            }
 
             this.onGetFlightResultsJson.next(flightResultDto);
             this.onGetFlightGlobalInfo.next(flightGlobalInfo);
           } catch (error) {
             this._logger.onException(error);
           }
-
         });
       },
       error => {
@@ -145,6 +149,7 @@ export class ObtService {
               break;
             default:
               this.handlePostSelectedFlightsError(data);
+              $('*[id^="iframe-"]').hide();
           }
         } catch (error) {
           this._logger.onError(error);
@@ -157,6 +162,7 @@ export class ObtService {
 
   private handlePostSelectedFlightsSuccess(): void {
     try {
+      this._appService.showPopup('Saved at server', 'OK', true, false);
       document.getElementById('ctl00_Content_lbtn3').click(); // TODO: delete this line.
     } catch (error) {
       this._logger.onError(error);
@@ -165,7 +171,8 @@ export class ObtService {
     this._appService.OnAngularStarted.next(turnDownAngular);
   }
 
-  private handlePostSelectedFlightsError(errorMsg: string): void {
+  private handlePostSelectedFlightsError(errorMsg: any): void {
+    errorMsg = JSON.parse(errorMsg._body).d;
     this._appService.showPopup(errorMsg, 'Problem occurred', true);
   }
 

@@ -15,7 +15,7 @@ export class ApiService {
   private readonly AirlineCodeToCityNameUrl: string = environment.AirlineCodeToCityNameUrl;
   private readonly AirlineNameListUrl: string = environment.AirlineNameListUrl;
   private readonly CurrencyConvertListUrl: string = environment.CurrencyConvertListUrl;
-  private readonly AirportListOnDemandUrl: string = environment.AirportListOnDemandUrl;
+  // private readonly AirportListOnDemandUrl: string = environment.AirportListOnDemandUrl;
 
   private requestOptions = new RequestOptions();
 
@@ -82,7 +82,7 @@ export class ApiService {
         try {
           const responseFlightResultsJson = flightResponse.json();
           const flightsReults = JSON.parse(responseFlightResultsJson.d);
-          this._logger.logInfo(flightsReults);
+          this._logger.logObject(flightsReults);
 
           return flightsReults;
         } catch (error) {
