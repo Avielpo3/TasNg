@@ -1,5 +1,76 @@
-<p>
-  search-for-services works!
-</p>
+<h3>Welcome to ComBTas Online booking tool</h3>
 
-<button class="btn btn-primary" (click)="navigateToNext()" >Mock navigation</button>
+<div class="container"
+     id="searchForServicesContainer">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Form -->
+      <form id="searchForServicesForm">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul id="selectedServices">
+              <li *ngFor="let serviceType of _servicesType"
+                  name="servicesType">{{serviceType}} </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Header Row -->
+        <div class="row">
+          <div class="colxs-12">
+            <h3>Flights</h3>
+          </div>
+        </div>
+        <!-- Inner Container -->
+        <div class="searchForServicesInnerContainer">
+
+          <div class="row">
+            <!-- Direction Type | One-way | Round trip | Multiple Destination -->
+            <div class="col-xs-5">
+              <div *ngFor="let direction of _directions"
+                   class="directionType">
+                <input type="radio"
+                       name="directionType"
+                       id="directionType">
+                <label for="direction">{{direction}} </label>
+              </div>
+            </div>
+            <!-- Search By Schedule or by price -->
+            <div class="col-xs-5">
+              <div *ngFor="let searchBy of _searchByOptions"
+                   class="directionType">
+                <input type="radio"
+                       name="searchBy"
+                       id="searchBy">
+                <label for="searchBy">{{searchBy}} </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-3">
+                <p-dropdown  
+            </div>
+            <div class="col-xs-3">
+
+            </div>
+            <div class="col-xs-4">
+
+            </div>
+            <div class="col-xs-2">
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <button class="btn btn-primary"
+                type="submit"
+                (click)="navigateToNext()">Search</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

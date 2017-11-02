@@ -1,0 +1,18 @@
+.searchForServicesInnerContainer{
+    padding: 30px;
+    border: 1px solid black;
+}
+
+#selectedServices li {
+    display: inline;
+    float: left;
+    margin-left: 2em;
+    cursor: pointer;
+}
+
+.directionType{
+    display: inline;
+    float: left;
+    margin-left: 2em;
+    cursor: pointer;
+}

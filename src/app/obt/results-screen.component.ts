@@ -1,35 +1,34 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { LoggerService } from '../services/logger.service';
 import { ApiService } from '../services/api.service';
-import { ObtService } from '../services/obt.service';
 import { element } from 'protractor';
-import { FilterService } from '../services/filter.service';
 import { FilterNameEnum } from './Dto & Enum/filter-name-enum';
 import { FlightGlobalInfo } from './Dto & Enum/flights-global-info';
 import { FlightResultDto, DestinationList } from './Dto & Enum/flight-result-dto';
-import { SortByService } from '../services/sort.service';
 import { SortByDto } from './Dto & Enum/PrimeNgDto/SortByDto';
-import { SortByOptions } from './Dto & Enum/sort-by.enum';
 import { Dropdown } from 'primeng/components/dropdown/dropdown';
+import { EnumUtils } from './../Utils/enum-utils';
 import { FlightSelectedEvent } from './Dto & Enum/EventsDto/flight.event';
-import { ServiceList, ServiceType } from './Dto & Enum/service-list.dto';
-import { EnumUtils } from '../Utils/enum-utils';
+import { LoggerService } from '../services/logger.service';
+import { ObtService } from '../services/obt.service';
+import { FilterService } from '../services/filter.service';
 import { ExtendInformationService } from '../services/global services/extand-info.service';
 import { SelectFlightResultService } from '../services/select-flight.service';
+import { SortByService } from '../services/sort.service';
+import { ServiceList } from './Dto & Enum/service-list.dto';
 
 /**
  * The main componet responisble for all the project logic.
  * @export
- * @class ObtComponent
+ * @class ResultsScreenComponent
  * @implements {OnInit}
  */
 @Component({
   selector: 'app-obt',
-  templateUrl: './obt.component.html',
-  styleUrls: ['./obt.component.scss'],
+  templateUrl: './results-screen.component.html',
+  styleUrls: ['./results-screen.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ObtComponent implements OnInit {
+export class ResultsScreenComponent implements OnInit {
   requestId: string;
 
   private _isFirstJson: boolean = true;

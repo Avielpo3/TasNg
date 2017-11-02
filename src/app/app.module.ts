@@ -2,7 +2,8 @@
 import { AccordionModule } from 'primeng/primeng';     // accordion and accordion tab
 import { MenuItem, StepsModule } from 'primeng/primeng';            // api
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule } from 'primeng/primeng';
+import { DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule, AutoCompleteModule } from 'primeng/primeng';
+
 // Translate
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -12,7 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -22,7 +23,6 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { LoggerService } from './services/logger.service';
 
-import { ObtComponent } from './obt/obt.component';
 import { FiltersComponent } from './obt/filters/filters.component';
 import { WaitForResultsComponent } from './obt/wait-for-results/wait-for-results.component';
 import { FilterComponent } from './obt/filters/filter/filter.component';
@@ -53,12 +53,13 @@ import { WindowRefService } from './services/global services/window.service';
 import { SelectFlightResultService } from './services/select-flight.service';
 import { SearchForServicesComponent } from './search-for-services/search-for-services.component';
 import { HeadNavigationBarComponent } from './head-navigation-bar/head-navigation-bar.component';
+import { ResultsScreenComponent } from './obt/results-screen.component';
 
 
 const appRoutes: Routes = [
   { path: 'search', component: SearchForServicesComponent },
   { path: 'wait-for-results', component: WaitForResultsComponent },
-  { path: 'results-list', component : ObtComponent }
+  { path: 'results-list', component : ResultsScreenComponent }
 ];
 
 
@@ -76,7 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FiltersComponent,
     FilterComponent,
     FilterPriceComponent,
-    ObtComponent,
+    ResultsScreenComponent,
     ByPriceFilterPipe,
     ByHourFilterPipe,
     UserCurrencyPipe,
@@ -96,6 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     Angular2FontawesomeModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     AccordionModule,
     BrowserAnimationsModule,
     SliderModule,
@@ -104,6 +106,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StepsModule,
     OverlayPanelModule,
     DialogModule,
+    // AutoCompleteModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     TranslateModule.forRoot({
