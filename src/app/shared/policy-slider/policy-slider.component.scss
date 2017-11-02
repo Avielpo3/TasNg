@@ -15,7 +15,7 @@
 
   @for $i from 0 through 5 {
     .policy-slider-bg-#{$i} {
-      background: url($image_url + '/policy-levels.png') -15px -15px + ($i * -40) no-repeat;
+      background: url('../../../assets/images/policy-levels.png') -15px -15px + ($i * -40) no-repeat;
     }
   }
 
