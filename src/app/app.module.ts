@@ -2,7 +2,7 @@
 import { AccordionModule } from 'primeng/primeng';     // accordion and accordion tab
 import { MenuItem, StepsModule } from 'primeng/primeng';            // api
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule } from 'primeng/primeng';
+import { DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule, ButtonModule } from 'primeng/primeng';
 // Translate
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -100,6 +100,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DropdownModule,
     CheckboxModule,
     StepsModule,
+    ButtonModule,
     OverlayPanelModule,
     DialogModule,
     BsDropdownModule.forRoot(),

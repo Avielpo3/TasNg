@@ -11,6 +11,13 @@
             [appendTo]="_popup.appendTo"
             [modal]="_popup.isBackgrondBlocked">
     {{_popup.content}}
+    <p-footer>
+      <button type="button"
+              pButton
+              icon="fa-check"
+              (click)="_popup.visible=false"
+              label="OK"></button>
+    </p-footer>
   </p-dialog>
 
   <app-obt *ngIf="_isResultsArrived">
