@@ -30,6 +30,9 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   private _stopQuantityFilterSubscription: Subscription;
   private _airlineFilterSubscription: Subscription;
 
+  // _slicer: number = 10;
+  // scrollBack;
+
   // Connected To DOM properties
   _byPriceFilter: { min: number, max: number } = { min: 0, max: 99999 };
   _byFlightArrivelHour: { min: number, max: number } = { min: 0, max: 23 };
@@ -50,7 +53,13 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     private _logger: LoggerService,
     private _obtService: ObtService,
     private _filterService: FilterService
-  ) { }
+  ) {
+    // this.scrollBack = this.test.bind(this);
+  }
+
+  // test() {
+  //   this._slicer += 10;
+  // }
 
   ngOnInit(): void {
     this.subscribeToFilterChanges();

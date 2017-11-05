@@ -52,6 +52,7 @@ import { WindowRefService } from './services/global services/window.service';
 import { SelectFlightResultService } from './services/select-flight.service';
 import { SearchForServicesComponent } from './search-for-services/search-for-services.component';
 import { HeadNavigationBarComponent } from './head-navigation-bar/head-navigation-bar.component';
+import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
 
 
 const appRoutes: Routes = [
@@ -79,6 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ByHourFilterPipe,
     UserCurrencyPipe,
     FlightResultSelectedDirective,
+    InfiniteScrollerDirective,
     ByStopQuantityFilterPipe,
     ByAirlineFilterPipe,
     FlightDurationGraphComponent,
