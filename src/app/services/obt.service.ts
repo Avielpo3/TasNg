@@ -122,6 +122,9 @@ export class ObtService {
               return;
             }
 
+            // Start Angular by showing results.
+            this._appService.StartAngular();
+
             const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
 
             this.addResponseIdToFlight(responseId);
@@ -204,6 +207,9 @@ export class ObtService {
             if (flightResponse.RemainingRequestCount === 0) {
               this.isResultsArrived = false; // Stop quastion the api server.
             }
+
+            // Start Angular by showing results.
+            this._appService.StartAngular();
 
             const responseId = flightResponse.CurrentResponseId;
             const flightResponseFullObject = flightResponse.AnswerResponseJson;

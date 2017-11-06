@@ -107,7 +107,7 @@ export class AppComponent implements OnInit {
   private showResultsIfReady(): void {
     if (this._isHostListenerArrived && this._isAngularFinishedLoadedJsonFiles) {
       this._isResultsArrived = this._hostListenerEvent.detail.detail;
-      this._appService.OnAngularStarted.next(this._isResultsArrived);
+      /// this._appService.OnAngularStarted.next(this._isResultsArrived);
 
       // Create info for user.
       const userInfo: UserInformation = {
