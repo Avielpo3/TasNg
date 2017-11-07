@@ -3,7 +3,7 @@ import { SortByDto, SortByFilterArray } from '../obt/Dto & Enum/PrimeNgDto/SortB
 import { EnumUtils } from '../Utils/enum-utils';
 import { SortByOptions } from '../obt/Dto & Enum/sort-by.enum';
 import { ObtService } from './obt.service';
-import { ItinerariesList } from '../obt/Dto & Enum/flight-result-dto';
+import { ItinerariesList } from '../obt/Dto & Enum/Flight Dto/flight-result.dto';
 import { LoggerService } from './logger.service';
 
 @Injectable()

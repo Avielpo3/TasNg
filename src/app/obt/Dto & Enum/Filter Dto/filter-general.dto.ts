@@ -1,4 +1,6 @@
-import { FilterNameEnum } from './filter-name-enum';
+import { FilterNameEnum } from './filter-name.enum';
+
+
 export interface FilterDto {
     name: FilterNameEnum;
     isVisible: boolean;

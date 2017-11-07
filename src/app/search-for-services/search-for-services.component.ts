@@ -1,26 +1,39 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceTypeEnum, DirectionTypeEnum, SearchByEnum } from '../obt/Dto & Enum/services-type.enum';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { ExtendInformationService } from '../services/global services/extand-info.service';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { LoggerService } from '../services/logger.service';
+import { SearchForServicesService } from '../services/search-for-services.service';
+import { AirportByName } from '../obt/Dto & Enum/Airports Dto/airport-from-db.dto';
 
 @Component({
   selector: 'app-search-for-services',
   templateUrl: './search-for-services.component.html',
   styleUrls: ['./search-for-services.component.scss']
 })
-export class SearchForServicesComponent implements OnInit {
+export class SearchForServicesComponent implements OnInit, OnDestroy {
 
   @ViewChild('airportFrom') airportFrom: ElementRef;
 
   searchForServicesForm: FormGroup;
   _selectedAirportFrom: any;
+  _airportList: AirportByName[] = [];
 
-
-  constructor(private _router: Router, private _extandInfo: ExtendInformationService) { }
-
-
+  /**
+   * Creates an instance of SearchForServicesComponent.
+   * @param {Router} _router
+   * @param {ExtendInformationService} _extandInfo
+   * @param {LoggerService} _logger
+   * @memberof SearchForServicesComponent
+   */
+  constructor(private _router: Router,
+    private _extandInfo: ExtendInformationService,
+    private _logger: LoggerService,
+    private _searchForServicesService: SearchForServicesService) { }
 
   _searchByOptions: string[] = [
     SearchByEnum[SearchByEnum.Schedule],
@@ -44,6 +57,8 @@ export class SearchForServicesComponent implements OnInit {
       servicesType: new FormControl(null),
       flightDirection: new FormControl(null),
     });
+
+    this.onKeyUp();
   }
 
   navigateToNext(): void {
@@ -51,14 +66,28 @@ export class SearchForServicesComponent implements OnInit {
     this._router.navigate(['wait-for-results']);
   }
 
-  getAirportList() {
-    this._selectedAirportFrom = this.airportFrom.nativeElement.valueChanges
-    .debounceTime(400)
-    .distinctUntilChanged()
-    .switchMap(term => term.length > 2 ? this._extandInfo.getAirportList(term) : Observable.of([]));
+  onKeyUp() {
+    this._searchForServicesService.KuyUpSubscription =
+      Observable.fromEvent(this.airportFrom.nativeElement, 'keyup')
+        .pluck('target', 'value')
+        .debounceTime(1000)
+        .distinctUntilChanged()
+        .filter((val: string) => val.length > 2)
+        .mergeMap((value: string) => this._extandInfo.getAirportListByDemand(value))
+        .subscribe((airportList: any) => {
+          try {
+            this._airportList = airportList.Table;
+          } catch (error) {
+            this._logger.onError(error);
+          }
+        });
   }
 
   handleAirportSelect(event) {
 
+  }
+
+  ngOnDestroy(): void {
+    this._searchForServicesService.KuyUpSubscription.unsubscribe();
   }
 }

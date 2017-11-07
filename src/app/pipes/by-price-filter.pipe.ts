@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ItinerariesList } from '../obt/Dto & Enum/flight-result-dto';
+import { ItinerariesList } from '../obt/Dto & Enum/Flight Dto/flight-result.dto';
 
 @Pipe({
   name: 'byPriceFilter',

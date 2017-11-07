@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Rx';
 import { Component, Input, OnInit, ViewChild, EventEmitter, ElementRef } from '@angular/core';
 import { FilterService } from '../../../services/filter.service';
 import { Subscription } from 'rxjs/Subscription';
-import { FilterNameEnum } from '../../Dto & Enum/filter-name-enum';
+import { FilterNameEnum } from './../../Dto & Enum/Filter Dto/filter-name.enum';
 import { ObtService } from '../../../services/obt.service';
-import { FlightGlobalInfo } from '../../Dto & Enum/flights-global-info';
-import { FilterDto } from '../../Dto & Enum/filter-dto';
+import { FlightGlobalInfo } from '../../Dto & Enum/Flight Dto/flights-global-info.dto';
+import { FilterDto } from '../../Dto & Enum/Filter Dto/filter-general.dto';
 import { FilterEvent } from '../../Dto & Enum/EventsDto/filter.event';
 
 

@@ -1,13 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { AirportCodeToCityAndCountryName } from '../../obt/Dto & Enum/airport-city-country-dto';
 import { ApiService } from '../api.service';
 import { LoggerService } from '../logger.service';
-import { AirlineInfo } from '../../obt/Dto & Enum/airline-name-dto';
 import { Observable } from 'rxjs/Observable';
-import { CurrencyDto } from '../../obt/Dto & Enum/currency-dto';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { ItinerariesList } from '../../obt/Dto & Enum/flight-result-dto';
+import { ItinerariesList } from '../../obt/Dto & Enum/Flight Dto/flight-result.dto';
 import { ObtService } from '../obt.service';
+import { AirportCodeToCityAndCountryName } from './../../obt/Dto & Enum/Airports Dto/airport-city-country.dto';
+import { AirlineInfo } from '../../obt/Dto & Enum/Airline Dto/airline-names.dto';
+import { CurrencyDto } from '../../obt/Dto & Enum/Currency Dto/currency.dto';
 
 
 @Injectable()
@@ -58,8 +58,9 @@ export class ExtendInformationService {
         return this.AirportToCityAndCountryNameList.find(info => info.AirportCode === airportCode);
     }
 
-    public getAirportList(airportName: string): any {
-        return this._apiService.getAirportListByDemand(airportName);
+    public getAirportListByDemand(airportName: string): any {
+        // return this._apiService.getAirportListByDemand(airportName);
+        return this._apiService.getMockAirportOnDemand();
     }
 
 

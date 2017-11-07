@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ItinerarySegment } from '../../obt/Dto & Enum/flight-result-dto';
+import { ItinerarySegment } from '../../obt/Dto & Enum/Flight Dto/flight-result.dto';
 import { ObtService } from '../../services/obt.service';
-import { FlightGlobalInfo } from '../../obt/Dto & Enum/flights-global-info';
+import { FlightGlobalInfo } from '../../obt/Dto & Enum/Flight Dto/flights-global-info.dto';
 
 export interface FlightDurationGraphData {
   span: number;

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ItinerarySegment } from '../../../../Dto & Enum/flight-result-dto';
+import { ItinerarySegment } from '../../../../Dto & Enum/Flight Dto/flight-result.dto';
 import { ObtService } from '../../../../../services/obt.service';
-import { AirportCodeToCityAndCountryName } from '../../../../Dto & Enum/airport-city-country-dto';
 import { ApiService } from '../../../../../services/api.service';
 import { ExtendInformationService } from '../../../../../services/global services/extand-info.service';
 import { UserService } from '../../../../../services/user.service';
+import { AirportCodeToCityAndCountryName } from './../../../../Dto & Enum/Airports Dto/airport-city-country.dto';
 
 @Component({
   selector: 'app-flight-result-leg',

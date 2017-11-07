@@ -51,9 +51,11 @@ import { AppService } from './services/app.service';
 import { FilterPriceComponent } from './obt/filters/filter/filter-price.component';
 import { WindowRefService } from './services/global services/window.service';
 import { SelectFlightResultService } from './services/select-flight.service';
-import { SearchForServicesComponent } from './search-for-services/search-for-services.component';
 import { HeadNavigationBarComponent } from './head-navigation-bar/head-navigation-bar.component';
 import { ResultsScreenComponent } from './obt/results-screen.component';
+import { SearchForServicesComponent } from './search-for-services/search-for-services.component';
+import { SearchForServicesService } from './services/search-for-services.service';
+import { TextOnDemandComponent } from './shared/text-on-demand/text-on-demand.component';
 
 
 const appRoutes: Routes = [
@@ -89,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PolicySliderComponent,
     SearchForServicesComponent,
     HeadNavigationBarComponent,
+    TextOnDemandComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -127,7 +130,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExtendInformationService,
     UserService,
     WindowRefService,
-    SelectFlightResultService
+    SelectFlightResultService,
+    SearchForServicesService
   ],
   bootstrap: [AppComponent]
 })

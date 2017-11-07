@@ -23,6 +23,10 @@ export class ApiService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json; charset=UTF-8');
     headers.append('Accept', 'application/json, text/javascript, */*; q=0.01');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE, HEAD');
+    headers.append('Access-Control-Allow-Headers', 'Authorization, X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept');
+    headers.append('Access-Control-Max-Age', '1728000');
     this.requestOptions.headers = headers;
   }
 
@@ -53,7 +57,7 @@ export class ApiService {
 
 
   public getAirportListByDemand(airportName): any {
-    const url = '../../tas-angular/Controllers/ApiController.asmx/GetAirportListOnDemand';
+    const url = 'http://localhost:4909/Tas.Web/ETS/SearchForServices/tas-angular/Controllers/ApiController.asmx/GetAirportListOnDemand';
     const data = JSON.stringify({ 'searchForAirport': airportName });
 
     return this._http.post(url, data, this.requestOptions)
@@ -146,6 +150,16 @@ export class ApiService {
       });
   }
 
+  getMockAirportOnDemand() {
+    return this._http.get('assets/mockAirportResults.json')
+      .map((resposnse: Response) => {
+        try {
+          return resposnse.json();
+        } catch (error) {
+          this._logger.onException(error);
+        }
+      });
+  }
 
   /**
    *  Load a json with this parameters:

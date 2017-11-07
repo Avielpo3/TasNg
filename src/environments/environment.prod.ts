@@ -6,5 +6,6 @@ export const environment = {
   AirlineNameListUrl: 'assets/airline-names.json',
   CurrencyConvertListUrl: 'assets/currency.json',
 
-  AirlinesLogoPath: 'assets/airlines-logos/'
+  AirlinesLogoPath: 'assets/airlines-logos/',
+  AirportListOnDemandUrl: 'TasWebService/GetAirPort_New'
 };

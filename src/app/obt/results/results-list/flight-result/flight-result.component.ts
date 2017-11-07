@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { ItinerariesList, ItinerarySegment, ItineraryInfo } from '../../../Dto & Enum/flight-result-dto';
+import { ItinerariesList, ItinerarySegment, ItineraryInfo } from '../../../Dto & Enum/Flight Dto/flight-result.dto';
 import { FlightSelectedEvent } from '../../../Dto & Enum/EventsDto/flight.event';
-import { FlightResultSelectedOptions } from '../../../Dto & Enum/flight-result-enum';
+import { FlightResultSelectedOptions } from '../../../Dto & Enum/Flight Dto/flight-result.enum';
 import { ObtService } from '../../../../services/obt.service';
 import { ExtendInformationService } from '../../../../services/global services/extand-info.service';
 import { FlightDurationGraphData } from '../../../../shared/flight-duration-graph/flight-duration-graph.component';

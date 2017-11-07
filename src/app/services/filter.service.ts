@@ -1,10 +1,10 @@
 import { Injectable, ElementRef, EventEmitter } from '@angular/core';
-import { FilterNameEnum } from '../obt/Dto & Enum/filter-name-enum';
+import { FilterNameEnum } from './../obt/Dto & Enum/Filter Dto/filter-name.enum';
 import { Subject } from 'rxjs/Subject';
 import { FilterEvent } from '../obt/Dto & Enum/EventsDto/filter.event';
-import { FilterDto } from '../obt/Dto & Enum/filter-dto';
+import { FilterDto } from '../obt/Dto & Enum/Filter Dto/filter-general.dto';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
+import { AirlineInfo } from '../obt/Dto & Enum/Airline Dto/airline-names.dto';
 
 @Injectable()
 export class FilterService {

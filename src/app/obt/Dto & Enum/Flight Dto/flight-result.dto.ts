@@ -1,4 +1,4 @@
-import { FlightResultSelectedOptions } from './flight-result-enum';
+import { FlightResultSelectedOptions } from './flight-result.enum';
 
 export interface BaseFare {
   Amount: number;

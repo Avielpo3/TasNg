@@ -1,4 +1,4 @@
-import { FilterNameEnum } from '../filter-name-enum';
+import { FilterNameEnum } from './../Filter Dto/filter-name.enum';
 
 export interface FilterEvent {
     sender: FilterNameEnum;

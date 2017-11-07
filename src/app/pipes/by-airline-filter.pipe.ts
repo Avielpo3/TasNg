@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ItinerariesList } from '../obt/Dto & Enum/flight-result-dto';
-import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
+import { ItinerariesList } from '../obt/Dto & Enum/Flight Dto/flight-result.dto';
+import { AirlineInfo } from '../obt/Dto & Enum/Airline Dto/airline-names.dto';
 
 @Pipe({
     name: 'byAirlineFilter',

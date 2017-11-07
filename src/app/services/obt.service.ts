@@ -4,17 +4,16 @@ import { LoggerService } from './logger.service';
 import { Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { FilterService } from './filter.service';
-import { FlightGlobalInfo } from '../obt/Dto & Enum/flights-global-info';
-import { FlightResultDto, ItinerariesList, FlightResponseFromServer } from '../obt/Dto & Enum/flight-result-dto';
+import { FlightGlobalInfo } from '../obt/Dto & Enum/Flight Dto/flights-global-info.dto';
+import { FlightResultDto, ItinerariesList, FlightResponseFromServer } from '../obt/Dto & Enum/Flight Dto/flight-result.dto';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { FlightSelectedEvent, CurrentFlightInfo } from '../obt/Dto & Enum/EventsDto/flight.event';
-import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
-import { AirportCodeToCityAndCountryName } from '../obt/Dto & Enum/airport-city-country-dto';
 import { ExtendInformationService } from './global services/extand-info.service';
 import { Observable } from 'rxjs/Observable';
 import { ServiceList } from '../obt/Dto & Enum/service-list.dto';
 import { AppService } from './app.service';
 import { environment } from '../../environments/environment';
+import { AirlineInfo } from '../obt/Dto & Enum/Airline Dto/airline-names.dto';
 
 @Injectable()
 export class ObtService {
@@ -68,11 +67,11 @@ export class ObtService {
     this.timer
       .takeWhile(() => this.isResultsArrived)
       .subscribe(() => {
-        if (!environment.production) {
-          this.getMockFlightResults();
-        } else {
+        // if (!environment.production) {
+        //   this.getMockFlightResults();
+        // } else {
           this.getFlightsResultFromApi();
-        }
+        // }
       });
   }
 

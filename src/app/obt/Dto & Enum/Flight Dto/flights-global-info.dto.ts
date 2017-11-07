@@ -1,4 +1,5 @@
-import { AirlineInfo } from './airline-name-dto';
+import { AirlineInfo } from '../Airline Dto/airline-names.dto';
+
 
 export interface FlightGlobalInfo {
     Airlines: AirlineInfo[];

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { element } from 'protractor';
-import { FilterNameEnum } from './Dto & Enum/filter-name-enum';
-import { FlightGlobalInfo } from './Dto & Enum/flights-global-info';
-import { FlightResultDto, DestinationList } from './Dto & Enum/flight-result-dto';
+import { FilterNameEnum } from './Dto & Enum/Filter Dto/filter-name.enum';
+import { FlightGlobalInfo } from './Dto & Enum/Flight Dto/flights-global-info.dto';
+import { FlightResultDto, DestinationList } from './Dto & Enum/Flight Dto/flight-result.dto';
 import { SortByDto } from './Dto & Enum/PrimeNgDto/SortByDto';
 import { Dropdown } from 'primeng/components/dropdown/dropdown';
 import { EnumUtils } from './../Utils/enum-utils';

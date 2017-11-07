@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterDto } from '../Dto & Enum/filter-dto';
-import { FilterNameEnum } from '../Dto & Enum/filter-name-enum';
+import { FilterDto } from '../Dto & Enum/Filter Dto/filter-general.dto';
+import { FilterNameEnum } from './../Dto & Enum/Filter Dto/filter-name.enum';
 import { FilterService } from '../../services/filter.service';
 import { ObtService } from '../../services/obt.service';
-import { FlightGlobalInfo } from '../Dto & Enum/flights-global-info';
+import { FlightGlobalInfo } from '../Dto & Enum/Flight Dto/flights-global-info.dto';
 import { LoggerService } from '../../services/logger.service';
-import { AirlineInfo } from '../Dto & Enum/airline-name-dto';
+import { AirlineInfo } from '../Dto & Enum/Airline Dto/airline-names.dto';
 
 
 @Component({

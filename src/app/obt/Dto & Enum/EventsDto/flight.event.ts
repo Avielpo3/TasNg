@@ -1,4 +1,4 @@
-import { ItinerariesList } from '../flight-result-dto';
+import { ItinerariesList } from '../Flight Dto/flight-result.dto';
 import { ElementRef } from '@angular/core';
 
 export interface FlightSelectedEvent {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ItinerariesList } from '../obt/Dto & Enum/flight-result-dto';
+import { ItinerariesList } from '../obt/Dto & Enum/Flight Dto/flight-result.dto';
 import { FlightSelectedEvent, CurrentFlightInfo } from '../obt/Dto & Enum/EventsDto/flight.event';
 import { ObtService } from './obt.service';
 import { Subject } from 'rxjs/Subject';

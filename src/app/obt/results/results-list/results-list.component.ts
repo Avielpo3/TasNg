@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, OnDestroy, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { ObtService } from '../../../services/obt.service';
-import { FilterNameEnum } from '../../Dto & Enum/filter-name-enum';
+import { FilterNameEnum } from './../../Dto & Enum/Filter Dto/filter-name.enum';
 import { FilterService } from '../../../services/filter.service';
 import { LoggerService } from '../../../services/logger.service';
 import { Subscription } from 'rxjs/Subscription';
-import { DestinationList, ItinerariesList } from '../../Dto & Enum/flight-result-dto';
+import { DestinationList, ItinerariesList } from '../../Dto & Enum/Flight Dto/flight-result.dto';
 import { FilterEvent } from '../../Dto & Enum/EventsDto/filter.event';
 import { FlightSelectedEvent } from '../../Dto & Enum/EventsDto/flight.event';
-import { AirlineInfo } from '../../Dto & Enum/airline-name-dto';
+import { AirlineInfo } from '../../Dto & Enum/Airline Dto/airline-names.dto';
 
 @Component({
   selector: 'app-results-list',
