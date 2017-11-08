@@ -8,6 +8,8 @@ import { ObtService } from '../obt.service';
 import { AirportCodeToCityAndCountryName } from './../../obt/Dto & Enum/Airports Dto/airport-city-country.dto';
 import { AirlineInfo } from '../../obt/Dto & Enum/Airline Dto/airline-names.dto';
 import { CurrencyDto } from '../../obt/Dto & Enum/Currency Dto/currency.dto';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Injectable()
@@ -16,7 +18,6 @@ export class ExtendInformationService {
     public get OnJsonDataFinishedLoaded(): ReplaySubject<boolean> {
         return this._onJsonDataFinishedLoaded;
     }
-
 
     private _airlineNameList: AirlineInfo[];
     public get AirlineNameList(): AirlineInfo[] {
@@ -56,11 +57,6 @@ export class ExtendInformationService {
 
     public getCityAndCountryByAirportCode(airportCode: string): AirportCodeToCityAndCountryName {
         return this.AirportToCityAndCountryNameList.find(info => info.AirportCode === airportCode);
-    }
-
-    public getAirportListByDemand(airportName: string): any {
-        // return this._apiService.getAirportListByDemand(airportName);
-        return this._apiService.getMockAirportOnDemand();
     }
 
 

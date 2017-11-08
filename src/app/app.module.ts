@@ -2,7 +2,7 @@
 import { AccordionModule } from 'primeng/primeng';     // accordion and accordion tab
 import { MenuItem, StepsModule } from 'primeng/primeng';            // api
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule, AutoCompleteModule } from 'primeng/primeng';
+import { CalendarModule, DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule, AutoCompleteModule } from 'primeng/primeng';
 
 // Translate
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -56,6 +56,7 @@ import { ResultsScreenComponent } from './obt/results-screen.component';
 import { SearchForServicesComponent } from './search-for-services/search-for-services.component';
 import { SearchForServicesService } from './services/search-for-services.service';
 import { TextOnDemandComponent } from './shared/text-on-demand/text-on-demand.component';
+import { TextOnDemandService } from './shared/text-on-demand/text-on-demand.service';
 
 
 const appRoutes: Routes = [
@@ -105,6 +106,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     SliderModule,
     DropdownModule,
+    CalendarModule,
     CheckboxModule,
     StepsModule,
     OverlayPanelModule,
@@ -131,7 +133,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserService,
     WindowRefService,
     SelectFlightResultService,
-    SearchForServicesService
+    SearchForServicesService,
+    TextOnDemandService
   ],
   bootstrap: [AppComponent]
 })

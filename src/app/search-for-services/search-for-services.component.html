@@ -1,7 +1,6 @@
-<h3>Welcome to ComBTas Online booking tool</h3>
-
 <div class="container"
      id="searchForServicesContainer">
+  <h3 class="white center">Welcome to Online booking</h3>
 
   <div class="row">
     <div class="col-xs-12">
@@ -18,61 +17,67 @@
         <!-- Header Row -->
         <div class="row">
           <div class="colxs-12">
-            <h3>Flights</h3>
+            <p class="white">Flights</p>
           </div>
         </div>
-        <!-- Inner Container -->
-        <div class="searchForServicesInnerContainer">
 
-          <div class="row">
-            <!-- Direction Type | One-way | Round trip | Multiple Destination -->
-            <div class="col-xs-5">
-              <div *ngFor="let direction of _directions"
-                   class="directionType">
-                <input type="radio"
-                       name="directionType"
-                       id="directionType">
-                <label for="direction">{{direction}} </label>
+        <div class="row">
+          <!-- Inner Container -->
+          <div id="searchForServicesInnerContainer">
+            <div class="row">
+              <!-- Direction Type | One-way | Round trip | Multiple Destination -->
+              <div class="col-xs-6">
+                <div class="radio-group">
+                  <input type="radio"
+                         id="rdbRoundTrip"
+                         name="directionType">
+                  <label for="rdbRoundTrip">Round-Trip</label>
+
+                  <input type="radio"
+                         id="rdbOneWay"
+                         name="directionType">
+                  <label for="rdbOneWay">One-Way</label>
+
+                  <input type="radio"
+                         id="rdbMultipleDestination"
+                         name="directionType">
+                  <label for="rdbMultipleDestination">Multiple Dest.</label>
+                </div>
+              </div>
+              <!-- Search By Schedule or by price -->
+              <div class="col-xs-6">
+                <div class="radio-group">
+                  <input type="radio"
+                         id="rdbSearchBySchedule"
+                         name="searchBy">
+                  <label for="rdbSearchBySchedule">Search By Schedule</label>
+
+                  <input type="radio"
+                         id="rdbSearchByPrice"
+                         name="searchBy">
+                  <label for="rdbSearchByPrice">Search By Price</label>
+                </div>
               </div>
             </div>
-            <!-- Search By Schedule or by price -->
-            <div class="col-xs-5">
-              <div *ngFor="let searchBy of _searchByOptions"
-                   class="directionType">
-                <input type="radio"
-                       name="searchBy"
-                       id="searchBy">
-                <label for="searchBy">{{searchBy}} </label>
+
+            <div class="row inner-row">
+              <div class="col-xs-3">
+                <app-text-on-demand (selectedValue)="_selectedAirportFrom = $event"
+                                    [placeholder]="'From Airport'"></app-text-on-demand>
+              </div>
+              <div class="col-xs-3">
+                <app-text-on-demand (selectedValue)="_selectedAirportFrom = $event"
+                                    [placeholder]="'To Airport'"></app-text-on-demand>
+              </div>
+              <div class="col-xs-4">
+
+              </div>
+              <div class="col-xs-2">
+
               </div>
             </div>
+
           </div>
-
-          <div class="row">
-            <div class="col-xs-3">
-              <input type="text"
-                     name="airportFrom"
-                     id="airportFrom"
-                     #airportFrom>
-              <div>
-                <ul>
-                  <li *ngFor="let airport of _airportList">
-                    {{airport.fNameDisplay}}
-                  </li>
-                </ul>
-              </div>
-              
-            </div>
-            <div class="col-xs-3">
-
-            </div>
-            <div class="col-xs-4">
-
-            </div>
-            <div class="col-xs-2">
-
-            </div>
-          </div>
-
         </div>
 
 

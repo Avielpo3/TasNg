@@ -154,7 +154,7 @@ export class ApiService {
     return this._http.get('assets/mockAirportResults.json')
       .map((resposnse: Response) => {
         try {
-          return resposnse.json();
+          return resposnse.json().Table;
         } catch (error) {
           this._logger.onException(error);
         }

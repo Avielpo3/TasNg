@@ -17,11 +17,8 @@ import { AirportByName } from '../obt/Dto & Enum/Airports Dto/airport-from-db.dt
 })
 export class SearchForServicesComponent implements OnInit, OnDestroy {
 
-  @ViewChild('airportFrom') airportFrom: ElementRef;
-
   searchForServicesForm: FormGroup;
-  _selectedAirportFrom: any;
-  _airportList: AirportByName[] = [];
+  _selectedAirportFrom: AirportByName;
 
   /**
    * Creates an instance of SearchForServicesComponent.
@@ -35,16 +32,7 @@ export class SearchForServicesComponent implements OnInit, OnDestroy {
     private _logger: LoggerService,
     private _searchForServicesService: SearchForServicesService) { }
 
-  _searchByOptions: string[] = [
-    SearchByEnum[SearchByEnum.Schedule],
-    SearchByEnum[SearchByEnum.Price]
-  ];
-
-  _directions: string[] = [
-    DirectionTypeEnum[DirectionTypeEnum.OneWay],
-    DirectionTypeEnum[DirectionTypeEnum.RoundTrip],
-    DirectionTypeEnum[DirectionTypeEnum.MultiDestination]
-  ];
+  directionType: DirectionTypeEnum;
 
   _servicesType: string[] = [
     ServiceTypeEnum[ServiceTypeEnum.Flight],
@@ -57,8 +45,6 @@ export class SearchForServicesComponent implements OnInit, OnDestroy {
       servicesType: new FormControl(null),
       flightDirection: new FormControl(null),
     });
-
-    this.onKeyUp();
   }
 
   navigateToNext(): void {
@@ -66,28 +52,9 @@ export class SearchForServicesComponent implements OnInit, OnDestroy {
     this._router.navigate(['wait-for-results']);
   }
 
-  onKeyUp() {
-    this._searchForServicesService.KuyUpSubscription =
-      Observable.fromEvent(this.airportFrom.nativeElement, 'keyup')
-        .pluck('target', 'value')
-        .debounceTime(1000)
-        .distinctUntilChanged()
-        .filter((val: string) => val.length > 2)
-        .mergeMap((value: string) => this._extandInfo.getAirportListByDemand(value))
-        .subscribe((airportList: any) => {
-          try {
-            this._airportList = airportList.Table;
-          } catch (error) {
-            this._logger.onError(error);
-          }
-        });
-  }
-
   handleAirportSelect(event) {
-
   }
 
   ngOnDestroy(): void {
-    this._searchForServicesService.KuyUpSubscription.unsubscribe();
   }
 }

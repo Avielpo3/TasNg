@@ -1,3 +1,29 @@
-<p>
-  text-on-demand works!
-</p>
+<div id="textOnDemand"
+     name="textOnDemand"
+     appTextOnDemand>
+  <!-- The input -->
+  <input type="text"
+         name="textOnDemandInput"
+         class="form-control"
+         [placeholder]="placeholder"
+         id="textOnDemandInput"
+         [value]="_selectedAirport != undefined ? _selectedAirport.fNameDisplay : '' "
+         (focus)="_textOnDemandListDisplay = false"
+         (blur)="onBlur()"
+         #textOnDemandInput>
+  <!-- The list -->
+  <div id="textOnDemandListContainer"
+       #textOnDemandListContainer
+       [hidden]="_textOnDemandListDisplay">
+    <ul id="textOnDemandList"
+        (blur)="_textOnDemandListDisplay = true">
+      <li *ngFor="let airport of _airportList"
+          class="text-on-demand-item-list"
+          [value]="airport.fAirport_Code"
+          (click)="setSelectedAirport(airport)"
+          #textOnDemandList>
+        {{airport.fNameDisplay}}
+      </li>
+    </ul>
+  </div>
+</div>

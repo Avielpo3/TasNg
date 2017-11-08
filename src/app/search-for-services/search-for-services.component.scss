@@ -1,18 +1,69 @@
-.searchForServicesInnerContainer{
-    padding: 30px;
-    border: 1px solid black;
+
+#searchForServicesContainer{
+    float: left;
+    text-align: left;
+    background: url('../../assets/img-02.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    padding: 25px 80px;
+}
+
+#searchForServicesInnerContainer{
+    padding: 20px 45px 30px;
+    background: #324454;
+    float: left;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
 }
 
 #selectedServices li {
     display: inline;
-    float: left;
     margin-left: 2em;
     cursor: pointer;
 }
 
-.directionType{
-    display: inline;
-    float: left;
-    margin-left: 2em;
-    cursor: pointer;
+.inner-row{
+    margin-top: 1.5em;
+}
+
+.form-control{
+    height : 43px;
+}
+
+$regular-bg: #324454;
+$selected-bg: #246EA0;
+$borderWidth: 1px;
+
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+label {
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 40px;
+  margin: 0px;
+  background-color: #324454;
+  font-weight: 300;
+  margin-right: -4px;
+}
+
+input[type=radio]:checked + label{
+  color: white;
+  background: $selected-bg;
+}
+
+label + input[type=radio] + label {
+  border-left: solid $borderWidth white;
+}
+.radio-group {
+  border: solid $borderWidth white;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
 }
