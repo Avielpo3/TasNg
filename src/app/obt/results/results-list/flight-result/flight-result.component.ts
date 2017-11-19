@@ -6,32 +6,32 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef
-} from '@angular/core';
+} from "@angular/core";
 import {
   ItinerariesList,
   ItinerarySegment,
   ItineraryInfo
-} from '../../../Dto & Enum/flight-result-dto';
-import { FlightSelectedEvent } from '../../../Dto & Enum/EventsDto/flight.event';
-import { FlightResultSelectedOptions } from '../../../Dto & Enum/flight-result-enum';
-import { ObtService } from '../../../../services/obt.service';
-import { ExtendInformationService } from '../../../../services/global services/extand-info.service';
-import { FlightDurationGraphData } from '../../../../shared/flight-duration-graph/flight-duration-graph.component';
-import { UserService } from '../../../../services/user.service';
-import { environment } from '../../../../../environments/environment';
-import { SelectFlightResultService } from '../../../../services/select-flight.service';
+} from "../../../Dto & Enum/flight-result-dto";
+import { FlightSelectedEvent } from "../../../Dto & Enum/EventsDto/flight.event";
+import { FlightResultSelectedOptions } from "../../../Dto & Enum/flight-result-enum";
+import { ObtService } from "../../../../services/obt.service";
+import { ExtendInformationService } from "../../../../services/global services/extand-info.service";
+import { FlightDurationGraphData } from "../../../../shared/flight-duration-graph/flight-duration-graph.component";
+import { UserService } from "../../../../services/user.service";
+import { environment } from "../../../../../environments/environment";
+import { SelectFlightResultService } from "../../../../services/select-flight.service";
 
 @Component({
-  selector: 'app-flight-result',
-  templateUrl: './flight-result.component.html',
-  styleUrls: ['./flight-result.component.scss']
+  selector: "app-flight-result",
+  templateUrl: "./flight-result.component.html",
+  styleUrls: ["./flight-result.component.scss"]
 })
 export class ResultComponent implements OnInit {
   // Input properties
   @Input() _itinerary: ItinerariesList;
   @Input() _currentScreen: number;
 
-  @ViewChild('flightResult') flightResultRef: ElementRef;
+  @ViewChild("flightResult") flightResultRef: ElementRef;
 
   // Output properties
   @Output()
@@ -80,7 +80,7 @@ export class ResultComponent implements OnInit {
    * @memberof ResultComponent
    */
   getAirlineLogo(marketingAirline: string) {
-    return environment.AirlinesLogoPath + marketingAirline + '.gif';
+    return environment.AirlinesLogoPath + marketingAirline + ".gif";
   }
 
   getAirlineNameByCode(): string {
@@ -120,7 +120,12 @@ export class ResultComponent implements OnInit {
       this._itinerarySegments[this._itinerarySegments.length - 1].ArrivalAirport
     ).CityName;
   }
-
+  /**
+ * On mouse out event. hide the overlay after timeout (when segments popup is shown).
+ * @param {any} event
+ * @param {any} overlayPopupRef
+ * @memberof ResultComponent
+ */
   onHideOverlay(event, overlayPopupRef) {
     setTimeout(() => {
       overlayPopupRef.hide();

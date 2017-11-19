@@ -89,7 +89,7 @@ export class SelectFlightResultService {
     /**
      * Set the next flights results screen by the current selection.
      * e.g: Filter out results that the departure time of the next leg is before the arrival time of the previous leg.
-     * e.g2: arrivl 17/10 20:00, dep 17/10 18:00 -> Can't be!
+     * e.g2: arrival 17/10 20:00, dep 17/10 18:00 -> Can't be!
      * @private
      * @param {number} currentScreenNumber
      * @param {number} currentFlightRef
