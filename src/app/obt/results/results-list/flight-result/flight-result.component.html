@@ -1,11 +1,10 @@
 <div id="filterResultContainer"
      class="filter-result-container container-fluid"
-     (mouseenter)="op.show($event)"
-     (mouseleave)="op.hide($event)"
      (click)="handleSelectFlightClick()"
      appFlightResultSelected
      [CurrentScreen]="_currentScreen"
      [IsSelected]="_itinerary.Itinerary.AnswerInfo.IsSelected"
+     #appendOverlayToElement
      #flightResult>
   <div class="flight-result-row">
     <div class="row ">
@@ -30,7 +29,10 @@
           </span>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-3"
+           (mouseenter)="op.show($event , appendOverlayToElement)"
+           (mouseleave)="onHideOverlay($event, op)"
+           >
         <div class="row">
           <div class="col-xs-6 text-left">
             <span id="departureTime">
@@ -108,6 +110,7 @@
     </div>
   </div>
 </div>
+
 <p-overlayPanel #op
                 [appendTo]="'body'"
                 styleClass="flight-result-leg-overlay">

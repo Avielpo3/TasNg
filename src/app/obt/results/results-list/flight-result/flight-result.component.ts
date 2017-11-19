@@ -1,5 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { ItinerariesList, ItinerarySegment, ItineraryInfo } from '../../../Dto & Enum/flight-result-dto';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
+import {
+  ItinerariesList,
+  ItinerarySegment,
+  ItineraryInfo
+} from '../../../Dto & Enum/flight-result-dto';
 import { FlightSelectedEvent } from '../../../Dto & Enum/EventsDto/flight.event';
 import { FlightResultSelectedOptions } from '../../../Dto & Enum/flight-result-enum';
 import { ObtService } from '../../../../services/obt.service';
@@ -22,7 +34,8 @@ export class ResultComponent implements OnInit {
   @ViewChild('flightResult') flightResultRef: ElementRef;
 
   // Output properties
-  @Output() onFlightSelectedUnselected = new EventEmitter<FlightSelectedEvent>();
+  @Output()
+  onFlightSelectedUnselected = new EventEmitter<FlightSelectedEvent>();
 
   _itineraryInfo: ItineraryInfo;
   _itinerarySegments: ItinerarySegment[];
@@ -34,10 +47,12 @@ export class ResultComponent implements OnInit {
   _arrivelCityName: string;
   _userCurrencyCode: string;
 
-  constructor(private _obtService: ObtService,
+  constructor(
+    private _obtService: ObtService,
     private _extandInfoService: ExtendInformationService,
     private _userService: UserService,
-    private _selectFlightService: SelectFlightResultService ) { }
+    private _selectFlightService: SelectFlightResultService
+  ) {}
 
   ngOnInit(): void {
     this._userCurrencyCode = this._userService.UserInformation.CurrencyCode;
@@ -53,7 +68,9 @@ export class ResultComponent implements OnInit {
    */
   handleSelectFlightClick(): void {
     const flightEvent: FlightSelectedEvent = this.createFlightEvent();
-    this._selectFlightService.OnFlightResultSelectedUnselected.next(flightEvent);
+    this._selectFlightService.OnFlightResultSelectedUnselected.next(
+      flightEvent
+    );
   }
 
   /**
@@ -67,7 +84,9 @@ export class ResultComponent implements OnInit {
   }
 
   getAirlineNameByCode(): string {
-    return this._extandInfoService.getAirlineNameByCode(this._itineraryInfo.MarketingAirline);
+    return this._extandInfoService.getAirlineNameByCode(
+      this._itineraryInfo.MarketingAirline
+    );
   }
 
   createFlightEvent(): FlightSelectedEvent {
@@ -78,9 +97,10 @@ export class ResultComponent implements OnInit {
       ScreenNumber: this._currentScreen,
       IsSelected: this._isFlightSelected,
       RefNumber: this._itinerary.Itinerary.ItineraryInfo.RefNumber,
-      RecommendationID: this._itinerary.Itinerary.ItineraryInfo.RecommendationID,
+      RecommendationID: this._itinerary.Itinerary.ItineraryInfo
+        .RecommendationID,
       AnswerID: this._itinerary.Itinerary.ItineraryInfo.AnswerID,
-      ResponseId: this._itineraryInfo.ResponseId,
+      ResponseId: this._itineraryInfo.ResponseId
     };
 
     return flightEvent;
@@ -92,10 +112,18 @@ export class ResultComponent implements OnInit {
    * @memberof ResultComponent
    */
   private setDepartureAndArrivelCityName(): void {
-    this._departureCityName = this._extandInfoService.
-      getCityAndCountryByAirportCode(this._itinerarySegments[0].DepartureAirport).CityName;
+    this._departureCityName = this._extandInfoService.getCityAndCountryByAirportCode(
+      this._itinerarySegments[0].DepartureAirport
+    ).CityName;
 
-    this._arrivelCityName = this._extandInfoService.
-      getCityAndCountryByAirportCode(this._itinerarySegments[this._itinerarySegments.length - 1].ArrivalAirport).CityName;
+    this._arrivelCityName = this._extandInfoService.getCityAndCountryByAirportCode(
+      this._itinerarySegments[this._itinerarySegments.length - 1].ArrivalAirport
+    ).CityName;
+  }
+
+  onHideOverlay(event, overlayPopupRef) {
+    setTimeout(() => {
+      overlayPopupRef.hide();
+    }, 250);
   }
 }
