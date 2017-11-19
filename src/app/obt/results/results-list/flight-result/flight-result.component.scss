@@ -70,6 +70,6 @@
 
 @for $i from 0 through 5 {
   .policy-symbol-#{$i} {
-    background: url($image_url + '/policy-small.png') -15px -15px + ($i * -38) no-repeat;
+    background: url('../../../../../assets/images/policy-small.png') -15px -15px + ($i * -38) no-repeat;
   }
 }

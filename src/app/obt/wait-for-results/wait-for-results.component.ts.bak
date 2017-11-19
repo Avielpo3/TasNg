@@ -11,11 +11,9 @@ export class WaitForResultsComponent implements OnInit {
   constructor(private _extendinfo: ExtendInformationService) { }
 
   ngOnInit() {
-    // if (!environment.production) {
-    setTimeout(() => {
-      this.startAngular();
-    }, 1 * 1000);
-    // }
+    if (!environment.production) {
+       // this.startAngular();
+    }
   }
 
   startAngular() {

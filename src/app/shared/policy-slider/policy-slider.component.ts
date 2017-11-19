@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewEncapsulation,
+  EventEmitter,
+  Output
+} from '@angular/core';
 
 @Component({
   selector: 'app-policy-slider',
@@ -7,31 +14,29 @@ import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output } fro
   styleUrls: ['./policy-slider.component.scss']
 })
 export class PolicySliderComponent implements OnInit {
-
-  /**
-   * Set to true to display only the value without the handle
-   * @type {boolean}
-   */
-  @Input() disabled: boolean = false;
-
   /**
    * Set the policy level
    * @type {number}
    */
-  @Input() level: number = 3;
+  @Input() _currentPolicy: number = 0;
 
-  // tslint:disable-next-line:no-output-rename
-  @Output('changed') levelChanged: EventEmitter<number> = new EventEmitter();
+  /**
+   * On policy level changed.
+   * @type {EventEmitter<number>}
+   * @memberof PolicySliderComponent
+   */
+  @Output() onPolicyChanged: EventEmitter<number> = new EventEmitter();
 
-  constructor() {
+  /**
+ * Creates an instance of PolicySliderComponent.
+ * @memberof PolicySliderComponent
+ */
+  constructor() {}
+
+  ngOnInit() {}
+
+  updateLevel(policyLevel: number) {
+    this._currentPolicy = policyLevel;
+    this.onPolicyChanged.next(policyLevel);
   }
-
-  ngOnInit() {
-
-  }
-
-  updateLevel(event) {
-    this.levelChanged.next(event.value);
-  }
-
 }

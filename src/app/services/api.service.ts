@@ -91,6 +91,7 @@ export class ApiService {
           return flightsReults;
         } catch (error) {
           this._logger.onException((<Error>error));
+          throw new Error('Error while parsing the flights results');
         }
       }).catch(
       // Http Request error.

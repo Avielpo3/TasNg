@@ -31,3 +31,21 @@
     background: url('../../../assets/images/level-slider-handle.png') center left no-repeat;
   }
 }
+
+.circle {
+  font-size: 14px;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  background: transparent;
+  border: 2px solid #ccc;
+  padding: 0.8em;
+  cursor: pointer;
+  margin: 1px;
+  &.active{
+    background: lightgreen;
+  }
+  &:hover{
+    background: lightgreen;
+  }
+}

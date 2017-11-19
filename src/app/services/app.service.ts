@@ -15,6 +15,11 @@ export class AppService {
         return this._onShowPopup;
     }
 
+    public StartAngular(): void {
+        const startAngular: boolean = true;
+        this.OnAngularStarted.next(startAngular);
+    }
+
     public showPopup(content: string, header: string, visible: boolean, isBackgrondBlocked = true, appendTo = 'body'): void {
         this._popup.content = content;
         this._popup.header = header;
