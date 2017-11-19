@@ -12,7 +12,9 @@ export class WaitForResultsComponent implements OnInit {
 
   ngOnInit() {
     // if (!environment.production) {
-    //   this.startAngular();
+    setTimeout(() => {
+      this.startAngular();
+    }, 1 * 1000);
     // }
   }
 

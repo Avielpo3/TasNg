@@ -74,7 +74,7 @@
                       {
                         "DepartureDateTime": "2017-10-24T19:10:00",
                         "FlightNumber": "2980",
-                        "ResBookDesignCode": "F",
+                        "ResBookDesignCode": "V",
                         "StopQuantity": 0,
                         "RPH": 1,
                         "ArrivalDateTime": "2017-10-24T20:20:00",
@@ -157,7 +157,7 @@
                       {
                         "DepartureDateTime": "2017-10-24T06:30:00",
                         "FlightNumber": "2962",
-                        "ResBookDesignCode": "F",
+                        "ResBookDesignCode": "X",
                         "StopQuantity": 0,
                         "RPH": 1,
                         "ArrivalDateTime": "2017-10-24T07:30:00",
@@ -240,7 +240,7 @@
                       {
                         "DepartureDateTime": "2017-10-24T10:00:00",
                         "FlightNumber": "2968",
-                        "ResBookDesignCode": "F",
+                        "ResBookDesignCode": "D",
                         "StopQuantity": 0,
                         "RPH": 1,
                         "ArrivalDateTime": "2017-10-24T11:05:00",
@@ -323,7 +323,7 @@
                       {
                         "DepartureDateTime": "2017-10-24T07:30:00",
                         "FlightNumber": "2964",
-                        "ResBookDesignCode": "F",
+                        "ResBookDesignCode": "A",
                         "StopQuantity": 0,
                         "RPH": 1,
                         "ArrivalDateTime": "2017-10-24T08:35:00",
@@ -406,7 +406,7 @@
                       {
                         "DepartureDateTime": "2017-10-24T21:05:00",
                         "FlightNumber": "2982",
-                        "ResBookDesignCode": "F",
+                        "ResBookDesignCode": "M",
                         "StopQuantity": 0,
                         "RPH": 1,
                         "ArrivalDateTime": "2017-10-24T22:10:00",

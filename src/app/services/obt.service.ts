@@ -70,9 +70,9 @@ export class ObtService {
       .takeWhile(() => this.isResultsArrived)
       .subscribe(() => {
         // if (!environment.production) {
-        //   this.getMockFlightResults();
+           this.getMockFlightResults();
         // } else {
-        this.getFlightsResultFromApi();
+        // this.getFlightsResultFromApi();
         // }
       });
   }
@@ -90,6 +90,7 @@ export class ObtService {
         if (jsonResponseArray.length === 0) {
           return true;
         }
+
         jsonResponseArray.forEach(jsonAnswer => {
           const flightResponse: FlightResponseFromServer = jsonAnswer as FlightResponseFromServer;
           try {
@@ -97,6 +98,7 @@ export class ObtService {
               this._appService.showPopup(flightResponse.ErrorDescriptionIfExist, 'Error', true);
               this._logger.logObject(flightResponse.ErrorDescriptionIfExist);
               this.isResultsArrived = false;
+              return;
             }
 
             if (flightResponse.AnswerResponseJson === null || flightResponse.AnswerResponseJson === '') {
