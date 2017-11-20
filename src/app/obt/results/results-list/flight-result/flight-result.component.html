@@ -1,12 +1,11 @@
 <div id="filterResultContainer"
      class="filter-result-container container-fluid"
-     (mouseenter)="op.show($event)"
-     (mouseleave)="op.hide($event)"
      (click)="handleSelectFlightClick()"
      appFlightResultSelected
      [CurrentScreen]="_currentScreen"
      [IsSelected]="_itinerary.Itinerary.AnswerInfo.IsSelected"
-     #flightResult >
+     #appendOverlayToElement
+     #flightResult>
   <div class="flight-result-row">
     <div class="row ">
       <div class="col-xs-1">
@@ -30,7 +29,10 @@
           </span>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-3"
+           (mouseenter)="op.show($event , appendOverlayToElement)"
+           (mouseleave)="onHideOverlay($event, op)"
+           >
         <div class="row">
           <div class="col-xs-6 text-left">
             <span id="departureTime">
@@ -66,8 +68,8 @@
       <div class="col-xs-3 text-left">
         <div class="row">
           <div class="col-xs-6">
-            <div class="c100 p20 small green center">
-              <span>2</span>
+            <div class="c100 p{{_policyRating * 20}} small green center">
+              <span>{{_policyRating}}</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -99,12 +101,16 @@
       <div class="col-xs-2"></div>
       <div class="col-xs-1"></div>
       <div class="col-xs-2">
-        <span class="return-options-text">{{_itinerary.Itinerary.AnswerInfo.ReturnOptions != null ? _itinerary.Itinerary.AnswerInfo.ReturnOptions + ' Return
-          options' : '' }} </span>
+        <span class="return-options-text"
+              *ngIf="_itinerary.Itinerary.AnswerInfo.ReturnOptions != null"
+              translate> {{_itinerary.Itinerary.AnswerInfo.ReturnOptions }}
+          <span translate>ReturnOptions</span>
+        </span>
       </div>
     </div>
   </div>
 </div>
+
 <p-overlayPanel #op
                 [appendTo]="'body'"
                 styleClass="flight-result-leg-overlay">
@@ -115,7 +121,8 @@
   </div>
   <app-flight-result-leg *ngFor="let segment of _itinerarySegments"
                          [_segment]="segment"
-                         [_currency]="this._itinerary.Itinerary.AnswerInfo.CurrencyList.Currency[0]">
+                         [_currency]="this._itinerary.Itinerary.AnswerInfo.CurrencyList.Currency[0]"
+                         [_totalSegemntsAtFlight]="_itinerarySegments.length">
 
   </app-flight-result-leg>
 </p-overlayPanel>

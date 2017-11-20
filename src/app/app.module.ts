@@ -1,5 +1,5 @@
 // 3rd Party
-import { AccordionModule } from 'primeng/primeng';     // accordion and accordion tab
+import { AccordionModule, ButtonModule } from 'primeng/primeng';     // accordion and accordion tab
 import { MenuItem, StepsModule } from 'primeng/primeng';            // api
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DropdownModule, CheckboxModule, OverlayPanelModule, DialogModule, AutoCompleteModule } from 'primeng/primeng';
@@ -57,6 +57,9 @@ import { SearchForServicesComponent } from './search-for-services/search-for-ser
 import { SearchForServicesService } from './services/search-for-services.service';
 import { TextOnDemandComponent } from './shared/text-on-demand/text-on-demand.component';
 import { TextOnDemandService } from './shared/text-on-demand/text-on-demand.service';
+import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
+import { ByPolicyLevelRatingPipe } from './pipes/by-policy-level-rating.pipe';
+import { ByShowResultsOutOfPolicyPipe } from './pipes/by-show-results-out-of-policy.pipe';
 
 
 const appRoutes: Routes = [
@@ -85,7 +88,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ByHourFilterPipe,
     UserCurrencyPipe,
     FlightResultSelectedDirective,
+    InfiniteScrollerDirective,
     ByStopQuantityFilterPipe,
+    ByPolicyLevelRatingPipe,
+    ByShowResultsOutOfPolicyPipe,
     ByAirlineFilterPipe,
     FlightDurationGraphComponent,
     FlightListNavigatorComponent,
@@ -109,6 +115,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CalendarModule,
     CheckboxModule,
     StepsModule,
+    ButtonModule,
     OverlayPanelModule,
     DialogModule,
     // AutoCompleteModule,

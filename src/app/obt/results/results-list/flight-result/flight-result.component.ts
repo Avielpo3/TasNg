@@ -33,11 +33,14 @@ export class ResultComponent implements OnInit {
   _departureCityName: string;
   _arrivelCityName: string;
   _userCurrencyCode: string;
+  _policyRating: number = 5;
 
-  constructor(private _obtService: ObtService,
+  constructor(
+    private _obtService: ObtService,
     private _extandInfoService: ExtendInformationService,
     private _userService: UserService,
-    private _selectFlightService: SelectFlightResultService ) { }
+    private _selectFlightService: SelectFlightResultService
+  ) {}
 
   ngOnInit(): void {
     this._userCurrencyCode = this._userService.UserInformation.CurrencyCode;
@@ -45,6 +48,7 @@ export class ResultComponent implements OnInit {
     this._itinerarySegments = this._itinerary.Itinerary.ItinerarySegment;
     this._isFlightSelected = this._itinerary.Itinerary.AnswerInfo.IsSelected;
     this.setDepartureAndArrivelCityName();
+    this.setPolicyRatingLevel();
   }
 
   /**
@@ -92,10 +96,33 @@ export class ResultComponent implements OnInit {
    * @memberof ResultComponent
    */
   private setDepartureAndArrivelCityName(): void {
-    this._departureCityName = this._extandInfoService.
-      getCityAndCountryByAirportCode(this._itinerarySegments[0].DepartureAirport).CityName;
+    this._departureCityName = this._extandInfoService.getCityAndCountryByAirportCode(
+      this._itinerarySegments[0].DepartureAirport
+    ).CityName;
 
-    this._arrivelCityName = this._extandInfoService.
-      getCityAndCountryByAirportCode(this._itinerarySegments[this._itinerarySegments.length - 1].ArrivalAirport).CityName;
+    this._arrivelCityName = this._extandInfoService.getCityAndCountryByAirportCode(
+      this._itinerarySegments[this._itinerarySegments.length - 1].ArrivalAirport
+    ).CityName;
+  }
+
+  /**
+ * On mouse out event. hide the overlay after timeout (when segments popup is shown).
+ * @param {any} event
+ * @param {any} overlayPopupRef
+ * @memberof ResultComponent
+ */
+  onHideOverlay(event, overlayPopupRef) {
+    setTimeout(() => {
+      overlayPopupRef.hide();
+    }, 250);
+  }
+
+  /**
+ * On init set the policy ratinf at the current result.
+ * @private
+ * @memberof ResultComponent
+ */
+  private setPolicyRatingLevel(): void {
+    this._policyRating = this._itineraryInfo.PolicyInfo.Rating;
   }
 }

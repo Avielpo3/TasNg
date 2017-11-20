@@ -31,9 +31,11 @@ export class FlightResultSelectedDirective implements OnInit, OnChanges {
      * @param {ElementRef} _elementRef
      * @memberof FlightResultSelectedDirective
      */
-    constructor(private _renderer: Renderer2,
-        private _elementRef: ElementRef,
-        private _obtService: ObtService ) { }
+  constructor(
+    private _renderer: Renderer2,
+    private _elementRef: ElementRef,
+    private _obtService: ObtService
+  ) {}
 
     ngOnInit(): void {
         if (this.IsSelected) {

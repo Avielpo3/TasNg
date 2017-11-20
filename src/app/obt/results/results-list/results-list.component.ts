@@ -29,6 +29,8 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   private _sliderFilterSubscription: Subscription;
   private _stopQuantityFilterSubscription: Subscription;
   private _airlineFilterSubscription: Subscription;
+  private _showResultsOutsidePolicySubscription: Subscription;
+  private _policyLevelRatingSubscription: Subscription;
 
   // Connected To DOM properties
   _byPriceFilter: { min: number, max: number } = { min: 0, max: 99999 };
@@ -36,6 +38,8 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   _byFlightDeparturelHour: { min: number, max: number } = { min: 0, max: 23 };
   _byStopQuantity: number[] = [];
   _byAirline: AirlineInfo[];
+  _byShowResultsOutOfPolicy: boolean = false;
+  _byPolicyLevelRating: number = 0;
 
   /**
    * Creates an instance of ResultsListComponent.
@@ -65,6 +69,12 @@ export class ResultsListComponent implements OnInit, OnDestroy {
 
     this._airlineFilterSubscription = this._filterService.OnAirlineFilterToggle.
       subscribe((airlineArray: AirlineInfo[]) => this.handleOnAirlineFilterToggle(airlineArray));
+
+    this._showResultsOutsidePolicySubscription = this._filterService.OnShowResultsOutOfPolicyToggle
+      .subscribe((toShowResultsOutOfPolicy: boolean) => this.handleOnShowResultsOutOfPolicy(toShowResultsOutOfPolicy));
+
+    this._policyLevelRatingSubscription = this._filterService.OnPolicyLevelChanged
+      .subscribe((policyLevel: number) => this.handleOnPolicyLevelChanged(policyLevel));
   }
 
   /**
@@ -89,12 +99,20 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     }
   }
 
-  private handleOnStopQuantityFilterToggle(stopQuantityArray: number[]) {
+  private handleOnStopQuantityFilterToggle(stopQuantityArray: number[]): void {
     this._byStopQuantity = stopQuantityArray;
   }
 
-  private handleOnAirlineFilterToggle(airlineArray: AirlineInfo[]) {
+  private handleOnAirlineFilterToggle(airlineArray: AirlineInfo[]): void {
     this._byAirline = airlineArray;
+  }
+
+  private handleOnShowResultsOutOfPolicy(showResultsOutOfPolicy: boolean): void {
+    this._byShowResultsOutOfPolicy = showResultsOutOfPolicy;
+  }
+
+  private handleOnPolicyLevelChanged(policyLevel: number): void {
+    this._byPolicyLevelRating = policyLevel;
   }
 
   /**
@@ -104,5 +122,7 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     this._stopQuantityFilterSubscription.unsubscribe();
     this._sliderFilterSubscription.unsubscribe();
     this._airlineFilterSubscription.unsubscribe();
+    this._showResultsOutsidePolicySubscription.unsubscribe();
+    this._policyLevelRatingSubscription.unsubscribe();
   }
 }

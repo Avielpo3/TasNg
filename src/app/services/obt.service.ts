@@ -14,6 +14,7 @@ import { ServiceList } from '../obt/Dto & Enum/service-list.dto';
 import { AppService } from './app.service';
 import { environment } from '../../environments/environment';
 import * as $ from 'jquery';
+import { AirlineInfo } from '../obt/Dto & Enum/Airline Dto/airline-names.dto';
 
 @Injectable()
 export class ObtService {
@@ -33,8 +34,8 @@ export class ObtService {
     StopQuantity: [],
     DepartureDate: null,
     DepartueAirport: '',
-    ArrivelAirport: '',
-    ArrivelDate: null
+    ArrivalAirport: '',
+    ArrivalDate: null
   };
 
   private _flightResultList: FlightResultDto;
@@ -92,11 +93,11 @@ export class ObtService {
         jsonResponseArray.forEach(jsonAnswer => {
           const flightResponse: FlightResponseFromServer = jsonAnswer as FlightResponseFromServer;
           try {
-            if (flightResponse.ErrorDescriptionIfExist === null || flightResponse.ErrorDescriptionIfExist.length >= 1) {
+            if (flightResponse.ErrorDescriptionIfExist !== null && flightResponse.ErrorDescriptionIfExist.length >= 1) {
               this._appService.showPopup(flightResponse.ErrorDescriptionIfExist, 'Error', true);
               this._logger.logObject(flightResponse.ErrorDescriptionIfExist);
               this.isResultsArrived = false;
-              return;
+              return true;
             }
 
             if (flightResponse.AnswerResponseJson === null || flightResponse.AnswerResponseJson === '') {
@@ -125,8 +126,7 @@ export class ObtService {
             // Start Angular by showing results.
             this._appService.StartAngular();
 
-            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
-
+            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto, responseId);
 
             this.onGetFlightResultsJson.next(flightResultDto);
             this.onGetFlightGlobalInfo.next(flightGlobalInfo);
@@ -207,6 +207,9 @@ export class ObtService {
             if (flightResponse.RemainingRequestCount === 0) {
               this.isResultsArrived = false; // Stop quastion the api server.
             }
+
+            // Start Angular by showing results.
+            this._appService.StartAngular();
 
             const responseId = flightResponse.CurrentResponseId;
             const flightResponseFullObject = flightResponse.AnswerResponseJson;

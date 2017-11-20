@@ -47,13 +47,13 @@
   <div class="row">
     <div class="col-xs-12">
       <p-checkbox *ngFor="let stopFilter of _filterStopQuantityList"
-                  id="stopQuantityFilterGroup"
-                  name="stopQuantityFilter"
-                  [styleClass]="'stop-quantity-filter'"
-                  [value]="stopFilter"
-                  [(ngModel)]="_selectedStopQuantityFilter"
-                  [label]="getStopQuantityFilterName(stopFilter)"
-                  (onChange)="handleStopsQuantityFilterChange($event)"></p-checkbox>
+        id="stopQuantityFilterGroup"
+        name="stopQuantityFilter"
+        [styleClass]="'stop-quantity-filter'"
+        [value]="stopFilter"
+        [(ngModel)]="_selectedStopQuantityFilter"
+        [label]="getStopQuantityFilterName(stopFilter)"
+        (onChange)="handleStopsQuantityFilterChange($event)"></p-checkbox>
     </div>
   </div>
   <!--[FLIGHT STOPS CHECKBOXES END]-->
@@ -69,7 +69,8 @@
   <!--[POLICY COMPONENT START]-->
   <div class="row">
     <div class="col-xs-12">
-      <app-policy-slider></app-policy-slider>
+      <app-policy-slider (onShowResultsOutOfPolicyEmitter)="handleOnShowResultsOutOfPolicy($event)"
+        (onPolicyLevelChanged)="handleOnPolicyLevelChanged($event)"></app-policy-slider>
     </div>
   </div>
   <!--[POLICY COMPONENT END]-->

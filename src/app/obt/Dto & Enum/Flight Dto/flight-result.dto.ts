@@ -66,7 +66,7 @@ export interface ItineraryInfo {
   ETiketing?: any;
   LogoNameSuffix?: any;
   MarketingAirline: string;
-  PolicyInfo?: any;
+  PolicyInfo?: PolicyInfo;
   RequiredParameterList?: any;
   RoutingID?: any;
   SequenceNumber: number;
@@ -84,6 +84,12 @@ export interface MarketingCabin {
   CabinType: string;
   Meal?: any;
   TfClass?: any;
+}
+
+export interface PolicyInfo {
+  IsInPolicy: boolean;
+  Rating?: number;
+  OopReason?: number;
 }
 
 export interface ItinerarySegment {

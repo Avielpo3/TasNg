@@ -14,8 +14,7 @@ import { AirlineInfo } from '../Dto & Enum/Airline Dto/airline-names.dto';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent implements OnInit {
-
-  style1 = {display: 'block'};
+  style1 = { display: 'block' };
 
   _filterSliderList: FilterDto[];
   _filterStopQuantityList: number[];
@@ -23,14 +22,16 @@ export class FiltersComponent implements OnInit {
   _selectedStopQuantityFilter: number[];
   _selectedAirlineFilter: AirlineInfo[];
 
-  constructor(private _filterService: FilterService, private _obtService: ObtService, private _loggerService: LoggerService) {
+  constructor(
+    private _filterService: FilterService,
+    private _obtService: ObtService,
+    private _loggerService: LoggerService
+  ) {
     this.getFiltersList();
     this.subscribeToGlobalFlightInfo();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   private subscribeToGlobalFlightInfo(): void {
     this._obtService.onGetFlightGlobalInfo.subscribe(
@@ -71,6 +72,14 @@ export class FiltersComponent implements OnInit {
       default:
         return filterNumber.toString() + ' Stops';
     }
+  }
+
+  handleOnShowResultsOutOfPolicy(event): void {
+    this._filterService.OnShowResultsOutOfPolicyToggle.next(event);
+  }
+
+  handleOnPolicyLevelChanged(event): void {
+    this._filterService.OnPolicyLevelChanged.next(event);
   }
 
 }
