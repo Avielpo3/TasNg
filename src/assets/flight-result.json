@@ -54,7 +54,7 @@
                       "DirectionId": 0,
                       "MarketingAirline": "TK",
                       "PolicyInfo": {
-                        "IsInPolicy": true,
+                        "IsInPolicy": false,
                         "OopReason": 0,
                         "Rating": 0.0
                       },

@@ -1,38 +1,8 @@
 @import "../../../assets/styles/variables";
 
-.policy-slider-wrapper {
-  position: relative;
-  height: 21px;
-  width: 212px;
-  margin: 0 auto;
-  .policy-slider-bg {
-    width: 100%;
-    height: 21px;
-    position: absolute;
-    top: 4px;
-    left: 0;
-  }
-
-  @for $i from 0 through 5 {
-    .policy-slider-bg-#{$i} {
-      background: url("../../../assets/images/policy-levels.png") -15px -15px +
-        (
-          $i * -40
-        ) no-repeat;
-    }
-  }
-}
-
-.policy-slider.ui-slider {
-  height: 21px;
-  background: none;
-  .ui-slider-handle {
-    top: 0 !important;
-    height: 21px;
-    width: 11px;
-    background: url("../../../assets/images/level-slider-handle.png") center
-      left no-repeat;
-  }
+.policy-check-box {
+  float: left;
+  margin-top: 2em;
 }
 
 .circle {

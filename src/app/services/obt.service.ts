@@ -1,28 +1,21 @@
-import { Injectable, EventEmitter, ElementRef } from "@angular/core";
-import { ApiService } from "./api.service";
-import { LoggerService } from "./logger.service";
-import { Response } from "@angular/http";
-import { Subject } from "rxjs/Subject";
-import { FilterService } from "./filter.service";
-import { FlightGlobalInfo } from "../obt/Dto & Enum/flights-global-info";
-import {
-  FlightResultDto,
-  ItinerariesList,
-  FlightResponseFromServer
-} from "../obt/Dto & Enum/flight-result-dto";
-import { ReplaySubject } from "rxjs/ReplaySubject";
-import {
-  FlightSelectedEvent,
-  CurrentFlightInfo
-} from "../obt/Dto & Enum/EventsDto/flight.event";
-import { AirlineInfo } from "../obt/Dto & Enum/airline-name-dto";
-import { AirportCodeToCityAndCountryName } from "../obt/Dto & Enum/airport-city-country-dto";
-import { ExtendInformationService } from "./global services/extand-info.service";
-import { Observable } from "rxjs/Observable";
-import { ServiceList } from "../obt/Dto & Enum/service-list.dto";
-import { AppService } from "./app.service";
-import { environment } from "../../environments/environment";
-import * as $ from "jquery";
+import { Injectable, EventEmitter, ElementRef } from '@angular/core';
+import { ApiService } from './api.service';
+import { LoggerService } from './logger.service';
+import { Response } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
+import { FilterService } from './filter.service';
+import { FlightGlobalInfo } from '../obt/Dto & Enum/flights-global-info';
+import { FlightResultDto, ItinerariesList, FlightResponseFromServer } from '../obt/Dto & Enum/flight-result-dto';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { FlightSelectedEvent, CurrentFlightInfo } from '../obt/Dto & Enum/EventsDto/flight.event';
+import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
+import { AirportCodeToCityAndCountryName } from '../obt/Dto & Enum/airport-city-country-dto';
+import { ExtendInformationService } from './global services/extand-info.service';
+import { Observable } from 'rxjs/Observable';
+import { ServiceList } from '../obt/Dto & Enum/service-list.dto';
+import { AppService } from './app.service';
+import { environment } from '../../environments/environment';
+import * as $ from 'jquery';
 
 @Injectable()
 export class ObtService {
@@ -41,8 +34,8 @@ export class ObtService {
     TotalFlightNumber: [],
     StopQuantity: [],
     DepartureDate: null,
-    DepartueAirport: "",
-    ArrivelAirport: "",
+    DepartueAirport: '',
+    ArrivelAirport: '',
     ArrivelDate: null
   };
 
@@ -63,10 +56,9 @@ export class ObtService {
   constructor(
     private _apiService: ApiService,
     private _logger: LoggerService,
-    private _filterService: FilterService,
     private _extandInfoService: ExtendInformationService,
     private _appService: AppService
-  ) {}
+  ) { }
 
   public setRequestIdAndStartNgProccess(requstId: number): void {
     this._requstId = requstId;
@@ -104,7 +96,7 @@ export class ObtService {
             ) {
               this._appService.showPopup(
                 flightResponse.ErrorDescriptionIfExist,
-                "Error",
+                'Error',
                 true
               );
               this._logger.logObject(flightResponse.ErrorDescriptionIfExist);
@@ -114,7 +106,7 @@ export class ObtService {
 
             if (
               flightResponse.AnswerResponseJson === null ||
-              flightResponse.AnswerResponseJson === ""
+              flightResponse.AnswerResponseJson === ''
             ) {
               if (flightResponse.RemainingRequestCount <= 0) {
                 this.isResultsArrived = false; // Stop quastion the api server.
@@ -140,8 +132,8 @@ export class ObtService {
                 .length === 0
             ) {
               this._appService.showPopup(
-                "There are no results for this search, Try again.",
-                "No results found",
+                'There are no results for this search, Try again.',
+                'No results found',
                 true
               );
               return;
@@ -164,7 +156,7 @@ export class ObtService {
         });
       },
       error => {
-        this._logger.onHttpError("getFlghtResultFromApi()", error);
+        this._logger.onHttpError('getFlghtResultFromApi()', error);
       }
     );
 
@@ -177,7 +169,7 @@ export class ObtService {
         try {
           const answerAfterPosting = JSON.parse(data._body).d;
           switch (answerAfterPosting) {
-            case "OK":
+            case 'OK':
               this.handlePostSelectedFlightsSuccess();
               break;
             default:
@@ -187,15 +179,15 @@ export class ObtService {
           this._logger.onError(error);
         }
       },
-      error => this._logger.onHttpError("getFlghtResultFromApi()", error),
-      () => this._logger.logInfo("Finished post selected results.")
+      error => this._logger.onHttpError('getFlghtResultFromApi()', error),
+      () => this._logger.logInfo('Finished post selected results.')
     );
   }
 
   private handlePostSelectedFlightsSuccess(): void {
     try {
-      this._appService.showPopup("Saved at server", "OK", true, false);
-      document.getElementById("ctl00_Content_lbtn3").click(); // TODO: delete this line.
+      this._appService.showPopup('Saved at server', 'OK', true, false);
+      document.getElementById('ctl00_Content_lbtn3').click(); // TODO: delete this line.
     } catch (error) {
       this._logger.onError(error);
     }
@@ -205,7 +197,7 @@ export class ObtService {
 
   private handlePostSelectedFlightsError(errorMsg: any): void {
     errorMsg = JSON.parse(errorMsg._body).d;
-    this._appService.showPopup(errorMsg, "Problem occurred", true);
+    this._appService.showPopup(errorMsg, 'Problem occurred', true);
   }
 
   getMockFlightResults() {
@@ -224,7 +216,7 @@ export class ObtService {
             if (flightResponse.ErrorDescriptionIfExist != null) {
               this._appService.showPopup(
                 flightResponse.ErrorDescriptionIfExist,
-                "Problem occurred",
+                'Problem occurred',
                 true
               );
               return;
@@ -232,7 +224,7 @@ export class ObtService {
 
             if (
               flightResponse.AnswerResponseJson === null ||
-              flightResponse.AnswerResponseJson === ""
+              flightResponse.AnswerResponseJson === ''
             ) {
               return true;
             }
@@ -261,7 +253,7 @@ export class ObtService {
         });
       },
       error => {
-        this._logger.onHttpError("getFlghtResultFromApi()", error);
+        this._logger.onHttpError('getFlghtResultFromApi()', error);
       }
     );
 
@@ -274,12 +266,9 @@ export class ObtService {
    * @returns {FlightGlobalInfo}
    * @memberof ObtService
    */
-  private createflightGlobalInfoObject(
-    flightDto: FlightResultDto
-  ): FlightGlobalInfo {
+  private createflightGlobalInfoObject(flightDto: FlightResultDto): FlightGlobalInfo {
     const lastScreenFlight = flightDto.Answer.DestinationList.length - 1;
-    const lastLegFlight =
-      flightDto.Answer.DestinationList[0].ItinerariesList.length - 1;
+    const lastLegFlight = flightDto.Answer.DestinationList[0].ItinerariesList.length - 1;
 
     const departureAirport: string =
       flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary
@@ -366,7 +355,7 @@ export class ObtService {
     try {
       if (
         itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0]
-          .FromCode !== "USD"
+          .FromCode !== 'USD'
       ) {
         itinerariesList.Itinerary.ItineraryInfo.UsdAmount =
           itinerariesList.Itinerary.ItineraryInfo.Amount *
@@ -379,6 +368,7 @@ export class ObtService {
       this._logger.onException(error);
     }
   }
+
   /**
     * @param {number} refNumber
     * @param {number} currentScreenNumber

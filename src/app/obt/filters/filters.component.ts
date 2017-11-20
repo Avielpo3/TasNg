@@ -7,15 +7,13 @@ import { FlightGlobalInfo } from '../Dto & Enum/flights-global-info';
 import { LoggerService } from '../../services/logger.service';
 import { AirlineInfo } from '../Dto & Enum/airline-name-dto';
 
-
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent implements OnInit {
-
-  style1 = {display: 'block'};
+  style1 = { display: 'block' };
 
   _filterSliderList: FilterDto[];
   _filterStopQuantityList: number[];
@@ -23,25 +21,36 @@ export class FiltersComponent implements OnInit {
   _selectedStopQuantityFilter: number[];
   _selectedAirlineFilter: AirlineInfo[];
 
-  constructor(private _filterService: FilterService, private _obtService: ObtService, private _loggerService: LoggerService) {
+  constructor(
+    private _filterService: FilterService,
+    private _obtService: ObtService,
+    private _loggerService: LoggerService
+  ) {
     this.getFiltersList();
     this.subscribeToGlobalFlightInfo();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   private subscribeToGlobalFlightInfo(): void {
     this._obtService.onGetFlightGlobalInfo.subscribe(
       (flightGlobalInfo: FlightGlobalInfo) => {
-        this._filterSliderList[0].ngPrimeOptions.min = flightGlobalInfo.FlightMinPrice;
-        this._filterSliderList[0].ngPrimeOptions.max = flightGlobalInfo.FlightMaxPrice;
-        this._selectedStopQuantityFilter = this._filterStopQuantityList = flightGlobalInfo.StopQuantity;
-        this._selectedAirlineFilter = this._filterAirlineList = flightGlobalInfo.Airlines;
-        this._filterService.OnStopQuantityFilterToggle.next(this._selectedStopQuantityFilter);
-        this._filterService.OnAirlineFilterToggle.next(this._selectedAirlineFilter);
-      });
+        this._filterSliderList[0].ngPrimeOptions.min =
+          flightGlobalInfo.FlightMinPrice;
+        this._filterSliderList[0].ngPrimeOptions.max =
+          flightGlobalInfo.FlightMaxPrice;
+        this._selectedStopQuantityFilter = this._filterStopQuantityList =
+          flightGlobalInfo.StopQuantity;
+        this._selectedAirlineFilter = this._filterAirlineList =
+          flightGlobalInfo.Airlines;
+        this._filterService.OnStopQuantityFilterToggle.next(
+          this._selectedStopQuantityFilter
+        );
+        this._filterService.OnAirlineFilterToggle.next(
+          this._selectedAirlineFilter
+        );
+      }
+    );
   }
 
   /**
@@ -50,12 +59,13 @@ export class FiltersComponent implements OnInit {
    * @memberof FiltersComponent
    */
   handleStopsQuantityFilterChange(checkboxEvent: any) {
-    this._filterService.OnStopQuantityFilterToggle.next(this._selectedStopQuantityFilter);
+    this._filterService.OnStopQuantityFilterToggle.next(
+      this._selectedStopQuantityFilter
+    );
   }
 
   handleAirlineFilterChange(checkboxEvent: any) {
     this._filterService.OnAirlineFilterToggle.next(this._selectedAirlineFilter);
-    this._loggerService.logObject(this._filterAirlineList);
   }
 
   private getFiltersList(): void {
@@ -71,6 +81,14 @@ export class FiltersComponent implements OnInit {
       default:
         return filterNumber.toString() + ' Stops';
     }
+  }
+
+  handleOnShowResultsOutOfPolicy(event): void {
+    this._filterService.OnShowResultsOutOfPolicyToggle.next(event);
+  }
+
+  handleOnPolicyLevelChanged(event): void {
+    this._filterService.OnPolicyLevelChanged.next(event);
   }
 
 }

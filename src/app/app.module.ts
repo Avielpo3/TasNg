@@ -53,6 +53,8 @@ import { SelectFlightResultService } from './services/select-flight.service';
 import { SearchForServicesComponent } from './search-for-services/search-for-services.component';
 import { HeadNavigationBarComponent } from './head-navigation-bar/head-navigation-bar.component';
 import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
+import { ByShowResultsOutOfPolicy } from './pipes/by-show-results-out-of-policy.pipe';
+import { ByPolicyLevelRating } from './pipes/by-policy-level-rating.pipe';
 
 
 const appRoutes: Routes = [
@@ -82,6 +84,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FlightResultSelectedDirective,
     InfiniteScrollerDirective,
     ByStopQuantityFilterPipe,
+    ByPolicyLevelRating,
+    ByShowResultsOutOfPolicy,
     ByAirlineFilterPipe,
     FlightDurationGraphComponent,
     FlightListNavigatorComponent,

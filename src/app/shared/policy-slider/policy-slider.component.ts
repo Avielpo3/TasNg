@@ -21,11 +21,25 @@ export class PolicySliderComponent implements OnInit {
   @Input() _currentPolicy: number = 0;
 
   /**
+ * Check box that indicates if the user can see results out of policy
+ * @type {boolean}
+ * @memberof PolicySliderComponent
+ */
+  @Input() _showResultsOutOfPolicy: boolean = true;
+
+  /**
    * On policy level changed.
    * @type {EventEmitter<number>}
    * @memberof PolicySliderComponent
    */
-  @Output() onPolicyChanged: EventEmitter<number> = new EventEmitter();
+  @Output() onPolicyLevelChanged: EventEmitter<number> = new EventEmitter();
+
+  /**
+ * Event that fires when check/unchecked the Show results out of policy.
+ * @type {EventEmitter<boolean>}
+ * @memberof PolicySliderComponent
+ */
+  @Output() onShowResultsOutOfPolicyEmitter: EventEmitter<boolean> = new EventEmitter();
 
   /**
  * Creates an instance of PolicySliderComponent.
@@ -37,6 +51,10 @@ export class PolicySliderComponent implements OnInit {
 
   updateLevel(policyLevel: number) {
     this._currentPolicy = policyLevel;
-    this.onPolicyChanged.next(policyLevel);
+    this.onPolicyLevelChanged.next(policyLevel);
+  }
+
+  onShowResultsOutOfPolicyChanged(event) {
+    this.onShowResultsOutOfPolicyEmitter.next(this._showResultsOutOfPolicy);
   }
 }

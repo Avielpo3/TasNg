@@ -5,13 +5,34 @@ import { FilterEvent } from '../obt/Dto & Enum/EventsDto/filter.event';
 import { FilterDto } from '../obt/Dto & Enum/filter-dto';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
+import { ObtService } from './obt.service';
+import { DestinationList } from '../obt/Dto & Enum/flight-result-dto';
 
 @Injectable()
 export class FilterService {
 
+  private _resultList: DestinationList[];
+
   public OnSliderFilterChangeValue: Subject<FilterEvent> = new Subject();
   public OnStopQuantityFilterToggle: ReplaySubject<number[]> = new ReplaySubject();
-  public OnAirlineFilterToggle: ReplaySubject<AirlineInfo[]> = new ReplaySubject();
+
+  /* On Filter click one og the airlines brands */
+  private onAirlineFilterToggle: ReplaySubject<AirlineInfo[]> = new ReplaySubject();
+  public get OnAirlineFilterToggle(): ReplaySubject<AirlineInfo[]> {
+    return this.onAirlineFilterToggle;
+  }
+
+  /* On Filter click Show result out of policy */
+  private onShowResultsOutOfPolicyEmitter: EventEmitter<boolean> = new EventEmitter();
+  public get OnShowResultsOutOfPolicyToggle(): EventEmitter<boolean> {
+    return this.onShowResultsOutOfPolicyEmitter;
+  }
+
+  /* On Filter 'Slide' the policy level */
+  private onPolicyLevelChanged: EventEmitter<number> = new EventEmitter();
+  public get OnPolicyLevelChanged(): EventEmitter<number> {
+    return this.onPolicyLevelChanged;
+  }
 
   private _filterArray: FilterDto[] = [
     {
@@ -33,41 +54,36 @@ export class FilterService {
       name: FilterNameEnum.DepartueHour,
       isVisible: true,
       ngPrimeOptions:
-      {
-        animate: true,
-        min: 0,
-        max: 23,
-        disabled: false,
-        orientation: 'horizontal',
-        range: true,
-        step: 0.5,
-        style: null,
-        styleClass: null
-      }
+        {
+          animate: true,
+          min: 0,
+          max: 23,
+          disabled: false,
+          orientation: 'horizontal',
+          range: true,
+          step: 0.5,
+          style: null,
+          styleClass: null
+        }
     },
     {
       name: FilterNameEnum.ArrivelHour,
       isVisible: true,
       ngPrimeOptions:
-      {
-        animate: true,
-        min: 0,
-        max: 23,
-        disabled: false,
-        orientation: 'horizontal',
-        range: true,
-        step: 0.5,
-        style: null,
-        styleClass: null
-      }
+        {
+          animate: true,
+          min: 0,
+          max: 23,
+          disabled: false,
+          orientation: 'horizontal',
+          range: true,
+          step: 0.5,
+          style: null,
+          styleClass: null
+        }
     }
   ];
-
   public get FilterList(): FilterDto[] {
     return this._filterArray;
   }
-
-  constructor() {
-  }
-
 }
