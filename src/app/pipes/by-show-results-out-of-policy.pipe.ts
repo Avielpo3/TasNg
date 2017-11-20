@@ -5,7 +5,7 @@ import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
 @Pipe({
     name: 'byShowResultsOutOfPolicy',
 })
-export class ByShowResultsOutOfPolicy implements PipeTransform {
+export class ByShowResultsOutOfPolicyPipe implements PipeTransform {
 
     transform(itinerariesList: ItinerariesList[], isInsidePolicy: boolean): any {
         const filteredItinerariesList: ItinerariesList[] = [];

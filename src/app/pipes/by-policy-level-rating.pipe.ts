@@ -5,7 +5,7 @@ import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
 @Pipe({
     name: 'byPolicyLevelRating',
 })
-export class ByPolicyLevelRating implements PipeTransform {
+export class ByPolicyLevelRatingPipe implements PipeTransform {
 
     transform(itinerariesList: ItinerariesList[], policyRating: number): any {
         const filteredItinerariesList: ItinerariesList[] = [];

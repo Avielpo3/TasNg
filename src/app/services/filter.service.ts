@@ -6,12 +6,9 @@ import { FilterDto } from '../obt/Dto & Enum/filter-dto';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AirlineInfo } from '../obt/Dto & Enum/airline-name-dto';
 import { ObtService } from './obt.service';
-import { DestinationList } from '../obt/Dto & Enum/flight-result-dto';
 
 @Injectable()
 export class FilterService {
-
-  private _resultList: DestinationList[];
 
   public OnSliderFilterChangeValue: Subject<FilterEvent> = new Subject();
   public OnStopQuantityFilterToggle: ReplaySubject<number[]> = new ReplaySubject();
