@@ -9,6 +9,7 @@
     "Next": "Sonraki",
     "Confirm": "Onayla",
     "Stops": "Duraklar",
+    "Stop": "Durdurmak",
     "Price": "Fiyat",
     "DepartueHour": "Kalkış Saati",
     "ArrivelHour": "Varış Saati",
@@ -26,5 +27,6 @@
     "TotalFlightTime": "Total Flight Time",
     "Airlines": "Hava Yolları",
     "ReturnOptions": "geri dön seçenekleri",
-    "DepartureTime": "Hareket saati"
+    "DepartureTime": "Hareket saati",
+    "Show results out of policy": "Turkish content"
     }    

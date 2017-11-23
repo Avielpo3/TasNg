@@ -9,6 +9,7 @@
     "Next": "Next",
     "Confirm": "Confirm",
     "Stops": "Stops",
+    "Stop": "Stop",
     "Price": "Price",
     "DepartueHour": "Departuer Hour",
     "ArrivelHour": "Arrival Hour",
@@ -26,5 +27,6 @@
     "Airlines": "Airlines",
     "RESET": "RESET",
     "ReturnOptions": "Return Options",
-    "DepartureTime": "Departure Time"
+    "DepartureTime": "Departure Time",
+    "Show results out of policy": "Show results out of policy"
 }

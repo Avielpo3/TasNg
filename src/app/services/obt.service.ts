@@ -186,8 +186,7 @@ export class ObtService {
 
   private handlePostSelectedFlightsSuccess(): void {
     try {
-      // this._appService.showPopup('Saved at server', 'OK', true, false);
-      document.getElementById('btnNextPhase').click(); // TODO: delete this line at next version.
+      parent.document.getElementById('btnNextPhase').click(); // TODO: delete this line at next version.
     } catch (error) {
       this._logger.onError(error);
     }
