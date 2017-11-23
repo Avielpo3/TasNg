@@ -17,13 +17,19 @@ $flight-list-navigator-bg-color:#3c3c4a;
   font-size: 18px;
   border: 1px solid #8bc34a;
   margin:0 5px;
+  
 }
 
-.flight-list-navigator--btn--next, .flight-list-navigator--btn--next.btn-default:active:focus{
+.flight-list-navigator--btn--next, .flight-list-navigator--btn--next.btn-default{
   background: $flight-list-navigator-main-color;
   color: #ffffff;
   outline: none;
+  &.disabled:hover{
+    background: #CCC;
+    cursor: not-allowed;
+  }
 }
+
 
 .flight-list-navigator--btn--back, .flight-list-navigator--btn--back.btn-default:active:focus {
   background: $flight-list-navigator-bg-color;

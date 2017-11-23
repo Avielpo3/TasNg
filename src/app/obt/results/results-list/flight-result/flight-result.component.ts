@@ -53,7 +53,7 @@ export class ResultComponent implements OnInit {
     private _extandInfoService: ExtendInformationService,
     private _userService: UserService,
     private _selectFlightService: SelectFlightResultService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._userCurrencyCode = this._userService.UserInformation.CurrencyCode;

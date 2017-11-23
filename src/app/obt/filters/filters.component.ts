@@ -6,6 +6,7 @@ import { ObtService } from '../../services/obt.service';
 import { FlightGlobalInfo } from '../Dto & Enum/flights-global-info';
 import { LoggerService } from '../../services/logger.service';
 import { AirlineInfo } from '../Dto & Enum/airline-name-dto';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-filters',
@@ -20,11 +21,13 @@ export class FiltersComponent implements OnInit {
   _filterAirlineList: AirlineInfo[];
   _selectedStopQuantityFilter: number[];
   _selectedAirlineFilter: AirlineInfo[];
+  _numberOfStops: string;
 
   constructor(
     private _filterService: FilterService,
     private _obtService: ObtService,
-    private _loggerService: LoggerService
+    private _loggerService: LoggerService,
+    private _translateService: TranslateService
   ) {
     this.getFiltersList();
     this.subscribeToGlobalFlightInfo();
@@ -72,14 +75,14 @@ export class FiltersComponent implements OnInit {
     this._filterSliderList = this._filterService.FilterList;
   }
 
-  getStopQuantityFilterName(filterNumber: number): string {
+  getStopQuantityFilterName(filterNumber: number) {
     switch (filterNumber) {
       case 0:
-        return 'Direct';
+        return this._translateService.get("Direct").map((translateVal) => {return translateVal});
       case 1:
-        return '1 Stop';
+       return this._translateService.get("Stop").map((translateVal) => {return '1 ' + translateVal});
       default:
-        return filterNumber.toString() + ' Stops';
+       return this._translateService.get("Stops").map((translateVal) => {return filterNumber.toString() + ' ' + translateVal });
     }
   }
 

@@ -21,10 +21,10 @@
     "Duration": "Duration",
     "Policy": "Policy",
     "Layover": "Layover",
-    "ArrivalTime" : "Arrival Time",
-    "TotalFlightTime" : "Total Flight Time",
-    "Airlines" : "Airlines",
-    "Reset" : "Reset",
-    "ReturnOptions" : "Return Options",
-    "DepartureTime" : "Departure Time"
+    "ArrivalTime": "Arrival Time",
+    "TotalFlightTime": "Total Flight Time",
+    "Airlines": "Airlines",
+    "RESET": "RESET",
+    "ReturnOptions": "Return Options",
+    "DepartureTime": "Departure Time"
 }

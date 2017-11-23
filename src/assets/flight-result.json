@@ -307,7 +307,7 @@
                       },
                       "Amount": 66.0,
                       "DirectionId": 0,
-                      "MarketingAirline": "TK",
+                      "MarketingAirline": "TK", 
                       "PolicyInfo": {
                         "IsInPolicy": true,
                         "OopReason": 0,
