@@ -36,12 +36,12 @@
         <div class="row">
           <div class="col-xs-6 text-left">
             <span id="departureTime">
-              {{_itinerarySegments[0].DepartureDateTime | date:'shortTime' }}
+              {{_itinerarySegments[0].DepartureDateTime | date:'HH:mm' }}
             </span>
           </div>
           <div class="col-xs-6 text-right">
             <span id="arrivelTime">
-              {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'shortTime' }}
+              {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'HH:mm' }}
             </span>
           </div>
         </div>
