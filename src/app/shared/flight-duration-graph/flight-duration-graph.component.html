@@ -7,5 +7,10 @@
     <div *ngIf="durationData.type == 'flight'"
          class="flight-duration-graph-line flight-duration-graph-full-line"
          [style.width]="getLineWidth(durationData.span)"></div>
+
+    <div *ngIf="durationData.type == 'ground-break'"
+         class="flight-duration-graph-line flight-duration-break"
+         [style.width]="getLineWidth(durationData.span)"
+         [style.left]="getLineLeftPosition(durationData.left)" ></div>
   </ng-container>
 </div>

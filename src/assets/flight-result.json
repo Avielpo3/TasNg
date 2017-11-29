@@ -40,7 +40,7 @@
                                   "DecimalPlces": 0
                                 },
                                 "TotalFare": {
-                                  "Amount": 66.0,
+                                  "Amount": 56.0,
                                   "DecimalPlaces": 0.0,
                                   "TotalTax": 37.0,
                                   "TotalBase": 29.0
@@ -50,7 +50,7 @@
                           ]
                         }
                       },
-                      "Amount": 66.0,
+                      "Amount": 46.0,
                       "DirectionId": 0,
                       "MarketingAirline": "TK",
                       "PolicyInfo": {
@@ -135,7 +135,7 @@
                           ]
                         }
                       },
-                      "Amount": 66.0,
+                      "Amount": 46.0,
                       "DirectionId": 0,
                       "MarketingAirline": "TK",
                       "PolicyInfo": {
@@ -160,12 +160,28 @@
                     },
                     "ItinerarySegment": [
                       {
-                        "DepartureDateTime": "2017-12-13T07:00:00",
+                        "DepartureDateTime": "2017-12-13T01:00:00",
                         "FlightNumber": "2962",
                         "ResBookDesignCode": "F",
                         "StopQuantity": 0,
                         "RPH": 1,
-                        "ArrivalDateTime": "2017-12-13T08:05:00",
+                        "ArrivalDateTime": "2017-12-13T06:05:00",
+                        "Miles": 0.0,
+                        "ConnectionIndicator": "O",
+                        "DepartureAirport": "SAW",
+                        "ArrivalAirport": "ESB",
+                        "OperatingAirline": "TK",
+                        "Equipment": "78G",
+                        "MarketingAirline": "TK",
+                        "MarketingCabin": { "CabinType": "Y" }
+                      },
+                      {
+                        "DepartureDateTime": "2017-12-13T10:00:00",
+                        "FlightNumber": "2962",
+                        "ResBookDesignCode": "F",
+                        "StopQuantity": 0,
+                        "RPH": 1,
+                        "ArrivalDateTime": "2017-12-13T21:05:00",
                         "Miles": 0.0,
                         "ConnectionIndicator": "O",
                         "DepartureAirport": "SAW",

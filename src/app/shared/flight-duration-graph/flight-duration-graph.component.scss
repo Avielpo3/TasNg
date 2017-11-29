@@ -2,13 +2,13 @@
 
 .flight-duration-graph-container {
   width: 100%;
-  margin: 1rem 0;
+  height: 5px;
 }
 .flight-duration-graph-line {
   float: left;
 }
 .flight-duration-graph-empty-line {
-  height: 3px;
+  height: 60%;
   width: 100%;
   margin-top: 1px;
   background-color: $flight-duration-graph-empty;
@@ -25,13 +25,24 @@
 }
 
 .flight-duration-graph-full-line {
-  height: 5px;
+  height: 100%;
   width: 100%;
-  background-color: $flight-duration-graph-full;
+  background-image: linear-gradient(-90deg, #8bc349 0%, #1377f9 100%);
 }
 
 .flight-duration-graph-break-line {
   height: 5px;
   width: 100%;
   background-color: $flight-duration-graph-break;
+}
+
+.flight-duration-break{
+  position: absolute;
+  background: #d0d0d0;
+  z-index: 999;
+  height: 100%;
+  left: 10%;
+  border-top: 1.2px solid;
+  border-bottom: 1.2px solid;
+  border-collapse: currentColor;
 }

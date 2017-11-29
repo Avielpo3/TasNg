@@ -10,6 +10,7 @@ $flight-list-navigator-bg-color:#3c3c4a;
   bottom:150px;
   right:60px;
   padding-top: 16px;
+  opacity: 0.7;
 }
 .flight-list-navigator--btn{
   border-radius: 7px;
@@ -17,7 +18,6 @@ $flight-list-navigator-bg-color:#3c3c4a;
   font-size: 18px;
   border: 1px solid #8bc34a;
   margin:0 5px;
-  
 }
 
 .flight-list-navigator--btn--next, .flight-list-navigator--btn--next.btn-default{

@@ -1,9 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ItinerarySegment } from '../../obt/Dto & Enum/flight-result-dto';
+import { ObtService } from '../../services/obt.service';
+import { FlightGlobalInfo } from '../../obt/Dto & Enum/flights-global-info';
 
 export interface FlightDurationGraphData {
   span: number;
   type: string;
+  left?: number;
 }
 
 @Component({
@@ -14,12 +17,15 @@ export interface FlightDurationGraphData {
 export class FlightDurationGraphComponent implements OnInit {
 
   @Input() flightSegments;
+  @Input() currentScreen: number;
 
   _flightDurationData: FlightDurationGraphData[] = [];
 
+  _durationTotalLineLength: number = 0;
+
   private _spanDivide: number;
 
-  constructor() { }
+  constructor(private _obtService: ObtService) { }
 
   /**
    * Get's the line bar in percentage.
@@ -31,8 +37,17 @@ export class FlightDurationGraphComponent implements OnInit {
     return (span / this._spanDivide) + '%';
   }
 
+  getLineLeftPosition(span:number): string{
+    return (span / this._spanDivide) + '%';
+  }
+
   ngOnInit() {
-    this.createFlightDurationGraphData();
+    this._obtService.onGetFlightGlobalInfo.subscribe((globalInfo: FlightGlobalInfo) => {
+      const tempDate = new Date(globalInfo.DepartureDate).toDateString();
+      let totalSpanHours = Math.floor(new Date(globalInfo.LastArrivalSegment[this.currentScreen]).getTime() - new Date(tempDate).getTime()) / 3600000;
+      this._spanDivide = (((totalSpanHours / 24) * 24) + 24) / 100;
+      this.createFlightDurationGraphData();
+    });
   }
 
 
@@ -53,7 +68,11 @@ export class FlightDurationGraphComponent implements OnInit {
    */
   private createDepartureArrivelDurationArray(): any {
     const flightDurationGraphDataArray: FlightDurationGraphData[] = [];
-    const flightDurationArray: { flightduration: number, flightDepartue: Date, flightArrivelTime: Date }[] = [];
+    const flightDurationArray: {
+      flightduration: number,
+      flightDepartue: Date,
+      flightArrivelTime: Date
+    }[] = [];
 
     this.flightSegments.forEach((segment: ItinerarySegment) => {
       const temp = Math.floor((new Date(segment.ArrivalDateTime).getTime() - new Date(segment.DepartureDateTime).getTime()) / 3600000);
@@ -78,27 +97,41 @@ export class FlightDurationGraphComponent implements OnInit {
    * @memberof FlightDurationGraphComponent
    */
   private calculateGroundAndFlightTimeAndFillDurationGraphData(flightDurationArray): void {
-    if (flightDurationArray.length === 1) {
-      const flightDuration: number = flightDurationArray[0].flightduration;
-      const flightDepartue: Date = flightDurationArray[0].flightDepartue;
-      const flightArrivelTime: Date = flightDurationArray[0].flightArrivelTime;
+    let flightTime: number = 0;
+    let leftPosition: number = 0;
 
-      const is24Exact = (flightDuration % 24) === 0 ? 0 : 1;
-      this._spanDivide = ((Math.floor(flightDuration / 24) + is24Exact) * 24) / 100;
+    flightDurationArray.forEach((flightDurationSegment, index) => {
+      const flightDuration: number = flightDurationArray[index].flightduration;
+      const flightDepartue: Date = flightDurationArray[index].flightDepartue;
+      const flightArrivelTime: Date = flightDurationArray[index].flightArrivelTime;
 
-      const GroundTime0: number = flightDepartue.getHours();
-      const spanGroundTime0: FlightDurationGraphData = { span: GroundTime0, type: 'ground' };
-      this._flightDurationData.push(spanGroundTime0);
-
-      const flightTime: number = flightDuration;
-      const spanFlightTime: FlightDurationGraphData = { span: flightTime, type: 'flight' };
-      this._flightDurationData.push(spanFlightTime);
-
-      if (flightTime + GroundTime0 < 24) {
-        const GroundTime1: number = ((this._spanDivide * 100) - flightArrivelTime.getHours());
-        const spanGroundTime1: FlightDurationGraphData = { span: GroundTime1, type: 'ground' };
-        this._flightDurationData.push(spanGroundTime1);
+      let groundTime: number;
+      if (index === 0) {
+        groundTime = flightDepartue.getHours();
+        const spanGroundTime: FlightDurationGraphData = { span: groundTime, type: 'ground', left: groundTime + flightDuration };
+        this._flightDurationData.push(spanGroundTime);
       }
-    }
+      else {
+        groundTime = (new Date(flightDepartue).getTime() - new Date(flightDurationArray[index - 1].flightArrivelTime).getTime())
+          / 3600000;
+        const groundBreak: FlightDurationGraphData = { span:groundTime, type: 'ground-break', left:this._flightDurationData[index -1].left }  
+        this._flightDurationData.push(groundBreak);
+      }
+
+      flightTime += index === 0 ? flightDuration : flightDuration + groundTime;
+    });
+
+     const spanFlightTime: FlightDurationGraphData = { span: flightTime, type: 'flight' };
+     this._flightDurationData.push(spanFlightTime);
+
+    let finalGroundTime: number = this._flightDurationData
+      .map(flightData => flightData.span)
+      .reduce((sum, current) => sum + current);
+
+    finalGroundTime = this._spanDivide * 100 - finalGroundTime;
+
+    const spanGroundTime: FlightDurationGraphData = { span: finalGroundTime, type: 'ground' };
+    this._flightDurationData.push(spanGroundTime);
+  
   }
 }

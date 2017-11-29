@@ -36,7 +36,8 @@ export class ObtService {
     DepartureDate: null,
     DepartueAirport: '',
     ArrivelAirport: '',
-    ArrivelDate: null
+    ArrivelDate: null,
+    LastArrivalSegment: []
   };
 
   private _flightResultList: FlightResultDto;
@@ -67,9 +68,9 @@ export class ObtService {
 
     this.timer.takeWhile(() => this.isResultsArrived).subscribe(() => {
       // if (!environment.production) {
-      this.getMockFlightResults();
+      // this.getMockFlightResults();
       // } else {
-      // this.getFlightsResultFromApi();
+       this.getFlightsResultFromApi();
       // }
     });
   }
@@ -221,10 +222,8 @@ export class ObtService {
               return;
             }
 
-            if (
-              flightResponse.AnswerResponseJson === null ||
-              flightResponse.AnswerResponseJson === ''
-            ) {
+            if (flightResponse.AnswerResponseJson === null ||
+              flightResponse.AnswerResponseJson === '') {
               return true;
             }
 
@@ -239,9 +238,7 @@ export class ObtService {
             const flightResponseFullObject = flightResponse.AnswerResponseJson;
 
             const flightResultDto: FlightResultDto = (this._flightResultList = flightResponseFullObject as FlightResultDto);
-            const flightGlobalInfo = this.createflightGlobalInfoObject(
-              flightResultDto
-            );
+            const flightGlobalInfo = this.createflightGlobalInfoObject(flightResultDto);
             this.addResponseIdToFlight(responseId);
 
             this.onGetFlightResultsJson.next(flightResultDto);
@@ -276,22 +273,27 @@ export class ObtService {
     const arrivalAirport: string =
       flightDto.Answer.DestinationList[0].ItinerariesList[lastLegFlight].Itinerary
         .ItinerarySegment[0].ArrivalAirport;
+
     const departureDate: Date =
       flightDto.Answer.DestinationList[0].ItinerariesList[0].Itinerary
         .ItinerarySegment[0].DepartureDateTime;
+
     const arrivelDate: Date =
       flightDto.Answer.DestinationList[lastScreenFlight].ItinerariesList[0]
         .Itinerary.ItinerarySegment[0].ArrivalDateTime;
 
+
+
     flightDto.Answer.DestinationList.forEach((destinationList, index) => {
+      const lastSegment = destinationList.ItinerariesList[0].Itinerary.ItinerarySegment.length -1;
+      this._flightGlobalInfo.LastArrivalSegment[index] = 
+      destinationList.ItinerariesList[0].Itinerary.ItinerarySegment[lastSegment].ArrivalDateTime;
       for (const itinerariesList of destinationList.ItinerariesList) {
         this.setUsdRateToJson(itinerariesList);
 
         const currentAmount = itinerariesList.Itinerary.ItineraryInfo.UsdAmount;
-        const currentMarketingAirlineCode =
-          itinerariesList.Itinerary.ItineraryInfo.MarketingAirline;
-        const curentStopQuantity =
-          itinerariesList.Itinerary.ItineraryInfo.StopQuantity;
+        const currentMarketingAirlineCode = itinerariesList.Itinerary.ItineraryInfo.MarketingAirline;
+        const curentStopQuantity = itinerariesList.Itinerary.ItineraryInfo.StopQuantity;
 
         // Set max price.
         this._flightGlobalInfo.FlightMaxPrice =
@@ -320,7 +322,17 @@ export class ObtService {
         if (!this._flightGlobalInfo.StopQuantity.includes(curentStopQuantity)) {
           this._flightGlobalInfo.StopQuantity.push(curentStopQuantity);
         }
+
+        //Set the max arrival time to destination
+        const lastSegemntLength = itinerariesList.Itinerary.ItinerarySegment.length - 1;
+        const lastSegemntDate = itinerariesList.Itinerary.ItinerarySegment[lastSegemntLength].ArrivalDateTime;
+        const lastSegmentNumber = new Date(lastSegemntDate).getTime();
+        const currentlastSegmentNumber = new Date(this._flightGlobalInfo.LastArrivalSegment[index]).getTime();
+
+        this._flightGlobalInfo.LastArrivalSegment[index] = lastSegmentNumber > currentlastSegmentNumber
+          ? lastSegemntDate : this._flightGlobalInfo.LastArrivalSegment[index];
       }
+
       // Push the total results into array for each destination list.
       const totalResultsPerDestination: number =
         flightDto.Answer.DestinationList[index].ItinerariesList.length;
@@ -331,8 +343,7 @@ export class ObtService {
       return a > b ? 1 : -1;
     });
 
-    this._flightGlobalInfo.FlightMaxPrice +=
-      this._flightGlobalInfo.FlightMaxPrice / 100; // TODO: fix this.
+    this._flightGlobalInfo.FlightMaxPrice += this._flightGlobalInfo.FlightMaxPrice / 100; // TODO: fix this.
 
     this._flightGlobalInfo.DepartueAirport = departureAirport;
     this._flightGlobalInfo.ArrivelAirport = arrivalAirport;
@@ -353,9 +364,7 @@ export class ObtService {
   private setUsdRateToJson(itinerariesList: ItinerariesList): void {
     try {
       if (
-        itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0]
-          .FromCode !== 'USD'
-      ) {
+        itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode !== 'USD') {
         itinerariesList.Itinerary.ItineraryInfo.UsdAmount =
           itinerariesList.Itinerary.ItineraryInfo.Amount *
           itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].UsdRate;

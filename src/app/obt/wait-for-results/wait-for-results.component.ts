@@ -12,9 +12,9 @@ export class WaitForResultsComponent implements OnInit {
 
   ngOnInit() {
     // if (!environment.production) {
-    setTimeout(() => {
-      this.startAngular();
-    }, 1 * 1000);
+    // setTimeout(() => {
+    //   this.startAngular();
+    // }, 1 * 1000);
     // }
   }
 
@@ -25,7 +25,7 @@ export class WaitForResultsComponent implements OnInit {
         {
           requestId: 122,
           detail: true,
-          language: 'tr',
+          language: 'en',
           currency: 'TRY'
         }
       }));

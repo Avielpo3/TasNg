@@ -1,11 +1,12 @@
 <div id="filterResultContainer"
      class="filter-result-container container-fluid"
      (click)="handleSelectFlightClick()"
-     appFlightResultSelected
      [CurrentScreen]="_currentScreen"
      [IsSelected]="_itinerary.Itinerary.AnswerInfo.IsSelected"
+     appFlightResultSelected
      #appendOverlayToElement
      #flightResult>
+
   <div class="flight-result-row">
     <div class="row ">
       <div class="col-xs-1">
@@ -31,23 +32,34 @@
       </div>
       <div class="col-xs-3"
            (mouseenter)="op.show($event , appendOverlayToElement)"
-           (mouseleave)="onHideOverlay($event, op)"
-           >
+           (mouseleave)="onHideOverlay($event, op)">
         <div class="row">
           <div class="col-xs-6 text-left">
-            <span id="departureTime">
+            <span id="departureTimeDate"
+                  class="departure-date-month-day">
+              {{_itinerarySegments[0].DepartureDateTime | date:'dd MMM' }}
+            </span>
+            <span id="departureTimeDayHour"
+                  class="departure-date-hour">
               {{_itinerarySegments[0].DepartureDateTime | date:'HH:mm' }}
             </span>
           </div>
           <div class="col-xs-6 text-right">
-            <span id="arrivelTime">
+            <span id="arrivalTime"
+                  class="arrival-date-month-day">
+              {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'dd MMM' }}
+            </span>
+            <span id="arrivalTime"
+                  class="arrival-date-hour">
               {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'HH:mm' }}
             </span>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12">
-            <app-flight-duration-graph [flightSegments]="_itinerarySegments"></app-flight-duration-graph>
+          <div class="col-xs-12"
+               style="color:#ffffff; margin-top: 1em;">
+            <app-flight-duration-graph [flightSegments]="_itinerarySegments"
+                                       [currentScreen]="_currentScreen"></app-flight-duration-graph>
           </div>
         </div>
       </div>
@@ -80,7 +92,9 @@
             <div class="row">
               <div class="col-xs-1"></div>
               <div class="col-xs-11">
-                <span class="flight-price">{{ _itinerary.Itinerary.ItineraryInfo.UsdAmount | userCurrncy | currency:_userCurrencyCode:'symbol-narrow' }}</span>
+                <span class="flight-price">{{ _itinerary.Itinerary.ItineraryInfo.UsdAmount | userCurrncy | currency:_userCurrencyCode:'symbol-narrow'
+                  }}
+                </span>
               </div>
             </div>
 
@@ -116,7 +130,47 @@
                 styleClass="flight-result-leg-overlay">
   <div class="row text-center">
     <div class="col-xs-12">
-      <span class="flight-result-let--heading">{{_departureCityName}} - {{_arrivelCityName}}</span>
+      <span class="flight-result-let--heading">
+        {{_departureCityName}} - {{_arrivelCityName}} ( {{_itineraryInfo.StopQuantity}}
+        <b translate>Stops</b> )</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-5">
+      <span class="flight-duration-departure-leg bold">Departure</span>
+      <span id="departureTimeDateLeg"
+            class="departure-date-month-day-leg centered ">
+        {{_itinerarySegments[0].DepartureDateTime | date:'dd MMM' }}
+      </span>
+      <span id="departureTimeDayHourLeg"
+            class="departure-date-hour-leg centered">
+        {{_itinerarySegments[0].DepartureDateTime | date:'HH:mm' }}
+      </span>
+    </div>
+    <div class="col-xs-5">
+      <span id="arrivalTime"
+            class="arrival-date-hour-leg">
+        {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'HH:mm' }}
+      </span>
+      <span id="arrivalTime"
+            class="arrival-date-month-day-leg">
+        {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'dd MMM' }}
+      </span>
+      <span class="flight-duration-arrival-leg bold">Arrival</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 flight-duration-leg-container">
+      <img src="../assets/images/airplane-departure-blue.png"
+           class="airplane-departure-blue">
+      <div class="flight-duration-leg-inner-container">
+        <app-flight-duration-graph [flightSegments]="_itinerarySegments"
+                                   [currentScreen]="_currentScreen"></app-flight-duration-graph>
+      </div>
+      <img src="../assets/images/airplane-arrival-green.png"
+           class="airplane-arrival-green">
     </div>
   </div>
   <app-flight-result-leg *ngFor="let segment of _itinerarySegments"

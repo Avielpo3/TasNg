@@ -69,11 +69,85 @@
   display: inline-block;
 }
 
-@for $i from 0 through 5 {
-  .policy-symbol-#{$i} {
-    background: url("../../../../../assets/images/policy-small.png") -15px -15px +
-      (
-        $i * -38
-      ) no-repeat;
+@mixin font-float-color( $font, $color, $float){
+  font-size: $font;
+  color: $color;
+  float: $float;
+}
+
+
+.departure-date-month-day{
+  @include font-float-color(14px, $tas-azure-dark, left);
+}
+
+.arrival-date-month-day{
+  @include font-float-color(14px, $light-green, left);
+}
+
+.arrival-date-hour{
+  @include font-float-color(16px, $light-green, right);
+  font-weight: bold;
+}
+
+.departure-date-hour{
+  @include font-float-color(16px, $tas-azure-dark, right);
+  font-weight: bold;
+}
+
+.departure-date-month-day-leg,
+.departure-date-hour-leg
+{
+  @include font-float-color(16px, $tas-azure-dark, left);
+  &.centered{
+    margin-top: -0.2em;
+    margin-right: 0.3em;
   }
+}
+
+.arrival-date-month-day-leg,
+.arrival-date-hour-leg
+{
+  @include font-float-color(16px, $light-green, right);
+  margin-right: 0.6em;
+  margin-top: -0.2em;
+  &.centered{
+    margin-top: -0.2em;
+    margin-right: 0.3em;
+  }
+}
+
+.flight-duration-departure-leg{
+  float: left;
+  margin-left: -14px;
+  margin-right: 5px;
+}
+
+.flight-duration-arrival-leg{
+  float: right;
+  margin-right:0.4em;
+}
+
+.flight-duration-leg-container{
+  height: 40px;
+  background-color: #f7f7f7;
+  color: #f7f7f7;
+  margin-bottom: 1em;
+  margin-top: 0.5em;  
+  .flight-duration-leg-inner-container{
+    position: relative;
+    top: 25%;
+    margin-top: 10px;
+  }
+}
+
+.airplane-departure-blue{
+  position: absolute;
+  top: 4px;
+  left: 15px;
+}
+
+.airplane-arrival-green{
+  position: absolute;
+  left: 84%;
+  top: 68%;
 }

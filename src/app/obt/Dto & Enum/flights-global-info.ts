@@ -10,4 +10,5 @@ export interface FlightGlobalInfo {
     ArrivelAirport: string;
     DepartureDate: Date;
     ArrivelDate: Date;
+    LastArrivalSegment: Date[];
 }
