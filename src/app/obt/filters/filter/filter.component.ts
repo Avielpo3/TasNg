@@ -9,6 +9,7 @@ import { ObtService } from '../../../services/obt.service';
 import { FlightGlobalInfo } from '../../Dto & Enum/flights-global-info';
 import { FilterDto } from '../../Dto & Enum/filter-dto';
 import { FilterEvent } from '../../Dto & Enum/EventsDto/filter.event';
+import { UserService } from '../../../services/user.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { FilterEvent } from '../../Dto & Enum/EventsDto/filter.event';
 export class FilterComponent implements OnInit {
   @Input() _filter: FilterDto;
   @Input() _index: number;
+  @Input() _userCurrency: number;
 
   private _onChangeSubscription = new Subscription();
   @ViewChild('ngPrimeSlider') ngPrimeSlider: ElementRef;
@@ -35,7 +37,11 @@ export class FilterComponent implements OnInit {
    * @param {ObtService} _obtService
    * @memberof FilterComponent
    */
-  constructor(private _filterService: FilterService, private _obtService: ObtService, private _logger: LoggerService) { }
+  constructor(
+    protected _filterService: FilterService,
+    private _obtService: ObtService,
+    protected _userService: UserService,
+    private _logger: LoggerService) { }
 
   ngOnInit() {
     // Initalize value for filter.

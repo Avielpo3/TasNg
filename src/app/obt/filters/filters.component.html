@@ -1,15 +1,16 @@
 <div class="container-fluid"
-  id="filtersContainer">
+     id="filtersContainer">
   <!--[FILTER HEADER START]-->
   <div class="row">
     <div class="col-xs-8 filter-by-header">
-      <span translate class="bold" >
+      <span translate
+            class="bold">
         Filter Results By
       </span>
     </div>
     <div class="col-xs-4">
       <button class="btn btn-link filter-by-reset-btn"
-        translate>RESET</button>
+              translate>RESET</button>
     </div>
   </div>
   <!--[FILTER HEADER END]-->
@@ -25,12 +26,13 @@
   <!--[FILTERS START]-->
   <div class="row">
     <div class="col-xs-12">
-      <app-filter-price [_filter]="_filterSliderList[0]">
+      <app-filter-price [_filter]="_filterSliderList[0]"
+                        [_userCurrency]="_userCurrency">
 
       </app-filter-price>
       <app-filter *ngFor="let filter of _filterSliderList | slice:1 ; let i = index"
-        [_filter]="filter"
-        [_index]="i">
+                  [_filter]="filter"
+                  [_index]="i">
       </app-filter>
     </div>
   </div>
@@ -40,19 +42,19 @@
   <div class="row">
     <div class="col-xs-12">
       <p class="flight-stops-title"
-        translate>Stops</p>
+         translate>Stops</p>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <p-checkbox *ngFor="let stopFilter of _filterStopQuantityList"
-        id="stopQuantityFilterGroup"
-        name="stopQuantityFilter"
-        [styleClass]="'stop-quantity-filter'"
-        [value]="stopFilter"
-        [(ngModel)]="_selectedStopQuantityFilter"
-        [label]="getStopQuantityFilterName(stopFilter) | async"
-        (onChange)="handleStopsQuantityFilterChange($event)"></p-checkbox>
+                  id="stopQuantityFilterGroup"
+                  name="stopQuantityFilter"
+                  [styleClass]="'stop-quantity-filter'"
+                  [value]="stopFilter"
+                  [(ngModel)]="_selectedStopQuantityFilter"
+                  [label]="getStopQuantityFilterName(stopFilter) | async"
+                  (onChange)="handleStopsQuantityFilterChange($event)"></p-checkbox>
     </div>
   </div>
   <!--[FLIGHT STOPS CHECKBOXES END]-->
@@ -69,7 +71,7 @@
   <div class="row">
     <div class="col-xs-12">
       <app-policy-slider (onShowResultsOutOfPolicyEmitter)="handleOnShowResultsOutOfPolicy($event)"
-        (onPolicyLevelChanged)="handleOnPolicyLevelChanged($event)"></app-policy-slider>
+                         (onPolicyLevelChanged)="handleOnPolicyLevelChanged($event)"></app-policy-slider>
     </div>
   </div>
   <!--[POLICY COMPONENT END]-->
@@ -86,23 +88,23 @@
   <div class="row">
     <div class="col-xs-8">
       <p class="airlines-title"
-        translate>Airlines</p>
+         translate>Airlines</p>
     </div>
     <div class="col-xs-4">
       <button class="btn btn-link airlines-reset-btn"
-        translate>RESET</button>
+              translate>RESET</button>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <p-checkbox *ngFor="let airlineFilter of _filterAirlineList"
-        id="airlineFilter"
-        name="airlineFilterGroup"
-        styleClass=""
-        [value]="airlineFilter"
-        [(ngModel)]="_selectedAirlineFilter"
-        [label]="airlineFilter.Name"
-        (onChange)="handleAirlineFilterChange($event)"></p-checkbox>
+                  id="airlineFilter"
+                  name="airlineFilterGroup"
+                  styleClass=""
+                  [value]="airlineFilter"
+                  [(ngModel)]="_selectedAirlineFilter"
+                  [label]="airlineFilter.Name"
+                  (onChange)="handleAirlineFilterChange($event)"></p-checkbox>
     </div>
   </div>
   <!--[AIRLINES CHECKBOXES START]-->

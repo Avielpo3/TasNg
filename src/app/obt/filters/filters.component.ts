@@ -22,6 +22,7 @@ export class FiltersComponent implements OnInit {
   _selectedStopQuantityFilter: number[];
   _selectedAirlineFilter: AirlineInfo[];
   _numberOfStops: string;
+  _userCurrency: string;
 
   constructor(
     private _filterService: FilterService,
@@ -38,20 +39,14 @@ export class FiltersComponent implements OnInit {
   private subscribeToGlobalFlightInfo(): void {
     this._obtService.onGetFlightGlobalInfo.subscribe(
       (flightGlobalInfo: FlightGlobalInfo) => {
-        this._filterSliderList[0].ngPrimeOptions.min =
-          flightGlobalInfo.FlightMinPrice;
-        this._filterSliderList[0].ngPrimeOptions.max =
-          flightGlobalInfo.FlightMaxPrice;
-        this._selectedStopQuantityFilter = this._filterStopQuantityList =
-          flightGlobalInfo.StopQuantity;
-        this._selectedAirlineFilter = this._filterAirlineList =
-          flightGlobalInfo.Airlines;
-        this._filterService.OnStopQuantityFilterToggle.next(
-          this._selectedStopQuantityFilter
-        );
-        this._filterService.OnAirlineFilterToggle.next(
-          this._selectedAirlineFilter
-        );
+        this._filterSliderList[0].ngPrimeOptions.min = flightGlobalInfo.FlightMinPrice;
+        this._filterSliderList[0].ngPrimeOptions.max = flightGlobalInfo.FlightMaxPrice;
+        this._userCurrency = flightGlobalInfo.UserCurrncy;
+        this._selectedStopQuantityFilter = this._filterStopQuantityList = flightGlobalInfo.StopQuantity;
+
+        this._selectedAirlineFilter = this._filterAirlineList = flightGlobalInfo.Airlines;
+        this._filterService.OnStopQuantityFilterToggle.next(this._selectedStopQuantityFilter);
+        this._filterService.OnAirlineFilterToggle.next(this._selectedAirlineFilter);
       }
     );
   }
@@ -78,11 +73,11 @@ export class FiltersComponent implements OnInit {
   getStopQuantityFilterName(filterNumber: number) {
     switch (filterNumber) {
       case 0:
-        return this._translateService.get("Direct").map((translateVal) => {return translateVal});
+        return this._translateService.get('Direct').map((translateVal) => translateVal);
       case 1:
-       return this._translateService.get("Stop").map((translateVal) => {return '1 ' + translateVal});
+        return this._translateService.get('Stop').map((translateVal) => '1 ' + translateVal);
       default:
-       return this._translateService.get("Stops").map((translateVal) => {return filterNumber.toString() + ' ' + translateVal });
+        return this._translateService.get('Stops').map((translateVal) => filterNumber.toString() + ' ' + translateVal);
     }
   }
 

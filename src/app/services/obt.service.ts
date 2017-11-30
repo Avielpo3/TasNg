@@ -16,6 +16,7 @@ import { ServiceList } from '../obt/Dto & Enum/service-list.dto';
 import { AppService } from './app.service';
 import { environment } from '../../environments/environment';
 import * as $ from 'jquery';
+import { UserService } from './user.service';
 
 @Injectable()
 export class ObtService {
@@ -37,6 +38,7 @@ export class ObtService {
     DepartueAirport: '',
     ArrivelAirport: '',
     ArrivelDate: null,
+    UserCurrncy: 'USD',
     LastArrivalSegment: []
   };
 
@@ -58,6 +60,7 @@ export class ObtService {
     private _apiService: ApiService,
     private _logger: LoggerService,
     private _extandInfoService: ExtendInformationService,
+    private _userService: UserService,
     private _appService: AppService
   ) { }
 
@@ -68,9 +71,9 @@ export class ObtService {
 
     this.timer.takeWhile(() => this.isResultsArrived).subscribe(() => {
       // if (!environment.production) {
-      // this.getMockFlightResults();
+      this.getMockFlightResults();
       // } else {
-       this.getFlightsResultFromApi();
+      // this.getFlightsResultFromApi();
       // }
     });
   }
@@ -199,7 +202,11 @@ export class ObtService {
     errorMsg = JSON.parse(errorMsg._body).d;
     this._appService.showPopup(errorMsg, 'Problem occurred', true);
   }
-
+  /**
+   * Get mock flight from file.
+   * @returns
+   * @memberof ObtService
+   */
   getMockFlightResults() {
     this._apiService.getMockFlightResults().subscribe(
       (response: any) => {
@@ -285,9 +292,9 @@ export class ObtService {
 
 
     flightDto.Answer.DestinationList.forEach((destinationList, index) => {
-      const lastSegment = destinationList.ItinerariesList[0].Itinerary.ItinerarySegment.length -1;
-      this._flightGlobalInfo.LastArrivalSegment[index] = 
-      destinationList.ItinerariesList[0].Itinerary.ItinerarySegment[lastSegment].ArrivalDateTime;
+      const lastSegment = destinationList.ItinerariesList[0].Itinerary.ItinerarySegment.length - 1;
+      this._flightGlobalInfo.LastArrivalSegment[index] =
+        destinationList.ItinerariesList[0].Itinerary.ItinerarySegment[lastSegment].ArrivalDateTime;
       for (const itinerariesList of destinationList.ItinerariesList) {
         this.setUsdRateToJson(itinerariesList);
 
@@ -323,7 +330,7 @@ export class ObtService {
           this._flightGlobalInfo.StopQuantity.push(curentStopQuantity);
         }
 
-        //Set the max arrival time to destination
+        // Set the max arrival time to destination
         const lastSegemntLength = itinerariesList.Itinerary.ItinerarySegment.length - 1;
         const lastSegemntDate = itinerariesList.Itinerary.ItinerarySegment[lastSegemntLength].ArrivalDateTime;
         const lastSegmentNumber = new Date(lastSegemntDate).getTime();
@@ -343,12 +350,13 @@ export class ObtService {
       return a > b ? 1 : -1;
     });
 
-    this._flightGlobalInfo.FlightMaxPrice += this._flightGlobalInfo.FlightMaxPrice / 100; // TODO: fix this.
+    // this._flightGlobalInfo.FlightMaxPrice += this._flightGlobalInfo.FlightMaxPrice / 100; // TODO: fix this.
 
     this._flightGlobalInfo.DepartueAirport = departureAirport;
     this._flightGlobalInfo.ArrivelAirport = arrivalAirport;
     this._flightGlobalInfo.DepartureDate = departureDate;
     this._flightGlobalInfo.ArrivelDate = arrivelDate;
+    this._flightGlobalInfo.UserCurrncy = this._userService.UserInformation.CurrencyCode;
 
     return this._flightGlobalInfo;
   }
@@ -363,14 +371,14 @@ export class ObtService {
 
   private setUsdRateToJson(itinerariesList: ItinerariesList): void {
     try {
-      if (
-        itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode !== 'USD') {
+      if (itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode === 'USD'
+        || itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode === this._userService.UserInformation.CurrencyCode
+      ) {
         itinerariesList.Itinerary.ItineraryInfo.UsdAmount =
-          itinerariesList.Itinerary.ItineraryInfo.Amount *
-          itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].UsdRate;
+          itinerariesList.Itinerary.ItineraryInfo.Amount;
       } else {
         itinerariesList.Itinerary.ItineraryInfo.UsdAmount =
-          itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].Amount;
+          itinerariesList.Itinerary.ItineraryInfo.Amount * itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].UsdRate;
       }
     } catch (error) {
       this._logger.onException(error);
