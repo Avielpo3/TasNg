@@ -372,10 +372,9 @@ export class ObtService {
   private setUsdRateToJson(itinerariesList: ItinerariesList): void {
     try {
       if (itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode === 'USD'
-        || itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode === this._userService.UserInformation.CurrencyCode
-      ) {
-        itinerariesList.Itinerary.ItineraryInfo.UsdAmount =
-          itinerariesList.Itinerary.ItineraryInfo.Amount;
+        || itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].FromCode === this._userService.UserInformation.CurrencyCode) {
+        this._userService.UserExchangeRate = 1;
+        itinerariesList.Itinerary.ItineraryInfo.UsdAmount = itinerariesList.Itinerary.ItineraryInfo.Amount;
       } else {
         itinerariesList.Itinerary.ItineraryInfo.UsdAmount =
           itinerariesList.Itinerary.ItineraryInfo.Amount * itinerariesList.Itinerary.AnswerInfo.CurrencyList.Currency[0].UsdRate;

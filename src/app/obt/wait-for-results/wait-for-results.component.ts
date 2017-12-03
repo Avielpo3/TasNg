@@ -26,7 +26,7 @@ export class WaitForResultsComponent implements OnInit {
           requestId: 122,
           detail: true,
           language: 'en',
-          currency: 'ILS'
+          currency: 'TRY'
         }
       }));
   }

@@ -16,6 +16,7 @@ export class ResultDetailComponent implements OnInit {
   @Input() _segment: ItinerarySegment;
   @Input() _currency: ItinerarySegment;
   @Input() _totalSegemntsAtFlight: number;
+  @Input() _currentSegmentIndex: number;
 
   // DOM Connected.
   _airportName: string;

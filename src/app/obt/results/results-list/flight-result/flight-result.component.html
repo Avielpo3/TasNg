@@ -173,10 +173,11 @@
            class="airplane-arrival-green">
     </div>
   </div>
-  <app-flight-result-leg *ngFor="let segment of _itinerarySegments"
+  <app-flight-result-leg *ngFor="let segment of _itinerarySegments, let i = index;"
                          [_segment]="segment"
                          [_currency]="this._itinerary.Itinerary.AnswerInfo.CurrencyList.Currency[0]"
-                         [_totalSegemntsAtFlight]="_itinerarySegments.length">
+                         [_totalSegemntsAtFlight]="_itinerarySegments.length"
+                         [_currentSegmentIndex]="i" >
 
   </app-flight-result-leg>
 </p-overlayPanel>
