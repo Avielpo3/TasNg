@@ -81,7 +81,8 @@
 }
 
 .arrival-date-month-day{
-  @include font-float-color(14px, $light-green, left);
+  @include font-float-color(14px, $light-green, right);
+  margin-right: 0.7em;
 }
 
 .arrival-date-hour{
@@ -90,8 +91,9 @@
 }
 
 .departure-date-hour{
-  @include font-float-color(16px, $tas-azure-dark, right);
+  @include font-float-color(16px, $tas-azure-dark, left);
   font-weight: bold;
+  margin-left: 0.7em;
 }
 
 .departure-date-month-day-leg,
@@ -132,7 +134,7 @@
   background-color: #f7f7f7;
   color: #f7f7f7;
   margin-bottom: 1em;
-  margin-top: 0.5em;  
+  margin-top: 0.5em;
   .flight-duration-leg-inner-container{
     position: relative;
     top: 25%;

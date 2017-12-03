@@ -46,12 +46,12 @@
           </div>
           <div class="col-xs-6 text-right">
             <span id="arrivalTime"
-                  class="arrival-date-month-day">
-              {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'dd MMM' }}
-            </span>
-            <span id="arrivalTime"
                   class="arrival-date-hour">
               {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'HH:mm' }}
+            </span>
+            <span id="arrivalTime"
+                  class="arrival-date-month-day">
+              {{_itinerarySegments[_itinerarySegments.length - 1].ArrivalDateTime | date:'dd MMM' }}
             </span>
           </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="row">
               <div class="col-xs-1"></div>
               <div class="col-xs-11">
-                <span class="flight-price">{{ _itinerary.Itinerary.ItineraryInfo.UsdAmount | userCurrncy:_userCurrencyCode | currency:_userCurrencyCode:'symbol-narrow'
+                <span class="flight-price">{{ _itinerary.Itinerary.ItineraryInfo.UsdAmount | userCurrncy:_userCurrencyCode | currency:_userCurrencyCode:'symbol'
                   }}
                 </span>
               </div>

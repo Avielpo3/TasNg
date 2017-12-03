@@ -52,12 +52,14 @@ export class FilterComponent implements OnInit {
   handleChange(event) {
     const minBegin = event.values[0] - this._filter.ngPrimeOptions.min;
     const minMoved = minBegin * 100 / this._filter.ngPrimeOptions.max;
-    this._minMoved = minMoved.toString() + '%';
 
     const maxBegin = event.values[1] - this._filter.ngPrimeOptions.min;
     const maxMoved = maxBegin * 100 / this._filter.ngPrimeOptions.max;
-    this._maxMoved = (maxMoved <= 83) ? maxMoved.toString() + '%' : '83%';
 
+    if (Math.abs(minMoved - maxMoved) >= 14) {
+      this._maxMoved = (maxMoved <= 83) ? maxMoved.toString() + '%' : '83%';
+      this._minMoved = minMoved.toString() + '%';
+    }
   }
 
   /**
