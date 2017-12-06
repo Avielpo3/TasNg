@@ -24,6 +24,7 @@ export class FlightDurationGraphComponent implements OnInit {
   _durationTotalLineLength: number = 0;
 
   private _spanDivide: number;
+  private _multipleNumberForFlightDuration: number = 1;
 
   constructor(private _obtService: ObtService) { }
 

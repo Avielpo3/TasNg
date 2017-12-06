@@ -12,7 +12,6 @@
       <div class="col-xs-1">
         <div class="img-airline-logo"
              [style.backgroundImage]="'url(' + getAirlineLogo(_itineraryInfo.MarketingAirline) + ')'"></div>
-
       </div>
       <div class="col-xs-2">
         <div class="row">
@@ -163,13 +162,13 @@
 
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10 flight-duration-leg-container">
-      <img src="../assets/images/airplane-departure-blue.png"
+      <img src="../../../../../assets/images/airplane-departure-blue.png"
            class="airplane-departure-blue">
       <div class="flight-duration-leg-inner-container">
         <app-flight-duration-graph [flightSegments]="_itinerarySegments"
                                    [currentScreen]="_currentScreen"></app-flight-duration-graph>
       </div>
-      <img src="../assets/images/airplane-arrival-green.png"
+      <img src="../../../../../assets/images/airplane-arrival-green.png"
            class="airplane-arrival-green">
     </div>
   </div>
@@ -178,6 +177,5 @@
                          [_currency]="this._itinerary.Itinerary.AnswerInfo.CurrencyList.Currency[0]"
                          [_totalSegemntsAtFlight]="_itinerarySegments.length"
                          [_currentSegmentIndex]="i" >
-
   </app-flight-result-leg>
 </p-overlayPanel>

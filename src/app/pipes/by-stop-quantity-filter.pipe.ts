@@ -12,7 +12,7 @@ export class ByStopQuantityFilterPipe implements PipeTransform {
 
         itinerariesList.forEach((itinerary, itIdx) => {
             const stopQuantity: number = itinerary.Itinerary.ItineraryInfo.StopQuantity;
-            if (stopQuantityArray.includes(stopQuantity)) {
+            if (typeof stopQuantityArray[stopQuantity] === 'undefined') {
                 filtereditinerariesList.push(itinerary);
             }
         });

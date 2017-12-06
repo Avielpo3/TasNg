@@ -19,16 +19,17 @@ export class WaitForResultsComponent implements OnInit {
   }
 
   startAngular() {
-    window.dispatchEvent(new CustomEvent('isAngularStarted',
-      {
-        detail:
-        {
-          requestId: 122,
-          detail: true,
-          language: 'en',
-          currency: 'TRY'
-        }
-      }));
+    const detail = {
+      requestId: 122,
+      detail: true,
+      language: 'en',
+      currency: 'TRY'
+    };
+
+    const event = document.createEvent('CustomEvent');
+    event.initCustomEvent('isAngularStarted', false, true , detail);
+    // args: string type, boolean bubbles, boolean cancelable
+    window.dispatchEvent(event);
   }
 
 }

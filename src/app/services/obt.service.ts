@@ -108,10 +108,7 @@ export class ObtService {
               return true;
             }
 
-            if (
-              flightResponse.AnswerResponseJson === null ||
-              flightResponse.AnswerResponseJson === ''
-            ) {
+            if (flightResponse.AnswerResponseJson === null || flightResponse.AnswerResponseJson === '') {
               if (flightResponse.RemainingRequestCount <= 0) {
                 this.isResultsArrived = false; // Stop quastion the api server.
               } else {
@@ -326,7 +323,8 @@ export class ObtService {
           }
         }
         // Push Quantity of stops.
-        if (!this._flightGlobalInfo.StopQuantity.includes(curentStopQuantity)) {
+        // if (!this._flightGlobalInfo.StopQuantity.includes(curentStopQuantity)) {
+        if (typeof !this._flightGlobalInfo.StopQuantity[curentStopQuantity] === 'undefined') {
           this._flightGlobalInfo.StopQuantity.push(curentStopQuantity);
         }
 
