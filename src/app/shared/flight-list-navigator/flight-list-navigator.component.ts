@@ -39,7 +39,6 @@ export class FlightListNavigatorComponent implements OnInit {
     if (this.iCurrentScreen < this.iTotalScreenCount) {
       const newScreenCount = this.iCurrentScreen + 1;
       this.onNext.next(newScreenCount);
-      console.log(newScreenCount);
     }
     if (this.iCurrentScreen === this.iTotalScreenCount) {
       this.onFinished.next(true);

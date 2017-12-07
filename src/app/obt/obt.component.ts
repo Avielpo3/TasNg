@@ -149,6 +149,7 @@ export class ObtComponent implements OnInit {
 
   handleOnNextBackClick(newCurrentScreenCount: number) {
     this._currentScreen = newCurrentScreenCount;
+    this._filterService.OnScreenChanged.next(newCurrentScreenCount);
   }
 
   handleOnFinishedClick(isFinished: boolean) {

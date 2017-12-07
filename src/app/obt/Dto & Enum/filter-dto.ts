@@ -7,8 +7,8 @@ export interface FilterDto {
 
 export interface NgPrimeScrollOptions {
     animate: boolean;
-    min: number;
-    max: number;
+    min: number[];
+    max: number[];
     range: boolean;
     step: number;
     orientation: string;

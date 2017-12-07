@@ -1,7 +1,7 @@
 import { LoggerService } from '../../../services/logger.service';
 import * as console from 'console';
 import { Observable } from 'rxjs/Rx';
-import { Component, Input, OnInit, ViewChild, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { FilterService } from '../../../services/filter.service';
 import { Subscription } from 'rxjs/Subscription';
 import { FilterNameEnum } from '../../Dto & Enum/filter-name-enum';
@@ -18,6 +18,7 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
+
   @Input() _filter: FilterDto;
   @Input() _index: number;
   @Input() _userCurrency: number;
@@ -45,16 +46,16 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     // Initalize value for filter.
-    this.rangeValues = [this._filter.ngPrimeOptions.min, this._filter.ngPrimeOptions.max];
+    this.rangeValues = [this._filter.ngPrimeOptions.min[0], this._filter.ngPrimeOptions.max[0]];
   }
 
   //  Listen to Dom 'change' event,and send the data to the service.
   handleChange(event) {
-    const minBegin = event.values[0] - this._filter.ngPrimeOptions.min;
-    const minMoved = minBegin * 100 / this._filter.ngPrimeOptions.max;
+    const minBegin = event.values[0] - this._filter.ngPrimeOptions.min[0];
+    const minMoved = minBegin * 100 / this._filter.ngPrimeOptions.max[0];
 
-    const maxBegin = event.values[1] - this._filter.ngPrimeOptions.min;
-    const maxMoved = maxBegin * 100 / this._filter.ngPrimeOptions.max;
+    const maxBegin = event.values[1] - this._filter.ngPrimeOptions.min[0];
+    const maxMoved = maxBegin * 100 / this._filter.ngPrimeOptions.max[0];
 
     if (Math.abs(minMoved - maxMoved) >= 14) {
       this._maxMoved = (maxMoved <= 83) ? maxMoved.toString() + '%' : '83%';

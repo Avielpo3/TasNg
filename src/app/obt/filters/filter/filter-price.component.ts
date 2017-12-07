@@ -18,11 +18,15 @@ import { FilterEvent } from '../../Dto & Enum/EventsDto/filter.event';
 })
 export class FilterPriceComponent extends FilterComponent implements OnInit {
 
+  _minValue: number;
+  _maxValue: number;
+
   ngOnInit() {
     // Initalize value for filter.
-    this._filter.ngPrimeOptions.min = Math.floor(this._userService.UserExchangeRate * this._filter.ngPrimeOptions.min);
-    this._filter.ngPrimeOptions.max = Math.ceil(this._userService.UserExchangeRate * this._filter.ngPrimeOptions.max);
-    this.rangeValues = [this._filter.ngPrimeOptions.min, this._filter.ngPrimeOptions.max];
+    this.subcribeToScreenChangeEvent();
+    this._minValue = Math.floor(this._userService.UserExchangeRate * this._filter.ngPrimeOptions.min[0]);
+    this._maxValue = Math.ceil(this._userService.UserExchangeRate * this._filter.ngPrimeOptions.max[0]);
+    this.rangeValues = [this._minValue, this._maxValue];
   }
 
 
@@ -36,6 +40,14 @@ export class FilterPriceComponent extends FilterComponent implements OnInit {
       };
       this._filterService.OnSliderFilterChangeValue.next(filterEvent);
     }
+  }
+
+  private subcribeToScreenChangeEvent(): void {
+    this._filterService.OnScreenChanged.subscribe((currentScreen: number) => {
+      this._minValue = this._filter.ngPrimeOptions.min[currentScreen];
+      this._maxValue = this._filter.ngPrimeOptions.max[currentScreen];
+      this.rangeValues = [this._filter.ngPrimeOptions.min[currentScreen], this._filter.ngPrimeOptions.max[currentScreen]];
+    });
   }
 
 }

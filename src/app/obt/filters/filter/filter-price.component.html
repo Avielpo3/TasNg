@@ -22,9 +22,9 @@
   <div class="col-xs-12 ngp-slider-container">
     <p-slider [(ngModel)]="rangeValues"
               [range]="_filter.ngPrimeOptions.range"
-              [min]="_filter.ngPrimeOptions.min"
+              [min]="_minValue"
               [step]="_filter.ngPrimeOptions.step"
-              [max]="_filter.ngPrimeOptions.max"
+              [max]="_maxValue"
               [animate]="_filter.ngPrimeOptions.animate"
               [styleClass]="_filter.ngPrimeOptions.styleClass"
               [style]="_filter.ngPrimeOptions.style"
@@ -37,8 +37,8 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span class="filter-min-value">{{_filter.ngPrimeOptions.min | currency:_userCurrency:'symbol-narrow'  }}</span>
-    <span class="filter-max-value">{{_filter.ngPrimeOptions.max | currency:_userCurrency:'symbol-narrow' }}</span>
+    <span class="filter-min-value">{{_minValue | currency:_userCurrency:'symbol-narrow' }}</span>
+    <span class="filter-max-value">{{_maxValue | currency:_userCurrency:'symbol-narrow' }}</span>
   </div>
 </div>
 <div class="row">

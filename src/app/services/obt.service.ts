@@ -17,6 +17,7 @@ import { AppService } from './app.service';
 import { environment } from '../../environments/environment';
 import * as $ from 'jquery';
 import { UserService } from './user.service';
+import { debug } from 'util';
 
 @Injectable()
 export class ObtService {
@@ -30,8 +31,8 @@ export class ObtService {
 
   private _flightGlobalInfo: FlightGlobalInfo = {
     Airlines: [],
-    FlightMaxPrice: 0,
-    FlightMinPrice: 999999,
+    FlightMaxPrice: [],
+    FlightMinPrice: [],
     TotalFlightNumber: [],
     StopQuantity: [],
     DepartureDate: null,
@@ -299,16 +300,23 @@ export class ObtService {
         const currentMarketingAirlineCode = itinerariesList.Itinerary.ItineraryInfo.MarketingAirline;
         const curentStopQuantity = itinerariesList.Itinerary.ItineraryInfo.StopQuantity;
 
-        // Set max price.
-        this._flightGlobalInfo.FlightMaxPrice =
-          this._flightGlobalInfo.FlightMaxPrice < currentAmount
-            ? currentAmount
-            : this._flightGlobalInfo.FlightMaxPrice;
-        // Set min price.
-        this._flightGlobalInfo.FlightMinPrice =
-          this._flightGlobalInfo.FlightMinPrice > currentAmount
-            ? currentAmount
-            : this._flightGlobalInfo.FlightMinPrice;
+        // Set MAX price.
+        if (this._flightGlobalInfo.FlightMaxPrice[index] === undefined) {
+          this._flightGlobalInfo.FlightMaxPrice.push(currentAmount);
+        } else {
+          if (this._flightGlobalInfo.FlightMaxPrice[index] < currentAmount) {
+            this._flightGlobalInfo.FlightMaxPrice[index] = currentAmount;
+          }
+        }
+
+        // Set MIN price.
+        if (this._flightGlobalInfo.FlightMinPrice[index] === undefined) {
+          this._flightGlobalInfo.FlightMinPrice.push(currentAmount);
+        } else {
+          if (this._flightGlobalInfo.FlightMinPrice[index] > currentAmount) {
+            this._flightGlobalInfo.FlightMinPrice[index] = currentAmount;
+          }
+        }
 
         // push distinct airlines.
         const isExist: boolean = this._flightGlobalInfo.Airlines.some(

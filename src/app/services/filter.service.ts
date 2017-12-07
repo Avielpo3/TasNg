@@ -31,14 +31,20 @@ export class FilterService {
     return this.onPolicyLevelChanged;
   }
 
+  /* On Screen changed, Next or back button */
+  private onScreenChanged: EventEmitter<number> = new EventEmitter();
+  public get OnScreenChanged(): EventEmitter<number> {
+    return this.onScreenChanged;
+  }
+
   private _filterArray: FilterDto[] = [
     {
       name: FilterNameEnum.Price,
       isVisible: true,
       ngPrimeOptions: {
         animate: true,
-        min: 0,
-        max: 10000,
+        min: [0],
+        max: [10000],
         disabled: false,
         orientation: 'horizontal',
         range: true,
@@ -53,8 +59,8 @@ export class FilterService {
       ngPrimeOptions:
         {
           animate: true,
-          min: 0,
-          max: 23,
+          min: [0],
+          max: [23],
           disabled: false,
           orientation: 'horizontal',
           range: true,
@@ -69,8 +75,8 @@ export class FilterService {
       ngPrimeOptions:
         {
           animate: true,
-          min: 0,
-          max: 23,
+          min: [0],
+          max: [23],
           disabled: false,
           orientation: 'horizontal',
           range: true,

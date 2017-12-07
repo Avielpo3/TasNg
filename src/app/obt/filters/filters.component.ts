@@ -23,6 +23,8 @@ export class FiltersComponent implements OnInit {
   _selectedAirlineFilter: AirlineInfo[];
   _numberOfStops: string;
   _userCurrency: string;
+  _currentScreenIndex: number;
+  _flightGlobalInfo: FlightGlobalInfo;
 
   constructor(
     private _filterService: FilterService,
@@ -39,6 +41,7 @@ export class FiltersComponent implements OnInit {
   private subscribeToGlobalFlightInfo(): void {
     this._obtService.onGetFlightGlobalInfo.subscribe(
       (flightGlobalInfo: FlightGlobalInfo) => {
+        this._flightGlobalInfo = flightGlobalInfo;
         this._filterSliderList[0].ngPrimeOptions.min = flightGlobalInfo.FlightMinPrice;
         this._filterSliderList[0].ngPrimeOptions.max = flightGlobalInfo.FlightMaxPrice;
         this._userCurrency = flightGlobalInfo.UserCurrncy;
@@ -69,6 +72,8 @@ export class FiltersComponent implements OnInit {
   private getFiltersList(): void {
     this._filterSliderList = this._filterService.FilterList;
   }
+
+
 
   getStopQuantityFilterName(filterNumber: number) {
     switch (filterNumber) {
