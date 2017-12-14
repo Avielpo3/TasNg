@@ -78,8 +78,8 @@ export class ObtService {
 
     this._timer.takeWhile(() => this._isWaitingForResultsFromServer && this._resultsFromApiArrived)
       .subscribe(() => {
-        this.getMockFlightResults();
-        // this.getFlightsResultFromApi();
+        // this.getMockFlightResults();
+         this.getFlightsResultFromApi();
       });
   }
 
