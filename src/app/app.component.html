@@ -2,7 +2,7 @@
 <div id="appContainer"
      class="container-fluid">
   <!-- <app-head-navigation-bar></app-head-navigation-bar> -->
-  <app-wait-for-results *ngIf="!_isResultsArrived">
+  <app-wait-for-results *ngIf="!_isAngularStarted && !_isResultsArrived">
 
   </app-wait-for-results>
 
@@ -20,7 +20,7 @@
     </p-footer>
   </p-dialog>
 
-  <app-obt *ngIf="_isResultsArrived">
+  <app-obt *ngIf="_isAngularStarted">
 
   </app-obt>
 

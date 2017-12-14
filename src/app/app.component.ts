@@ -20,6 +20,7 @@ import { ExtendInformationService } from './services/global services/extand-info
 export class AppComponent implements OnInit {
 
   _tasSupportedLanguages: string[];
+  _isAngularStarted: boolean = false;
   _isResultsArrived: boolean = false;
   requestId: string;
   _popup: PrimeNgPopup = { header: 'Error', content: '', appendTo: 'body', isBackgrondBlocked: true, visible: false };
@@ -106,8 +107,8 @@ export class AppComponent implements OnInit {
 
   private showResultsIfReady(): void {
     if (this._isHostListenerArrived && this._isAngularFinishedLoadedJsonFiles) {
-      this._isResultsArrived = this._hostListenerEvent.detail.detail;
-      /// this._appService.OnAngularStarted.next(this._isResultsArrived);
+      this._isAngularStarted = this._hostListenerEvent.detail.detail;
+      // this._appService.OnAngularStarted.next(this._isResultsArrived);
 
       // Create info for user.
       const userInfo: UserInformation = {

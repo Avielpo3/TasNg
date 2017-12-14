@@ -24,10 +24,14 @@ export class ObtService {
   private _isFirstJson: boolean = true;
   private _requstId: number;
 
-  // Interval
-  private _callToResultsIntervalTime: number = 2000; // 2 sec.
-  private timer: Observable<number>;
-  private isResultsArrived: boolean = true;
+  // Interval Constants.
+  private readonly CallToResultsIntervalTime: number = 2000; // 2 sec.
+  private readonly WaitForResultsFromApiTimeOut: number = 60 * 1000; // 1 minute - 60 Seconds.
+
+  private _waitForResultsTimeOutSubscription;
+  private _timer: Observable<number>;
+  private _isWaitingForResultsFromServer: boolean = true;
+  private _resultsFromApiArrived: boolean = true;
 
   private _flightGlobalInfo: FlightGlobalInfo = {
     Airlines: [],
@@ -67,16 +71,16 @@ export class ObtService {
 
   public setRequestIdAndStartNgProccess(requstId: number): void {
     this._requstId = requstId;
-    this.isResultsArrived = true;
-    this.timer = Observable.timer(0, this._callToResultsIntervalTime);
+    this._isWaitingForResultsFromServer = true;
+    this._timer = Observable.timer(0, this.CallToResultsIntervalTime);
 
-    this.timer.takeWhile(() => this.isResultsArrived).subscribe(() => {
-      // if (!environment.production) {
-      this.getMockFlightResults();
-      // } else {
-      // this.getFlightsResultFromApi();
-      // }
-    });
+    // this.setTimeOutForApiCallToResultsFromServer();
+
+    this._timer.takeWhile(() => this._isWaitingForResultsFromServer && this._resultsFromApiArrived)
+      .subscribe(() => {
+        this.getMockFlightResults();
+        // this.getFlightsResultFromApi();
+      });
   }
 
   /**
@@ -105,20 +109,20 @@ export class ObtService {
                 true
               );
               this._logger.logObject(flightResponse.ErrorDescriptionIfExist);
-              this.isResultsArrived = false;
+              this._isWaitingForResultsFromServer = false;
               return true;
             }
 
             if (flightResponse.AnswerResponseJson === null || flightResponse.AnswerResponseJson === '') {
               if (flightResponse.RemainingRequestCount <= 0) {
-                this.isResultsArrived = false; // Stop quastion the api server.
+                this._isWaitingForResultsFromServer = false; // Stop quastion the api server.
               } else {
                 return true;
               }
             }
 
             if (flightResponse.RemainingRequestCount === 0) {
-              this.isResultsArrived = false; // Stop quastion the api server.
+              this._isWaitingForResultsFromServer = false; // Stop quastion the api server.
             }
 
             const responseId = flightResponse.CurrentResponseId;
@@ -141,6 +145,8 @@ export class ObtService {
               return;
             }
 
+            this._resultsFromApiArrived = false;
+            clearTimeout(this._waitForResultsTimeOutSubscription);
             // Start Angular by showing results.
             this._appService.StartAngular();
 
@@ -233,7 +239,7 @@ export class ObtService {
             }
 
             if (flightResponse.RemainingRequestCount === 0) {
-              this.isResultsArrived = false; // Stop quastion the api server.
+              this._isWaitingForResultsFromServer = false; // Stop quastion the api server.
             }
 
             // Start Angular by showing results.
@@ -406,4 +412,25 @@ export class ObtService {
 
     return itinerary;
   }
+
+  /**
+   * When calling to the API to get results from the server,
+   * If the server won't retrieve any Valid data by @WaitForResultsFromApiTimeOut time, Stop questioning the server.
+   * Show appropriate Message, If the server returns a valid results, The intervalwill be cleared.
+   * @private
+   * @memberof ObtService
+   */
+  private setTimeOutForApiCallToResultsFromServer(): void {
+    this._waitForResultsTimeOutSubscription = setTimeout(() => {
+      this._resultsFromApiArrived = false;
+      this._appService.showPopup(
+        'Error has been occurred while searching results.',
+        'Error',
+        true
+      );
+    }, this.WaitForResultsFromApiTimeOut);
+  }
+
+
+
 }

@@ -42,6 +42,20 @@ export class FilterPriceComponent extends FilterComponent implements OnInit {
     }
   }
 
+    //  Listen to Dom 'change' event,and send the data to the service.
+    handleChange(event) {
+      const minBegin = event.values[0] - this._minValue;
+      const minMoved = minBegin * 100 /  this._maxValue;
+
+      const maxBegin = event.values[1] - this._minValue;
+      const maxMoved = maxBegin * 100 /  this._maxValue;
+
+      if (Math.abs(minMoved - maxMoved) >= 14) {
+        this._maxMoved = (maxMoved <= 83) ? maxMoved.toString() + '%' : '83%';
+        this._minMoved = minMoved.toString() + '%';
+      }
+    }
+
   private subcribeToScreenChangeEvent(): void {
     this._filterService.OnScreenChanged.subscribe((currentScreen: number) => {
       this._minValue = this._filter.ngPrimeOptions.min[currentScreen];

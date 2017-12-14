@@ -28,7 +28,6 @@ export class WaitForResultsComponent implements OnInit {
 
     const event = document.createEvent('CustomEvent');
     event.initCustomEvent('isAngularStarted', false, true , detail);
-    // args: string type, boolean bubbles, boolean cancelable
     window.dispatchEvent(event);
   }
 
