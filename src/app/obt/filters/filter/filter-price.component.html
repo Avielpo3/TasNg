@@ -11,10 +11,10 @@
     <div class="slider-value-container">
       <span id="sliderMinValue"
             class="slider-value"
-            [style.left]="_minMoved">{{rangeValues[0] | currency:_userCurrency:'symbol-narrow' }}</span>
+            [style.left]="_minMoved">{{rangeValues[0] | currency:_userCurrency:'symbol' }}</span>
       <span id="sliderMaxValue"
             class="slider-value"
-            [style.left]="_maxMoved">{{rangeValues[1] | currency:_userCurrency:'symbol-narrow' }}</span>
+            [style.left]="_maxMoved">{{rangeValues[1] | currency:_userCurrency:'symbol' }}</span>
     </div>
   </div>
 </div>
@@ -37,8 +37,8 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span class="filter-min-value">{{_minValue | currency:_userCurrency:'symbol-narrow' }}</span>
-    <span class="filter-max-value">{{_maxValue | currency:_userCurrency:'symbol-narrow' }}</span>
+    <span class="filter-min-value">{{_minValue | currency:_userCurrency:'symbol' }}</span>
+    <span class="filter-max-value">{{_maxValue | currency:_userCurrency:'symbol' }}</span>
   </div>
 </div>
 <div class="row">
